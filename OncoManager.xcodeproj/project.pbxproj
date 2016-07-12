@@ -12,6 +12,7 @@
 		9CF3BAAF1D353A0B00D83B1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */; };
 		9CF3BAB11D353A0B00D83B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */; };
 		9CF3BAB41D353A0B00D83B1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */; };
+		9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF3BABC1D353A2600D83B1B /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF3BAB31D353A0B00D83B1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF3BAB51D353A0B00D83B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF3BABB1D353A1D00D83B1B /* OncoManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OncoManager.entitlements; sourceTree = "<group>"; };
+		9CF3BABC1D353A2600D83B1B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +42,7 @@
 		9CF3BA9D1D353A0B00D83B1B = {
 			isa = PBXGroup;
 			children = (
+				9CF3BABC1D353A2600D83B1B /* CloudKit.framework */,
 				9CF3BAA81D353A0B00D83B1B /* OncoManager */,
 				9CF3BAA71D353A0B00D83B1B /* Products */,
 			);
@@ -54,6 +59,7 @@
 		9CF3BAA81D353A0B00D83B1B /* OncoManager */ = {
 			isa = PBXGroup;
 			children = (
+				9CF3BABB1D353A1D00D83B1B /* OncoManager.entitlements */,
 				9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */,
 				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
 				9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */,
@@ -96,6 +102,12 @@
 				TargetAttributes = {
 					9CF3BAA51D353A0B00D83B1B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = XBEPC2JPC9;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -251,6 +263,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OncoManager/OncoManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OncoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Felipe-Viberti.OncoManager";
@@ -262,6 +276,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OncoManager/OncoManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OncoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Felipe-Viberti.OncoManager";
