@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4vV-Bc-hy7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="-2420.25" y="1139.5"/>
         </scene>
-        <!--Item 2-->
+        <!--Estatísticas-->
         <scene sceneID="NBa-Cb-1mN">
             <objects>
                 <viewController id="XO5-Re-X4c" customClass="EstatisticasViewController" customModule="OncoManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -259,14 +259,14 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="HVu-pN-Vx8"/>
+                    <tabBarItem key="tabBarItem" title="Estatísticas" image="exitModal" selectedImage="exitModal" id="HVu-pN-Vx8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnh-rN-TJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-492.75" y="565.5"/>
+            <point key="canvasLocation" x="-129.75" y="341.5"/>
         </scene>
-        <!--Item 1-->
+        <!--Pacientes-->
         <scene sceneID="S3P-a3-Jxm">
             <objects>
                 <viewController id="uEK-zO-oBq" customClass="PacientesViewController" customModule="OncoManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -328,7 +328,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ORT-48-2IV"/>
+                    <tabBarItem key="tabBarItem" title="Pacientes" image="exitModal" id="ORT-48-2IV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="ZAO-tL-Ucf" id="amV-Ah-5YC"/>
@@ -403,7 +403,7 @@
             </objects>
             <point key="canvasLocation" x="-1271.25" y="293.5"/>
         </scene>
-        <!--Item-->
+        <!--Adicionar Dado-->
         <scene sceneID="Ywa-A8-elY">
             <objects>
                 <viewController id="WwO-NY-8t1" sceneMemberID="viewController">
@@ -416,12 +416,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="eYR-DC-kQh"/>
+                    <tabBarItem key="tabBarItem" title="Adicionar Dado" image="exitModal" id="eYR-DC-kQh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycQ-qX-LXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-492.75" y="1405.5"/>
+            <point key="canvasLocation" x="-129.75" y="1405.5"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="SfH-s4-36t">
@@ -450,7 +450,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cg7-dE-BiL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="1372"/>
+            <point key="canvasLocation" x="2088" y="1396"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Xb-VR-tvB">
@@ -466,11 +466,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5L-Rw-q6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="546" y="1372"/>
+            <point key="canvasLocation" x="918" y="1412"/>
         </scene>
     </scenes>
     <resources>
         <image name="exitModal" width="26" height="26"/>
-        <image name="logo" width="157" height="44"/>
+        <image name="logo" width="471" height="132"/>
     </resources>
 </document>
