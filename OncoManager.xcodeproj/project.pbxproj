@@ -26,7 +26,7 @@
 		9C8F0CCD1D367F050016CD3C /* Medico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
 		9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoCloudKit.swift; sourceTree = "<group>"; };
 		9C8F0CD51D3681650016CD3C /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
-		9CB3228F1D36BC8300B25C0D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../Downloads/Telegram Desktop/Main.storyboard"; sourceTree = "<group>"; };
+		9CB3228F1D36BC8300B25C0D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CF3BAA61D353A0B00D83B1B /* OncoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OncoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
