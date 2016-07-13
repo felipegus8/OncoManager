@@ -20,21 +20,21 @@ public class Paciente
     var celular:Int!
     var peso:Double!
     var altura:Double!
-    var alergia:Bool!
-    var marcapasso:Bool!
-    var clipesCirurgico:Bool!
-    var operado:Bool!
+    var alergia:Int!
+    var marcapasso:Int!
+    var clipesCirurgico:Int!
+    var operado:Int!
     var tipoOperacao:String?
-    var claustrofobico:Bool!
-    var cadeirante:Bool!
-    var diabetico:Bool!
-    var hipertenso:Bool!
+    var claustrofobico:Int!
+    var cadeirante:Int!
+    var diabetico:Int!
+    var hipertenso:Int!
     var convenio:String!
     var tipoPlano:String!
     var matriculaPlano:String!
     var exames:[Exame] = []
 
-    init(cpf:Int,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Bool,marcapasso:Bool,clipesCirurgico:Bool,operado:Bool,tipoOperacao:String?,cadeirante:Bool,diabetico:Bool,hipertenso:Bool,convenio:String,tipoPlano:String,matriculaPlano:String)
+    init(cpf:Int,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String)
     {
         self.cpf = cpf
         self.nome = nome

@@ -10,5 +10,14 @@ import Foundation
 
 public class Admin
 {
+    var email:String!
+    var senha:String!
+    var nome:String!
     
+    init(email:String,senha:String,nome:String)
+    {
+        self.email = email
+        self.senha = senha
+        self.nome  = nome
+    }
 }
