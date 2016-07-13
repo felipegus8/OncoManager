@@ -12,6 +12,13 @@
 		9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCD1D367F050016CD3C /* Medico.swift */; };
 		9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */; };
 		9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD51D3681650016CD3C /* Admin.swift */; };
+		9CB3225F1D369AF800B25C0D /* CadastroPaciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3225E1D369AF800B25C0D /* CadastroPaciente.swift */; };
+		9CB322611D369B0900B25C0D /* CadastroExame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB322601D369B0900B25C0D /* CadastroExame.swift */; };
+		9CB322631D369B2600B25C0D /* CadastroMedico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB322621D369B2600B25C0D /* CadastroMedico.swift */; };
+		9CB322651D369B4500B25C0D /* Estatisticas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB322641D369B4500B25C0D /* Estatisticas.swift */; };
+		9CB322671D369B6E00B25C0D /* ListaPacientesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB322661D369B6E00B25C0D /* ListaPacientesTableView.swift */; };
+		9CB322691D369B9900B25C0D /* CadastroAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB322681D369B9900B25C0D /* CadastroAdmin.swift */; };
+		9CB3226B1D369BDB00B25C0D /* HistoricoPaciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3226A1D369BDB00B25C0D /* HistoricoPaciente.swift */; };
 		9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */; };
 		9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */; };
 		9CF3BAAF1D353A0B00D83B1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */; };
@@ -26,6 +33,13 @@
 		9C8F0CCD1D367F050016CD3C /* Medico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
 		9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoCloudKit.swift; sourceTree = "<group>"; };
 		9C8F0CD51D3681650016CD3C /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		9CB3225E1D369AF800B25C0D /* CadastroPaciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroPaciente.swift; sourceTree = "<group>"; };
+		9CB322601D369B0900B25C0D /* CadastroExame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroExame.swift; sourceTree = "<group>"; };
+		9CB322621D369B2600B25C0D /* CadastroMedico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroMedico.swift; sourceTree = "<group>"; };
+		9CB322641D369B4500B25C0D /* Estatisticas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Estatisticas.swift; sourceTree = "<group>"; };
+		9CB322661D369B6E00B25C0D /* ListaPacientesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaPacientesTableView.swift; sourceTree = "<group>"; };
+		9CB322681D369B9900B25C0D /* CadastroAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroAdmin.swift; sourceTree = "<group>"; };
+		9CB3226A1D369BDB00B25C0D /* HistoricoPaciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoPaciente.swift; sourceTree = "<group>"; };
 		9CF3BAA61D353A0B00D83B1B /* OncoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OncoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
+				9CB3225E1D369AF800B25C0D /* CadastroPaciente.swift */,
+				9CB322601D369B0900B25C0D /* CadastroExame.swift */,
+				9CB322621D369B2600B25C0D /* CadastroMedico.swift */,
+				9CB322641D369B4500B25C0D /* Estatisticas.swift */,
+				9CB322661D369B6E00B25C0D /* ListaPacientesTableView.swift */,
+				9CB322681D369B9900B25C0D /* CadastroAdmin.swift */,
+				9CB3226A1D369BDB00B25C0D /* HistoricoPaciente.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -187,9 +208,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */,
+				9CB322631D369B2600B25C0D /* CadastroMedico.swift in Sources */,
 				9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */,
+				9CB322651D369B4500B25C0D /* Estatisticas.swift in Sources */,
+				9CB322691D369B9900B25C0D /* CadastroAdmin.swift in Sources */,
+				9CB322671D369B6E00B25C0D /* ListaPacientesTableView.swift in Sources */,
 				9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */,
+				9CB3225F1D369AF800B25C0D /* CadastroPaciente.swift in Sources */,
 				9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */,
+				9CB3226B1D369BDB00B25C0D /* HistoricoPaciente.swift in Sources */,
+				9CB322611D369B0900B25C0D /* CadastroExame.swift in Sources */,
 				9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */,
 				9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */,
 				9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */,
