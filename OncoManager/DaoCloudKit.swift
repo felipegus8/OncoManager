@@ -94,7 +94,42 @@ public class DaoCloudKit
             }
         }
     }
-
+    func addMedico(medico:Medico)
+    {
+        let recordId = CKRecordID(recordName: medico.email)
+        let record = CKRecord(recordType: "Medico", recordID: recordId)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        
+        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            if error == nil {
+                
+                print("Já existe esse admin")
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroMedico", object: nil)
+                
+            }
+                
+            else {
+                
+                if(fetchedRecord == nil) {
+                    
+                    print("primeira vez que ta criando o admin")
+                    record.setObject(medico.email, forKey: "email")
+                    record.setObject(medico.crm, forKey: "crm")
+                    record.setObject(medico.nome, forKey: "nome")
+                    record.setObject(medico.telefone, forKey: "telefone")
+                    
+                    publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
+                        if (error != nil) {
+                            print(error)
+                        }
+                    })
+                }
+            }
+        }
+    }
+    /*
     func addPaciente(paciente:Paciente)
     {
         let recordId = CKRecordID(recordName: paciente.cpf)
@@ -151,4 +186,5 @@ public class DaoCloudKit
             }
         }
     }
+ */
 }
