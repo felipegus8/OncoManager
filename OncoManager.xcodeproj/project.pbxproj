@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */; };
+		2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C61D36C7E300910B20 /* LoginViewController.swift */; };
+		2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C81D36C80500910B20 /* PacientesViewController.swift */; };
+		2EC251CB1D36C80D00910B20 /* PacienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251CA1D36C80D00910B20 /* PacienteViewController.swift */; };
 		9C1FFFF61D36C65A00C298A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FFFF41D36C65A00C298A7 /* Main.storyboard */; };
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstatisticasViewController.swift; sourceTree = "<group>"; };
+		2EC251C61D36C7E300910B20 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2EC251C81D36C80500910B20 /* PacientesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacientesViewController.swift; sourceTree = "<group>"; };
+		2EC251CA1D36C80D00910B20 /* PacienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacienteViewController.swift; sourceTree = "<group>"; };
 		9C1FFFF51D36C65A00C298A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
@@ -73,6 +81,10 @@
 		9C8F0CD11D367FA10016CD3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2EC251CA1D36C80D00910B20 /* PacienteViewController.swift */,
+				2EC251C81D36C80500910B20 /* PacientesViewController.swift */,
+				2EC251C61D36C7E300910B20 /* LoginViewController.swift */,
+				2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */,
 				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
 			);
 			name = Controller;
@@ -186,12 +198,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */,
 				9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */,
 				9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */,
 				9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */,
 				9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */,
+				2EC251CB1D36C80D00910B20 /* PacienteViewController.swift in Sources */,
 				9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */,
 				9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */,
+				2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */,
+				2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */,
 				9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
