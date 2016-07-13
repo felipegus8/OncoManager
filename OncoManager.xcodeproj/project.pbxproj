@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
+		9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCD1D367F050016CD3C /* Medico.swift */; };
 		9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */; };
 		9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */; };
 		9CF3BAAF1D353A0B00D83B1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
+		9C8F0CCD1D367F050016CD3C /* Medico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
 		9CF3BAA61D353A0B00D83B1B /* OncoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OncoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C8F0CCF1D367F930016CD3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C8F0CC91D3679930016CD3C /* Paciente.swift */,
+				9C8F0CCB1D3679A90016CD3C /* Exame.swift */,
+				9C8F0CCD1D367F050016CD3C /* Medico.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9C8F0CD01D367F9B0016CD3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */,
+				9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9C8F0CD11D367FA10016CD3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		9CF3BA9D1D353A0B00D83B1B = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +92,13 @@
 		9CF3BAA81D353A0B00D83B1B /* OncoManager */ = {
 			isa = PBXGroup;
 			children = (
+				9C8F0CD11D367FA10016CD3C /* Controller */,
+				9C8F0CD01D367F9B0016CD3C /* View */,
+				9C8F0CCF1D367F930016CD3C /* Model */,
 				9CF3BABB1D353A1D00D83B1B /* OncoManager.entitlements */,
 				9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */,
-				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
-				9CF3BAAD1D353A0B00D83B1B /* Main.storyboard */,
 				9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */,
-				9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */,
 				9CF3BAB51D353A0B00D83B1B /* Info.plist */,
-				9C8F0CC91D3679930016CD3C /* Paciente.swift */,
-				9C8F0CCB1D3679A90016CD3C /* Exame.swift */,
 			);
 			path = OncoManager;
 			sourceTree = "<group>";
@@ -157,6 +184,7 @@
 				9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */,
 				9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */,
 				9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */,
+				9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
