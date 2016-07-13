@@ -105,7 +105,7 @@ public class DaoCloudKit
             
             if error == nil {
                 
-                print("Já existe esse admin")
+                print("Já existe esse médico")
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroMedico", object: nil)
                 
             }
@@ -114,7 +114,7 @@ public class DaoCloudKit
                 
                 if(fetchedRecord == nil) {
                     
-                    print("primeira vez que ta criando o admin")
+                    print("primeira vez que ta criando o médico")
                     record.setObject(medico.email, forKey: "email")
                     record.setObject(medico.crm, forKey: "crm")
                     record.setObject(medico.nome, forKey: "nome")
@@ -129,7 +129,7 @@ public class DaoCloudKit
             }
         }
     }
-    /*
+
     func addPaciente(paciente:Paciente)
     {
         let recordId = CKRecordID(recordName: paciente.cpf)
@@ -186,5 +186,9 @@ public class DaoCloudKit
             }
         }
     }
- */
+ 
+    func addExameToPaciente(exame:Exame,paciente:Paciente)
+    {
+        
+    }
 }
