@@ -95,4 +95,60 @@ public class DaoCloudKit
         }
     }
 
+    func addPaciente(paciente:Paciente)
+    {
+        let recordId = CKRecordID(recordName: paciente.cpf)
+        let record = CKRecord(recordType: "Paciente", recordID: recordId)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        
+        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            if error == nil {
+                
+                print("Já existe esse paciente")
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroPaciente", object: nil)
+                
+            }
+                
+            else {
+                
+                if(fetchedRecord == nil) {
+                    
+                    print("primeira vez que ta criando o paciente")
+                    record.setObject(paciente.cpf, forKey: "cpf")
+                    record.setObject(paciente.nome, forKey: "nome")
+                    record.setObject(paciente.email, forKey: "email")
+                    record.setObject(paciente.alergia, forKey: "alergia")
+                    record.setObject(paciente.altura, forKey: "altura")
+                    record.setObject(paciente.peso, forKey: "peso")
+                    record.setObject(paciente.bairro, forKey: "bairro")
+                    record.setObject(paciente.bairroPrefere, forKey: "bairroPrefere")
+                    record.setObject(paciente.cadeirante, forKey: "cadeirante")
+                    record.setObject(paciente.celular, forKey: "celular")
+                    record.setObject(paciente.claustrofobico, forKey: "claustrofobico")
+                    record.setObject(paciente.clipesCirurgico, forKey: "clipesCirurgico")
+                    record.setObject(paciente.convenio, forKey: "convenio")
+                    record.setObject(paciente.dataNasc, forKey: "dataNasc")
+                    record.setObject(paciente.diabetico, forKey: "diabetico")
+                    record.setObject(paciente.hipertenso, forKey: "hipertenso")
+                    record.setObject(paciente.marcapasso, forKey: "marcapasso")
+                    record.setObject(paciente.matriculaPlano, forKey: "matriculaPlano")
+                    record.setObject(paciente.operado, forKey: "operado")
+                    record.setObject(paciente.tipoOperacao, forKey: "tipoOperacao")
+                    record.setObject(paciente.tipoPlano, forKey: "tipoPlano")
+                    record.setObject(paciente.telefoneFixo, forKey: "telefoneFixo")
+                    record.setObject(paciente.matriculaPlano, forKey: "matriculaPlano")
+                    
+
+                    
+                    publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
+                        if (error != nil) {
+                            print(error)
+                        }
+                    })
+                }
+            }
+        }
+    }
 }
