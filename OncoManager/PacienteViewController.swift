@@ -9,10 +9,20 @@
 import UIKit
 
 class PacienteViewController: UIViewController {
+    
+    @IBOutlet weak var timeView: UIView!
+    
+    var pacienteName = "Paciente"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = pacienteName // recebe o nome da tableView pelo segue
+        timeView.layer.shadowOpacity = 0.2
+        timeView.layer.shadowRadius = 0.2
+        timeView.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
+        
+        
         // Do any additional setup after loading the view.
     }
 
