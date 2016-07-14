@@ -23,15 +23,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLoadPaciente), name: "notificationSuccessLoadPaciente", object: nil)
-          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLoadPaciente), name: "notificationSucessPacientes", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
         
        //DaoCloudKit().addPaciente(testePaciente)
        // testePaciente.arrayExames.removeAll()
        // testePaciente.exames.removeAll()
        // DaoCloudKit().addExameToPaciente(testeExame, paciente: testePaciente)
        // DaoCloudKit().fetchExamesFromPaciente(testePaciente)
-        DaoCloudKit().fetchPacientes()
+       // DaoCloudKit().fetchPacientes()
         // Do any additional setup after loading the view.
     }
 
@@ -42,15 +41,18 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func signInPressed(sender: AnyObject) {
-        performSegueWithIdentifier("goToHome", sender: sender)
+        
+        DaoCloudKit().fetchAdminByEmail(emailTxtField.text, senha: senhaTxtField.text)
     }
     
     @IBAction func novaContaPressed(sender: AnyObject) {
         performSegueWithIdentifier("goToNewAdm", sender: sender)
     }
-    func actOnNotificationSuccessLoadPaciente()
+    func actOnNotificationSuccessLogin()
     {
-        print(pacientes[0].bairroPrefere)
+        dispatch_async(dispatch_get_main_queue(),{
+        self.performSegueWithIdentifier("goToHome", sender: self)
+        })
     }
     /*
     // MARK: - Navigation
