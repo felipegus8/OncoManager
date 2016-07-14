@@ -7,10 +7,10 @@
 //
 
 import Foundation
-
+import CloudKit
 public class Paciente
 {
-    var cpf:String!
+    var cpf:Int!
     var nome:String!
     var email:String!
     var bairro:String!
@@ -33,8 +33,9 @@ public class Paciente
     var tipoPlano:String!
     var matriculaPlano:String!
     var exames:[Exame] = []
-
-    init(cpf:String,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String)
+    var arrayExames:[CKReference] = []
+    
+    init(cpf:Int,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String,claustrofobico:Int)
     {
         self.cpf = cpf
         self.nome = nome
@@ -58,6 +59,7 @@ public class Paciente
         self.convenio = convenio
         self.tipoPlano = tipoPlano
         self.matriculaPlano = matriculaPlano
+        self.claustrofobico = claustrofobico
     }
     func addExame(exame: Exame) {
         self.exames.append(exame)

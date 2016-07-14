@@ -16,11 +16,11 @@ public class Exame
     var local:String!
     var data:String!
     var hora:String!
-    var aprovado:Bool!
-    var realizado:Bool!
+    var aprovado:Int!
+    var realizado:Int!
     
 
-    init(codigo:Int,nome:String,medico:String,local:String,data:String,hora:String,aprovado:Bool,realizado:Bool)
+    init(codigo:Int,nome:String,medico:String,local:String,data:String,hora:String,aprovado:Int,realizado:Int)
     {
         self.codigo = codigo
         self.nome = nome

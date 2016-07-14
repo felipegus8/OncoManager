@@ -132,7 +132,7 @@ public class DaoCloudKit
 
     func addPaciente(paciente:Paciente)
     {
-        let recordId = CKRecordID(recordName: paciente.cpf)
+        let recordId = CKRecordID(recordName: String(paciente.cpf))
         let record = CKRecord(recordType: "Paciente", recordID: recordId)
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
@@ -189,6 +189,61 @@ public class DaoCloudKit
  
     func addExameToPaciente(exame:Exame,paciente:Paciente)
     {
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
         
+        let record = CKRecord(recordType: "Exame")
+        let recordId = CKRecordID(recordName: String(paciente.cpf))
+        
+        record.setObject(exame.codigo, forKey: "codigo")
+        record.setObject(exame.data, forKey: "data")
+        record.setObject(exame.hora, forKey: "hora")
+        record.setObject(exame.local, forKey: "local")
+        record.setObject(exame.medico, forKey: "medico")
+        record.setObject(exame.aprovado, forKey: "aprovado")
+        record.setObject(exame.realizado, forKey: "realizado")
+
+        let exameReference = CKReference(recordID: record.recordID, action: .None)
+        
+        print("---------------------- Referencia do exame: ", exameReference)
+        paciente.arrayExames.append(exameReference)
+        
+        
+        publicDatabase.saveRecord(record, completionHandler:
+            ({returnRecord, error in
+                if error != nil {
+                    print(error)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSaveError", object: nil)
+                    }
+                    
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSaveSuccess", object: nil)
+                    }
+                    
+                }
+            }))
+        
+        
+        container.publicCloudDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            print(fetchedRecord)
+            
+            if error == nil {
+                
+                print("Already exists user!!")
+                
+                print("---------------------- Referencia dos exames: ", paciente.arrayExames)
+                fetchedRecord!.setObject(paciente.arrayExames, forKey: "exames")
+                
+                container.privateCloudDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    }
+                })
+        }
     }
+    }
+    
 }
