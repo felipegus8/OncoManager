@@ -358,5 +358,31 @@ public class DaoCloudKit
                 print(error)
             }
         }
+        }
+    
+    func fetchPacientes()
+    {
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        let predicate = NSPredicate(value: true)
+        
+        let query = CKQuery(recordType: "Paciente", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
             }
+            else {
+                pacientes.removeAll()
+                for result in results! {
+                    var pacienteNovo = Paciente(cpf: result.valueForKey("cpf") as! Int, nome: result.valueForKey("nome") as! String, bairro: result.valueForKey("bairro") as! String, bairroPrefere: result.valueForKey("bairroPrefere") as! String, dataNasc: result.valueForKey("dataNasc") as! String, email: result.valueForKey("email") as! String, telefoneFixo: result.valueForKey("telefoneFixo") as! Int, celular: result.valueForKey("celular") as! Int, peso: result.valueForKey("peso") as! Double, altura: result.valueForKey("altura") as! Double, alergia: result.valueForKey("alergia") as! Int, marcapasso: result.valueForKey("marcapasso") as! Int, clipesCirurgico: result.valueForKey("clipesCirurgico") as! Int, operado: result.valueForKey("operado") as! Int, tipoOperacao: result.valueForKey("tipoOperacao") as? String, cadeirante: result.valueForKey("cadeirante") as! Int, diabetico: result.valueForKey("diabetico") as! Int, hipertenso: result.valueForKey("hipertenso") as! Int, convenio: result.valueForKey("convenio") as! String, tipoPlano: result.valueForKey("tipoPlano") as! String, matriculaPlano: result.valueForKey("matriculaPlano") as! String, claustrofobico: result.valueForKey("claustrofobico") as! Int)
+                    
+                        pacientes.append(pacienteNovo)
+                    }
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessPacientes", object: nil)
+                }
+            }
+
+    }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+public var pacientes:[Paciente] = []
 public class Paciente
 {
     var cpf:Int!
