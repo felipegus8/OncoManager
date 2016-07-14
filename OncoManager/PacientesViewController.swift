@@ -12,53 +12,81 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var listaPacientes: UITableView!
     
-    var nomesPaciente = [String]()
+    var selectedName = "" // nome do paciente selecionado
+    
+    var pacienteLista = [String]() // lista de pacientes na table view
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       // self.navigationController?.navigationBarHidden = true
+        
         loadPacientesFromDAO()
-        print(nomesPaciente.count)
+        print(pacienteLista.count)
         
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
+        
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: protocolo da Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nomesPaciente.count
+        return pacienteLista.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.listaPacientes.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListaPacienteCell
         
-        cell.nomePaciente.text = nomesPaciente[indexPath.row]
+        cell.nomePaciente.text = pacienteLista[indexPath.row]
         
         return cell
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        <#code#>
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        selectedName = pacienteLista[indexPath.row]
     
+        performSegueWithIdentifier("goToPaciente", sender: self)
+        
+        
+    }
+    
+    //MARK: carregar nesta função a lista de nomes dos pacientes
     func loadPacientesFromDAO(){
         
         for _ in 0...5{
-        nomesPaciente.append("Maria Edileuza")
+        pacienteLista.append("Maria Edileuza")
         }
-        print("\(nomesPaciente.count)" + "lol")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    //MARK: envia dados pra a tela seguinte
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        switch segue.identifier{
+        case "goToPaciente"?:
+            let destinationVC = segue.destinationViewController as! PacienteViewController
+            destinationVC.pacienteName = selectedName
+        default:
+            break
+            
+        }
     }
-    */
+    
+    //MARK: esconde a navigation Bar
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+    }
+
 
 }
