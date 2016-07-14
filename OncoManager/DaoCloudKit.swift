@@ -237,7 +237,7 @@ public class DaoCloudKit
                 print("---------------------- Referencia dos exames: ", paciente.arrayExames)
                 fetchedRecord!.setObject(paciente.arrayExames, forKey: "exames")
                 
-                container.privateCloudDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+                container.publicCloudDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
                     if (error != nil) {
                         print(error)
                     }
