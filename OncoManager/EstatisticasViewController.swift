@@ -10,6 +10,8 @@ import UIKit
 
 class EstatisticasViewController: UIViewController {
 
+    @IBOutlet weak var chartView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

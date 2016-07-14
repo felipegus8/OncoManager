@@ -6,11 +6,18 @@
 //  Copyright © 2016 Felipe Viberti. All rights reserved.
 //
 
+enum Segment: Int {
+    case Historico = 0, DadosPaciente
+}
+
 import UIKit
 
 class PacienteViewController: UIViewController {
     
     @IBOutlet weak var timeView: UIView!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var diasTratamento: UILabel!
     
     var pacienteName = "Paciente"
 
@@ -29,6 +36,19 @@ class PacienteViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+        let segment = Segment(rawValue: segmentedControl.selectedSegmentIndex)!
+        
+        switch segment {
+        case .DadosPaciente:
+            break
+        default:
+            break
+        }
+        
     }
     
 
