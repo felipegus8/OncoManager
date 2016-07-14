@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  NovoAdmViewController.swift
 //  OncoManager
 //
 //  Created by Gabrielle Brandenburg dos Anjos on 7/13/16.
@@ -8,19 +8,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class NovoAdmViewController: UIViewController {
 
-  
-    @IBOutlet weak var signIn: OMButton!
-    
-    @IBOutlet weak var emailTxtField: OMTextField!
-    @IBOutlet weak var senhaTxtField: OMTextField!
-    
-    @IBOutlet weak var novaConta: UIButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
@@ -29,15 +21,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func closeModalPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
-    @IBAction func signInPressed(sender: AnyObject) {
-        performSegueWithIdentifier("goToHome", sender: sender)
-    }
-    
-    @IBAction func novaContaPressed(sender: AnyObject) {
-        performSegueWithIdentifier("goToNewAdm", sender: sender)
-    }
-    
     /*
     // MARK: - Navigation
 
