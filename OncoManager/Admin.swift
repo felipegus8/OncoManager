@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+public var adminLogado:Admin!
 public class Admin
 {
     var email:String!

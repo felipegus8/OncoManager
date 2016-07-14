@@ -21,6 +21,8 @@ public class DaoCloudKit
         }
     }
     
+    //MARK:Save Functions
+    
     func addAdmin(admin:Admin)
     {
         let recordId = CKRecordID(recordName: admin.email)
@@ -245,5 +247,45 @@ public class DaoCloudKit
         }
     }
     }
+    //MARK:Fetch Functions
+    
+    func fetchAdminByEmail(email: String!,senha: String!) {
+        
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        let predicate = NSPredicate(value: true)
+        
+        let query = CKQuery(recordType: "Admin", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
+            }
+            else {
+                
+                for result in results! {
+                    if(result.valueForKey("email") as? String == email) {
+                        
+                        print("Admin existe!")
+                        if (result.valueForKey("senha") as? String == senha)
+                        {
+                            
+                            //Inicializa o user Logado
+                            adminLogado = Admin(email: email, senha: senha, nome: result.valueForKey("nome") as! String)
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLogin", object: nil)
+                            return
+                        }
+                        else {
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorPassword", object: nil)
+                            return
+                        }
+                    }
+                }
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEmail", object: nil)
+            }
+        }
+    }
+
     
 }

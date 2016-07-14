@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         let testePaciente = Paciente(cpf: 16798089766, nome: "Teste", bairro: "Magé", bairroPrefere: "Niteroi", dataNasc: "26-09-1962", email: "qualquer", telefoneFixo: 2345980135, celular: 346725789, peso: 78, altura: 1.70, alergia: 0, marcapasso: 0, clipesCirurgico: 0, operado: 0, tipoOperacao: nil, cadeirante: 0, diabetico: 1, hipertenso: 0, convenio: "Assim", tipoPlano: "Ruim", matriculaPlano: "12345",claustrofobico:0)
         DaoCloudKit().addPaciente(testePaciente)
         DaoCloudKit().addExameToPaciente(testeExame, paciente: testePaciente)
-
+        DaoCloudKit().fetchAdminByEmail("qualquer", senha: "teste")
         // Do any additional setup after loading the view.
     }
 
