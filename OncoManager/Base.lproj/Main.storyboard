@@ -243,12 +243,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWv-TQ-dqv">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="139" width="335" height="450"/>
-                                </variation>
-                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E S T A T Í S T I C A S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ree-sU-IbF">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -258,23 +252,33 @@
                                     <rect key="frame" x="37" y="55" width="301" height="39"/>
                                 </variation>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htd-72-O6L">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="136" width="335" height="474"/>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="MWv-TQ-dqv"/>
                                 <exclude reference="ree-sU-IbF"/>
+                                <exclude reference="Htd-72-O6L"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="MWv-TQ-dqv"/>
                                 <include reference="ree-sU-IbF"/>
+                                <include reference="Htd-72-O6L"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Estatísticas" image="exitModal" selectedImage="exitModal" id="HVu-pN-Vx8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="chartView" destination="Htd-72-O6L" id="AJa-nW-r5N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnh-rN-TJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -390,7 +394,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="848.25" y="-726.5"/>
+            <point key="canvasLocation" x="842.25" y="-1266.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="7dc-sD-Rp1">
@@ -408,7 +412,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbS-Un-Kp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332.25" y="-522.5"/>
+            <point key="canvasLocation" x="-326.25" y="-1266.5"/>
         </scene>
         <!--Novo Paciente-->
         <scene sceneID="igg-1J-1nU">
@@ -450,12 +454,52 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="47" y="87" width="280" height="29"/>
                                 </variation>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="QFZ-qr-VG4" eventType="valueChanged" id="zWQ-Uf-pRc"/>
+                                </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRG-TL-BIs">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbZ-RJ-KXn">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="192" width="375" height="426"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRG-TL-BIs">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duração do tratamento:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y63-yT-IJ8">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="96" y="0.0" width="182" height="21"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?? dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qS-It-2wj">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="161" y="23" width="53" height="21"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Y63-yT-IJ8"/>
+                                        <exclude reference="4qS-It-2wj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="132" width="375" height="52"/>
+                                    <mask key="subviews">
+                                        <include reference="Y63-yT-IJ8"/>
+                                        <include reference="4qS-It-2wj"/>
+                                    </mask>
                                 </variation>
                             </view>
                         </subviews>
@@ -463,12 +507,14 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="egg-Tz-wwH"/>
+                                <exclude reference="NbZ-RJ-KXn"/>
                                 <exclude reference="HRG-TL-BIs"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="egg-Tz-wwH"/>
+                                <include reference="NbZ-RJ-KXn"/>
                                 <include reference="HRG-TL-BIs"/>
                             </mask>
                         </variation>
@@ -479,6 +525,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="diasTratamento" destination="4qS-It-2wj" id="XZg-im-jje"/>
+                        <outlet property="segmentedControl" destination="egg-Tz-wwH" id="55X-Gm-ID5"/>
                         <outlet property="timeView" destination="HRG-TL-BIs" id="Cay-23-j7h"/>
                     </connections>
                 </viewController>
@@ -504,7 +552,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ZQ-e4-u2r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1271.25" y="293.5"/>
+            <point key="canvasLocation" x="-1247.25" y="293.5"/>
         </scene>
         <!--Adicionar Dado-->
         <scene sceneID="Ywa-A8-elY">
