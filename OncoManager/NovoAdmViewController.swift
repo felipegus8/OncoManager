@@ -10,6 +10,9 @@ import UIKit
 
 class NovoAdmViewController: UIViewController {
 
+    @IBOutlet weak var nome: OMTextField!
+    @IBOutlet weak var email: OMTextField!
+    @IBOutlet weak var senha: OMTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +29,7 @@ class NovoAdmViewController: UIViewController {
     }
     
     @IBAction func cadastro(sender: OMButton) {
+        DaoCloudKit().addAdmin(Admin(email: email.text!, senha: senha.text!, nome: nome.text!))
     }
 
     /*
