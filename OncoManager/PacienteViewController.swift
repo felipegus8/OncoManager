@@ -36,13 +36,15 @@ class PacienteViewController: UIViewController {
         dadosTableView = DadosPacienteTableView()
     
         dadosTableView.view.frame = contentView.frame
-        //contentView.addSubview(dadosTableView.tableView)
+        contentView.addSubview(dadosTableView.tableView)
         
         historicoTableView = HistoricoPacienteTableView()
         
         historicoTableView.view.frame = contentView.frame
         contentView.addSubview(historicoTableView.tableView)
         
+        
+        dadosTableView.view.hidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -57,8 +59,12 @@ class PacienteViewController: UIViewController {
         
         switch segment {
         case .DadosPaciente:
+            historicoTableView.view.hidden = true
+            dadosTableView.view.hidden = false
             break
         default:
+            historicoTableView.view.hidden = false
+            dadosTableView.view.hidden = true
             break
         }
         
