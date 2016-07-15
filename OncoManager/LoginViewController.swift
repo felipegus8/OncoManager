@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
        //DaoCloudKit().addPaciente(testePaciente)
        // testePaciente.arrayExames.removeAll()
        // testePaciente.exames.removeAll()
@@ -50,8 +50,13 @@ class LoginViewController: UIViewController {
     }
     func actOnNotificationSuccessLogin()
     {
+        DaoCloudKit().fetchPacientes()
+        
+    }
+    func actOnNotificationSuccessPacientes()
+    {
         dispatch_async(dispatch_get_main_queue(),{
-        self.performSegueWithIdentifier("goToHome", sender: self)
+            self.performSegueWithIdentifier("goToHome", sender: self)
         })
     }
     /*

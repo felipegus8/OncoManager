@@ -373,7 +373,7 @@ public class DaoCloudKit
                     
                         pacientes.append(pacienteNovo)
                     }
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessPacientes", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessPacientes", object: nil)
                 }
             }
     }
@@ -396,7 +396,7 @@ public class DaoCloudKit
                       var novoExame = NomeExame(nome: result.valueForKey("nome") as! String)
                     nomeExames.append(novoExame)
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessNomeExames", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessNomeExames", object: nil)
             }
         }
 
@@ -420,7 +420,7 @@ public class DaoCloudKit
                     var novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Int, telefone: result.valueForKey("telefone") as? Int)
                     medicos.append(novoMedico)
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessMedicos", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessMedicos", object: nil)
             }
         }
     }

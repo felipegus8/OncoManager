@@ -14,16 +14,11 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     var selectedName = "" // nome do paciente selecionado
     
-    var pacienteLista = [String]() // lista de pacientes na table view
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
        // self.navigationController?.navigationBarHidden = true
-        
-        loadPacientesFromDAO()
-        print(pacienteLista.count)
-        
         // Do any additional setup after loading the view.
     }
 
@@ -36,32 +31,28 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: protocolo da Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pacienteLista.count
+        return pacientes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.listaPacientes.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListaPacienteCell
         
-        cell.nomePaciente.text = pacienteLista[indexPath.row]
+        cell.nomePaciente.text = pacientes[indexPath.row].nome
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        selectedName = pacienteLista[indexPath.row]
+       // selectedName = pacienteLista[indexPath.row]
     
         performSegueWithIdentifier("goToPaciente", sender: self)
         
         
     }
-    
-    //MARK: carregar nesta função a lista de nomes dos pacientes
-    func loadPacientesFromDAO(){
+    func actOnNotificationSuccessPacientes()
+    {
         
-        for _ in 0...5{
-        pacienteLista.append("Maria Edileuza")
-        }
     }
     
     //MARK: envia dados pra a tela seguinte
