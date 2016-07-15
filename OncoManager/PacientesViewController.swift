@@ -30,7 +30,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: protocolo da Table View
+    //MARK: Table View Data Source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pacientes.count
     }
@@ -56,7 +56,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
-    //MARK: envia dados pra a tela seguinte
+    //MARK: envia nome do paciente selecionado para o titulo da navigationBar na tela seguinte
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         switch segue.identifier{
@@ -67,6 +67,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
             break
             
         }
+        
     }
  
     

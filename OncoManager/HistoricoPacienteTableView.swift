@@ -9,36 +9,69 @@
 import UIKit
 
 
-//class DadosPacienteCell: UITableViewCell {
-//    
-//    var category = UILabel()
-//    var answer = UILabel()
-//    
-//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        setupViews()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
+class HistoricoPacienteCell: UITableViewCell {
+    
+    var title = UILabel()
+    var subtitle = UILabel()
+    var details = UILabel()
+    var status = OMStatus()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    func setupViews(){
+        //status.frame.size = CGSize(width: self.contentView.frame.width/10, height: self.contentView.frame.width/10)
+        
+//        status.translatesAutoresizingMaskIntoConstraints = false
+//        addSubview(status)
 //        
-//        // Configure the view for the selected state
-//    }
-//    
-//    func setupViews(){
-//        
-//    }
-//}
+//        subtitle.text = "subtitle"
+//        subtitle.translatesAutoresizingMaskIntoConstraints = false
+//        addSubview(subtitle)
+        
+        setupLabel(title, title: "Título")
+        setupLabel(subtitle, title: "Subtítulo")
+        setupLabel(details, title: "Detalhes")
+
+        
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : subtitle]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : details]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]-[v1]-[v2]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1" : subtitle, "v2" : details]))
+        
+        
+    }
+    
+    func setupLabel(label: UILabel, title: String){
+        label.text = "subtitle"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(label)
+    }
+
+}
+
 
 class HistoricoPacienteTableView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.registerClass(HistoricoPacienteCell.self, forCellReuseIdentifier: "HistCell")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -55,23 +88,23 @@ class HistoricoPacienteTableView: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+       let cell = tableView.dequeueReusableCellWithIdentifier("HistCell", forIndexPath: indexPath) as! HistoricoPacienteCell
 
-        // Configure the cell...
+         //Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

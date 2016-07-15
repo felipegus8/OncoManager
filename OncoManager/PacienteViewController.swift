@@ -21,6 +21,7 @@ class PacienteViewController: UIViewController {
     @IBOutlet weak var contentView: UIView! //content para troca de tableView
     
     var dadosTableView: DadosPacienteTableView!
+    var historicoTableView: HistoricoPacienteTableView!
     
     var pacienteName = "Paciente"
 
@@ -33,9 +34,14 @@ class PacienteViewController: UIViewController {
         timeView.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
         
         dadosTableView = DadosPacienteTableView()
-        
+    
         dadosTableView.view.frame = contentView.frame
-        contentView.addSubview(dadosTableView.tableView)
+        //contentView.addSubview(dadosTableView.tableView)
+        
+        historicoTableView = HistoricoPacienteTableView()
+        
+        historicoTableView.view.frame = contentView.frame
+        contentView.addSubview(historicoTableView.tableView)
         
         // Do any additional setup after loading the view.
     }

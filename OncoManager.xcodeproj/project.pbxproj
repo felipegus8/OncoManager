@@ -17,6 +17,7 @@
 		2EC251D31D37333900910B20 /* NovoAdmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251D21D37333900910B20 /* NovoAdmViewController.swift */; };
 		2EDEB39E1D383D0900AC93B4 /* HistoricoPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */; };
 		2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */; };
+		2EDEB3A51D395A4100AC93B4 /* OMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */; };
 		9C1FFFF61D36C65A00C298A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FFFF41D36C65A00C298A7 /* Main.storyboard */; };
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
@@ -95,6 +96,7 @@
 		2EC251D21D37333900910B20 /* NovoAdmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoAdmViewController.swift; sourceTree = "<group>"; };
 		2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosPacienteTableView.swift; sourceTree = "<group>"; };
+		2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStatus.swift; sourceTree = "<group>"; };
 		9C1FFFF51D36C65A00C298A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				2EC251D01D372E9000910B20 /* OMButton.swift */,
 				2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */,
 				2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */,
+				2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */,
 			);
 			name = CustomUIKitClasses;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				2EC251D31D37333900910B20 /* NovoAdmViewController.swift in Sources */,
 				2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */,
 				9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */,
+				2EDEB3A51D395A4100AC93B4 /* OMStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
