@@ -15,6 +15,8 @@ class NovoAdmViewController: UIViewController {
     @IBOutlet weak var senha: OMTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        senha.secureTextEntry = true
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationSuccessCadastroAdmin), name: "notificationSuccessCadastroAdmin", object: nil)
 
         // Do any additional setup after loading the view.
     }
@@ -31,7 +33,13 @@ class NovoAdmViewController: UIViewController {
     @IBAction func cadastro(sender: OMButton) {
         DaoCloudKit().addAdmin(Admin(email: email.text!, senha: senha.text!, nome: nome.text!))
     }
-
+    
+    func  actOnNotificationSuccessCadastroAdmin()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
     /*
     // MARK: - Navigation
 

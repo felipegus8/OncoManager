@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        senhaTxtField.secureTextEntry = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
        //DaoCloudKit().addPaciente(testePaciente)
