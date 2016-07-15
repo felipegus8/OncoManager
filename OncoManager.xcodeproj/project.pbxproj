@@ -17,6 +17,8 @@
 		2EC251D31D37333900910B20 /* NovoAdmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251D21D37333900910B20 /* NovoAdmViewController.swift */; };
 		2EDEB39E1D383D0900AC93B4 /* HistoricoPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */; };
 		2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */; };
+		404432111D392C0700B2B293 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4044320A1D392BF700B2B293 /* Charts.framework */; };
+		404432121D392C0700B2B293 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4044320A1D392BF700B2B293 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C1FFFF61D36C65A00C298A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FFFF41D36C65A00C298A7 /* Main.storyboard */; };
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
@@ -30,6 +32,58 @@
 		9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF3BABC1D353A2600D83B1B /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		404432091D392BF700B2B293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		4044320B1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		4044320D1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		4044320F1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		404432131D392C0700B2B293 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		404432151D392C0700B2B293 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				404432121D392C0700B2B293 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstatisticasViewController.swift; sourceTree = "<group>"; };
 		2EC251C61D36C7E300910B20 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +95,7 @@
 		2EC251D21D37333900910B20 /* NovoAdmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoAdmViewController.swift; sourceTree = "<group>"; };
 		2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosPacienteTableView.swift; sourceTree = "<group>"; };
+		404432021D392BF700B2B293 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		9C1FFFF51D36C65A00C298A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
@@ -63,6 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */,
+				404432111D392C0700B2B293 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +135,17 @@
 				2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */,
 			);
 			name = CustomUIKitClasses;
+			sourceTree = "<group>";
+		};
+		404432031D392BF700B2B293 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4044320A1D392BF700B2B293 /* Charts.framework */,
+				4044320C1D392BF700B2B293 /* Charts.framework */,
+				4044320E1D392BF700B2B293 /* Charts.framework */,
+				404432101D392BF700B2B293 /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		9C8F0CCF1D367F930016CD3C /* Model */ = {
@@ -119,6 +186,7 @@
 		9CF3BA9D1D353A0B00D83B1B = {
 			isa = PBXGroup;
 			children = (
+				404432021D392BF700B2B293 /* Charts.xcodeproj */,
 				9CF3BABC1D353A2600D83B1B /* CloudKit.framework */,
 				9CF3BAA81D353A0B00D83B1B /* OncoManager */,
 				9CF3BAA71D353A0B00D83B1B /* Products */,
@@ -157,10 +225,12 @@
 				9CF3BAA21D353A0B00D83B1B /* Sources */,
 				9CF3BAA31D353A0B00D83B1B /* Frameworks */,
 				9CF3BAA41D353A0B00D83B1B /* Resources */,
+				404432151D392C0700B2B293 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				404432141D392C0700B2B293 /* PBXTargetDependency */,
 			);
 			name = OncoManager;
 			productName = OncoManager;
@@ -199,12 +269,49 @@
 			mainGroup = 9CF3BA9D1D353A0B00D83B1B;
 			productRefGroup = 9CF3BAA71D353A0B00D83B1B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 404432031D392BF700B2B293 /* Products */;
+					ProjectRef = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9CF3BAA51D353A0B00D83B1B /* OncoManager */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4044320A1D392BF700B2B293 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 404432091D392BF700B2B293 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4044320C1D392BF700B2B293 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 4044320B1D392BF700B2B293 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4044320E1D392BF700B2B293 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 4044320D1D392BF700B2B293 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		404432101D392BF700B2B293 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 4044320F1D392BF700B2B293 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9CF3BAA41D353A0B00D83B1B /* Resources */ = {
@@ -245,6 +352,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		404432141D392C0700B2B293 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 404432131D392C0700B2B293 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9C1FFFF41D36C65A00C298A7 /* Main.storyboard */ = {
@@ -357,6 +472,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OncoManager/OncoManager.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OncoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Felipe-Viberti.OncoManager";
@@ -370,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OncoManager/OncoManager.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OncoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Felipe-Viberti.OncoManager";
