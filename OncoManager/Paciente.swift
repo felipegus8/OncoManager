@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 public var pacientes:[Paciente] = []
+public var pacienteSelecionado:Paciente!
 public class Paciente
 {
     var cpf:Int!
