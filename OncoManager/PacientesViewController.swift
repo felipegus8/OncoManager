@@ -12,12 +12,13 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var listaPacientes: UITableView!
     
-    var selectedName = "" // nome do paciente selecionado
+    //var selectedName = "" // nome do paciente selecionado
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessPacienteCpf), name: "notificationSuccessPacienteCpf", object: nil)
+
        // self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
     }
@@ -44,19 +45,19 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-       // selectedName = pacienteLista[indexPath.row]
-    
-        performSegueWithIdentifier("goToPaciente", sender: self)
+        DaoCloudKit().fetchPacienteByCpf(pacientes[indexPath.row].cpf)
         
         
     }
-    func actOnNotificationSuccessPacientes()
+    func actOnNotificationSuccessPacienteCpf ()
     {
-        
+        dispatch_async(dispatch_get_main_queue(),{
+        self.performSegueWithIdentifier("goToPaciente", sender: self)
+        })
     }
     
     //MARK: envia dados pra a tela seguinte
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         switch segue.identifier{
         case "goToPaciente"?:
@@ -67,6 +68,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
             
         }
     }
+ */
     
     //MARK: esconde a navigation Bar
     override func viewWillAppear(animated: Bool) {

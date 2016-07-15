@@ -88,7 +88,103 @@ class DadosPacienteTableView: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("DadoCell", forIndexPath: indexPath) as! DadosPacienteCell
         
         cell.category.text = categories[indexPath.row]
-        
+        switch indexPath.row {
+        case 0:
+            cell.answer.text = String(pacienteSelecionado.cpf)
+        case 1:
+            cell.answer.text = pacienteSelecionado.dataNasc
+        case 2:
+            cell.answer.text = pacienteSelecionado.email
+        case 3:
+            cell.answer.text = pacienteSelecionado.bairro
+        case 4:
+            cell.answer.text = String(pacienteSelecionado.telefoneFixo)
+        case 5:
+            cell.answer.text = String(pacienteSelecionado.celular)
+        case 6:
+            cell.answer.text = pacienteSelecionado.convenio
+        case 7:
+            cell.answer.text = pacienteSelecionado.tipoPlano
+        case 8:
+            cell.answer.text = pacienteSelecionado.matriculaPlano
+        case 9:
+            cell.answer.text = String(pacienteSelecionado.peso)
+        case 10:
+            cell.answer.text = String(pacienteSelecionado.altura)
+        case 11:
+            if pacienteSelecionado.marcapasso == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 12:
+            if pacienteSelecionado.clipesCirurgico == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 13:
+            if pacienteSelecionado.operado == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 14:
+            if pacienteSelecionado.operado == 0
+            {
+                cell.answer.text = "-"
+            }
+            else{
+                cell.answer.text = pacienteSelecionado.tipoOperacao
+            }
+        case 15:
+            if pacienteSelecionado.claustrofobico == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 16:
+            if pacienteSelecionado.cadeirante == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 17:
+            if pacienteSelecionado.diabetico == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        case 18:
+            if pacienteSelecionado.hipertenso == 0
+            {
+                cell.answer.text = "Não"
+            }
+            else
+            {
+                cell.answer.text = "Sim"
+            }
+        default:
+            cell.answer.text = "Oi"
+        }
         // Configure the cell...
 
         return cell

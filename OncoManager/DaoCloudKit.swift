@@ -445,7 +445,7 @@ public class DaoCloudKit
 
                     }
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessMedicos", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessPacienteCpf", object: nil)
             }
 
     }
