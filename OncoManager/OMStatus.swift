@@ -9,13 +9,17 @@
 import UIKit
 
 class OMStatus: UIView {
+    
+    var path: UIBezierPath!
+    var colorStatus = UIColor(red:0.00, green:0.73, blue:0.38, alpha:1.0)
 
     override func drawRect(rect: CGRect) {
-        var path = UIBezierPath(ovalInRect: rect)
-        UIColor.greenColor().setFill()
+        path = UIBezierPath(ovalInRect: rect)
+        colorStatus.setFill()
         path.fill()
+        print("initialized")
     }
-
+    
 }
 
 //        override func drawRect(rect: CGRect)

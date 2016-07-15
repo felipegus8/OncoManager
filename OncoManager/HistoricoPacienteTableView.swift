@@ -14,12 +14,12 @@ class HistoricoPacienteCell: UITableViewCell {
     var title = UILabel()
     var subtitle = UILabel()
     var details = UILabel()
-    var status = OMStatus()
+    var status: OMStatus!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
         
+        setupViews()
         
     }
     
@@ -34,31 +34,40 @@ class HistoricoPacienteCell: UITableViewCell {
     }
     
     func setupViews(){
-        //status.frame.size = CGSize(width: self.contentView.frame.width/10, height: self.contentView.frame.width/10)
+        let statusFrame = CGRectMake(0, 0, 15, 15)
+        status = OMStatus(frame: statusFrame)
+        status.backgroundColor = UIColor.clearColor()
         
-//        status.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(status)
-//        
+        status.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(status)
+//
 //        subtitle.text = "subtitle"
 //        subtitle.translatesAutoresizingMaskIntoConstraints = false
 //        addSubview(subtitle)
         
-        setupLabel(title, title: "Título")
-        setupLabel(subtitle, title: "Subtítulo")
-        setupLabel(details, title: "Detalhes")
-
+        setupLabel(title, title: "Título", font: 17)
+        setupLabel(subtitle, title: "Subtítulo", font: 15)
+        setupLabel(details, title: "Detalhes", font: 15)
+        details.textColor = UIColor(red:0.56, green:0.56, blue:0.58, alpha:1.0)
         
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : subtitle]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : details]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]-[v1]-[v2]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1" : subtitle, "v2" : details]))
-        
+        setupConstraints()
         
     }
     
-    func setupLabel(label: UILabel, title: String){
-        label.text = "subtitle"
+    func setupConstraints(){
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[v1(12)]-[v0]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1": status]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-26-[v0]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : subtitle]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-26-[v0]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : details]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-15-[v0(12)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : status]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[v0]-3-[v1]-3-[v2]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1" : subtitle, "v2" : details]))
+        
+    }
+    
+    func setupLabel(label: UILabel, title: String, font: CGFloat){
+        label.text = title
+        label.font = label.font.fontWithSize(font)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         addSubview(label)
     }
 
@@ -71,6 +80,8 @@ class HistoricoPacienteTableView: UITableViewController {
         super.viewDidLoad()
 
         tableView.registerClass(HistoricoPacienteCell.self, forCellReuseIdentifier: "HistCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
