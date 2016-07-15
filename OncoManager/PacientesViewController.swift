@@ -57,18 +57,18 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //MARK: envia dados pra a tela seguinte
-   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         switch segue.identifier{
         case "goToPaciente"?:
             let destinationVC = segue.destinationViewController as! PacienteViewController
-            destinationVC.pacienteName = selectedName
+            destinationVC.pacienteName = pacienteSelecionado.nome
         default:
             break
             
         }
     }
- */
+ 
     
     //MARK: esconde a navigation Bar
     override func viewWillAppear(animated: Bool) {
