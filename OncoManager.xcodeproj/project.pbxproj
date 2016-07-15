@@ -69,7 +69,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2EDEB39A1D383C6D00AC93B4 /* CustomClasses */ = {
+		2EDEB39A1D383C6D00AC93B4 /* CustomUIKitClasses */ = {
 			isa = PBXGroup;
 			children = (
 				2EC251CC1D3717D700910B20 /* ListaPacienteCell.swift */,
@@ -78,7 +78,7 @@
 				2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */,
 				2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */,
 			);
-			name = CustomClasses;
+			name = CustomUIKitClasses;
 			sourceTree = "<group>";
 		};
 		9C8F0CCF1D367F930016CD3C /* Model */ = {
@@ -98,7 +98,7 @@
 			children = (
 				9C1FFFF41D36C65A00C298A7 /* Main.storyboard */,
 				9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */,
-				2EDEB39A1D383C6D00AC93B4 /* CustomClasses */,
+				2EDEB39A1D383C6D00AC93B4 /* CustomUIKitClasses */,
 			);
 			name = View;
 			sourceTree = "<group>";

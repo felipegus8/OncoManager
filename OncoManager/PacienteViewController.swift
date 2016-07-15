@@ -15,9 +15,12 @@ import UIKit
 class PacienteViewController: UIViewController {
     
     @IBOutlet weak var timeView: UIView!
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var diasTratamento: UILabel!
+    
+    @IBOutlet weak var contentView: UIView! //content para troca de tableView
+    
+    var dadosTableView: DadosPacienteTableView!
     
     var pacienteName = "Paciente"
 
@@ -29,6 +32,10 @@ class PacienteViewController: UIViewController {
         timeView.layer.shadowRadius = 0.2
         timeView.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
         
+        dadosTableView = DadosPacienteTableView()
+        
+        dadosTableView.view.frame = contentView.frame
+        contentView.addSubview(dadosTableView.tableView)
         
         // Do any additional setup after loading the view.
     }
