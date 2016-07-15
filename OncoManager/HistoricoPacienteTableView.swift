@@ -8,6 +8,32 @@
 
 import UIKit
 
+
+//class DadosPacienteCell: UITableViewCell {
+//    
+//    var category = UILabel()
+//    var answer = UILabel()
+//    
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        setupViews()
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        
+//        // Configure the view for the selected state
+//    }
+//    
+//    func setupViews(){
+//        
+//    }
+//}
+
 class HistoricoPacienteTableView: UITableViewController {
 
     override func viewDidLoad() {

@@ -112,78 +112,40 @@ class DadosPacienteTableView: UITableViewController {
         case 10:
             cell.answer.text = String(pacienteSelecionado.altura)
         case 11:
-            if pacienteSelecionado.marcapasso == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+//            if pacienteSelecionado.marcapasso == 0
+//            {
+//                cell.answer.text = "Não"
+//            }
+//            else
+//            {
+//                cell.answer.text = "Sim"
+//            }
+            cell.answer.text = (pacienteSelecionado.marcapasso == 1) ? "Sim" : "Não"
+            
         case 12:
-            if pacienteSelecionado.clipesCirurgico == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+            cell.answer.text = (pacienteSelecionado.clipesCirurgico == 1) ? "Sim" : "Não"
+            
         case 13:
-            if pacienteSelecionado.operado == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+            cell.answer.text = (pacienteSelecionado.operado == 1) ? "Sim" : "Não"
+            
         case 14:
-            if pacienteSelecionado.operado == 0
-            {
-                cell.answer.text = "-"
-            }
-            else{
-                cell.answer.text = pacienteSelecionado.tipoOperacao
-            }
+            cell.answer.text = (pacienteSelecionado.operado == 1) ? pacienteSelecionado.tipoOperacao : "-"
+            
         case 15:
-            if pacienteSelecionado.claustrofobico == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+            cell.answer.text = (pacienteSelecionado.claustrofobico == 1) ? "Sim" : "Não"
+            
         case 16:
-            if pacienteSelecionado.cadeirante == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+           cell.answer.text = (pacienteSelecionado.cadeirante == 1) ? "Sim" : "Não"
+            
         case 17:
-            if pacienteSelecionado.diabetico == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+           cell.answer.text = (pacienteSelecionado.diabetico == 1) ? "Sim" : "Não"
+            
         case 18:
-            if pacienteSelecionado.hipertenso == 0
-            {
-                cell.answer.text = "Não"
-            }
-            else
-            {
-                cell.answer.text = "Sim"
-            }
+            cell.answer.text = (pacienteSelecionado.hipertenso == 1) ? "Sim" : "Não"
+            
         default:
             cell.answer.text = "Oi"
+            
         }
         // Configure the cell...
 
