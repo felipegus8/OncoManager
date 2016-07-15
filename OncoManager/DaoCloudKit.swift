@@ -52,6 +52,9 @@ public class DaoCloudKit
                         if (error != nil) {
                             print(error)
                         }
+                        else{
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessCadastroAdmin", object: nil)
+                        }
                     })
                 }
             }

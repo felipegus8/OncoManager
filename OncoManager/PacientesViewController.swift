@@ -44,16 +44,17 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        DaoCloudKit().fetchPacienteByCpf(pacientes[indexPath.row].cpf)
+        pacienteSelecionado = pacientes[indexPath.row]
+        dispatch_async(dispatch_get_main_queue(),{
+            self.performSegueWithIdentifier("goToPaciente", sender: self)
+        })
+       // DaoCloudKit().fetchPacienteByCpf(pacientes[indexPath.row].cpf)
         
         
     }
     func actOnNotificationSuccessPacienteCpf ()
     {
-        dispatch_async(dispatch_get_main_queue(),{
-        self.performSegueWithIdentifier("goToPaciente", sender: self)
-        })
+        
     }
     
     //MARK: envia nome do paciente selecionado para o titulo da navigationBar na tela seguinte
