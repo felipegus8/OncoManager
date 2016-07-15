@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+public var nomeExames:[NomeExame] = []
 public class Exame
 {
     var codigo:Int!
@@ -30,5 +30,13 @@ public class Exame
         self.hora = hora
         self.aprovado = aprovado
         self.realizado = realizado
+    }
+}
+public class NomeExame
+{
+    var nome:String!
+    init(nome:String)
+    {
+        self.nome = nome
     }
 }

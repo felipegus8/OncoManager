@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+public var medicos:[Medico] = []
 public class Medico
 {
     var nome:String!

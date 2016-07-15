@@ -58,10 +58,10 @@ public class DaoCloudKit
         }
     }
 
-    func addExame(exame:Exame)
+    func addExame(nome:NomeExame)
     {
-        let recordId = CKRecordID(recordName: String(exame.codigo))
-        let record = CKRecord(recordType: "Exame", recordID: recordId)
+        let recordId = CKRecordID(recordName:nome.nome)
+        let record = CKRecord(recordType: "NomeExame", recordID: recordId)
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         
@@ -79,14 +79,7 @@ public class DaoCloudKit
                 if(fetchedRecord == nil) {
 
                     print("primeira vez que ta criando o exame")
-                    record.setObject(exame.codigo, forKey: "codigo")
-                    record.setObject(exame.data, forKey: "data")
-                    record.setObject(exame.hora, forKey: "hora")
-                     record.setObject(exame.nome, forKey: "nome")
-                    record.setObject(exame.local, forKey: "local")
-                    record.setObject(exame.medico, forKey: "medico")
-                    record.setObject(exame.aprovado, forKey: "aprovado")
-                    record.setObject(exame.realizado, forKey: "realizado")
+                    record.setObject(nome.nome, forKey: "nome")
                     
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
@@ -383,6 +376,52 @@ public class DaoCloudKit
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessPacientes", object: nil)
                 }
             }
+    }
+    func fetchNomeExames()
+    {
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        let predicate = NSPredicate(value: true)
+        
+        let query = CKQuery(recordType: "NomeExame", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
+            }
+            else {
+                nomeExames.removeAll()
+                for result in results! {
+                      var novoExame = NomeExame(nome: result.valueForKey("nome") as! String)
+                    nomeExames.append(novoExame)
+                }
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessNomeExames", object: nil)
+            }
+        }
 
+    }
+    func fetchMedicos()
+    {
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        let predicate = NSPredicate(value: true)
+        
+        let query = CKQuery(recordType: "Medico", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
+            }
+            else {
+                medicos.removeAll()
+                for result in results! {
+                    var novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Int, telefone: result.valueForKey("telefone") as? Int)
+                    medicos.append(novoMedico)
+                }
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessMedicos", object: nil)
+            }
+        }
     }
 }
