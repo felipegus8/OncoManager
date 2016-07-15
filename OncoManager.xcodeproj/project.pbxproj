@@ -17,14 +17,14 @@
 		2EC251D31D37333900910B20 /* NovoAdmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251D21D37333900910B20 /* NovoAdmViewController.swift */; };
 		2EDEB39E1D383D0900AC93B4 /* HistoricoPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */; };
 		2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */; };
-		404432111D392C0700B2B293 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4044320A1D392BF700B2B293 /* Charts.framework */; };
-		404432121D392C0700B2B293 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4044320A1D392BF700B2B293 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C1FFFF61D36C65A00C298A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FFFF41D36C65A00C298A7 /* Main.storyboard */; };
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
 		9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCD1D367F050016CD3C /* Medico.swift */; };
 		9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */; };
 		9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD51D3681650016CD3C /* Admin.swift */; };
+		9CA2D7671D39304E0093B8B0 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA2D7601D3930420093B8B0 /* Charts.framework */; };
+		9CA2D7681D39304E0093B8B0 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA2D7601D3930420093B8B0 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */; };
 		9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */; };
 		9CF3BAB11D353A0B00D83B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */; };
@@ -33,37 +33,37 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		404432091D392BF700B2B293 /* PBXContainerItemProxy */ = {
+		9CA2D75F1D3930420093B8B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			containerPortal = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
-		4044320B1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+		9CA2D7611D3930420093B8B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			containerPortal = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
 			remoteInfo = "Charts-TV";
 		};
-		4044320D1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+		9CA2D7631D3930420093B8B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			containerPortal = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
 			remoteInfo = "Charts-OSX";
 		};
-		4044320F1D392BF700B2B293 /* PBXContainerItemProxy */ = {
+		9CA2D7651D3930420093B8B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			containerPortal = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
 			remoteInfo = ChartsTests;
 		};
-		404432131D392C0700B2B293 /* PBXContainerItemProxy */ = {
+		9CA2D7691D39304E0093B8B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+			containerPortal = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
@@ -71,13 +71,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		404432151D392C0700B2B293 /* Embed Frameworks */ = {
+		9CA2D7551D392F020093B8B0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				404432121D392C0700B2B293 /* Charts.framework in Embed Frameworks */,
+				9CA2D7681D39304E0093B8B0 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,13 +95,13 @@
 		2EC251D21D37333900910B20 /* NovoAdmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoAdmViewController.swift; sourceTree = "<group>"; };
 		2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosPacienteTableView.swift; sourceTree = "<group>"; };
-		404432021D392BF700B2B293 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		9C1FFFF51D36C65A00C298A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
 		9C8F0CCD1D367F050016CD3C /* Medico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
 		9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoCloudKit.swift; sourceTree = "<group>"; };
 		9C8F0CD51D3681650016CD3C /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		9CF3BAA61D353A0B00D83B1B /* OncoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OncoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */,
-				404432111D392C0700B2B293 /* Charts.framework in Frameworks */,
+				9CA2D7671D39304E0093B8B0 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,17 +135,6 @@
 				2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */,
 			);
 			name = CustomUIKitClasses;
-			sourceTree = "<group>";
-		};
-		404432031D392BF700B2B293 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4044320A1D392BF700B2B293 /* Charts.framework */,
-				4044320C1D392BF700B2B293 /* Charts.framework */,
-				4044320E1D392BF700B2B293 /* Charts.framework */,
-				404432101D392BF700B2B293 /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9C8F0CCF1D367F930016CD3C /* Model */ = {
@@ -183,10 +172,21 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		9CA2D7591D3930420093B8B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CA2D7601D3930420093B8B0 /* Charts.framework */,
+				9CA2D7621D3930420093B8B0 /* Charts.framework */,
+				9CA2D7641D3930420093B8B0 /* Charts.framework */,
+				9CA2D7661D3930420093B8B0 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9CF3BA9D1D353A0B00D83B1B = {
 			isa = PBXGroup;
 			children = (
-				404432021D392BF700B2B293 /* Charts.xcodeproj */,
+				9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */,
 				9CF3BABC1D353A2600D83B1B /* CloudKit.framework */,
 				9CF3BAA81D353A0B00D83B1B /* OncoManager */,
 				9CF3BAA71D353A0B00D83B1B /* Products */,
@@ -225,12 +225,12 @@
 				9CF3BAA21D353A0B00D83B1B /* Sources */,
 				9CF3BAA31D353A0B00D83B1B /* Frameworks */,
 				9CF3BAA41D353A0B00D83B1B /* Resources */,
-				404432151D392C0700B2B293 /* Embed Frameworks */,
+				9CA2D7551D392F020093B8B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				404432141D392C0700B2B293 /* PBXTargetDependency */,
+				9CA2D76A1D39304E0093B8B0 /* PBXTargetDependency */,
 			);
 			name = OncoManager;
 			productName = OncoManager;
@@ -271,8 +271,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 404432031D392BF700B2B293 /* Products */;
-					ProjectRef = 404432021D392BF700B2B293 /* Charts.xcodeproj */;
+					ProductGroup = 9CA2D7591D3930420093B8B0 /* Products */;
+					ProjectRef = 9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -283,32 +283,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4044320A1D392BF700B2B293 /* Charts.framework */ = {
+		9CA2D7601D3930420093B8B0 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 404432091D392BF700B2B293 /* PBXContainerItemProxy */;
+			remoteRef = 9CA2D75F1D3930420093B8B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4044320C1D392BF700B2B293 /* Charts.framework */ = {
+		9CA2D7621D3930420093B8B0 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 4044320B1D392BF700B2B293 /* PBXContainerItemProxy */;
+			remoteRef = 9CA2D7611D3930420093B8B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4044320E1D392BF700B2B293 /* Charts.framework */ = {
+		9CA2D7641D3930420093B8B0 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 4044320D1D392BF700B2B293 /* PBXContainerItemProxy */;
+			remoteRef = 9CA2D7631D3930420093B8B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		404432101D392BF700B2B293 /* ChartsTests.xctest */ = {
+		9CA2D7661D3930420093B8B0 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 4044320F1D392BF700B2B293 /* PBXContainerItemProxy */;
+			remoteRef = 9CA2D7651D3930420093B8B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -354,10 +354,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		404432141D392C0700B2B293 /* PBXTargetDependency */ = {
+		9CA2D76A1D39304E0093B8B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
-			targetProxy = 404432131D392C0700B2B293 /* PBXContainerItemProxy */;
+			targetProxy = 9CA2D7691D39304E0093B8B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
