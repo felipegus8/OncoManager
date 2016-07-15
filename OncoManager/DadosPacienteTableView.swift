@@ -27,10 +27,22 @@ class DadosPacienteCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
     func setupViews(){
-        category.text = "Category"
+        category.text = "Category:"
         category.translatesAutoresizingMaskIntoConstraints = false
+        category.textColor = UIColor(red:0.00, green:0.47, blue:0.24, alpha:1.0)
+        addSubview(category)
+
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : category]))
         
+        answer.text = "Answer"
+        answer.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(answer)
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : answer]))
+        
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]-8-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : category, "v1": answer]))
         
     }
     
@@ -38,6 +50,8 @@ class DadosPacienteCell: UITableViewCell {
 
 
 class DadosPacienteTableView: UITableViewController {
+    
+    let categories = ["CPF:", "Nascimento:", "E-mail:", "Bairro:", "Tel:", "Cel:", "Convênio:", "Tipo de Plano:", "Matrícula Plano:", "Peso:", "Altura:", "Marca-passo:", "Clipes Cirúrgicos:", "Operado:", "Operação:", "Claustrofóbico:", "Cadeirante:", "Diabético:", "Hipertenso:"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,13 +80,15 @@ class DadosPacienteTableView: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 22
+        return categories.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DadoCell", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("DadoCell", forIndexPath: indexPath) as! DadosPacienteCell
+        
+        cell.category.text = categories[indexPath.row]
+        
         // Configure the cell...
 
         return cell

@@ -525,6 +525,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="NbZ-RJ-KXn" id="8uJ-Gl-2X3"/>
                         <outlet property="diasTratamento" destination="4qS-It-2wj" id="XZg-im-jje"/>
                         <outlet property="segmentedControl" destination="egg-Tz-wwH" id="55X-Gm-ID5"/>
                         <outlet property="timeView" destination="HRG-TL-BIs" id="Cay-23-j7h"/>
