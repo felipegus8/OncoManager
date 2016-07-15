@@ -199,6 +199,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="63" y="500" width="248" height="40"/>
                                 </variation>
+                                <connections>
+                                    <action selector="cadastro:" destination="LBn-s8-Pfj" eventType="touchUpInside" id="ZNG-qa-mdF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>

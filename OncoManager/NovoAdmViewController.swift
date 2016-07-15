@@ -24,6 +24,9 @@ class NovoAdmViewController: UIViewController {
     @IBAction func closeModalPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func cadastro(sender: OMButton) {
+    }
 
     /*
     // MARK: - Navigation
