@@ -17,6 +17,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(menorData)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessPacienteCpf), name: "notificationSuccessPacienteCpf", object: nil)
 
        // self.navigationController?.navigationBarHidden = true

@@ -324,6 +324,16 @@ public class DaoCloudKit
                             
                             for (_, result) in records! {
                                 print("Preenchendo os vetores")
+                                if  let order = menorData
+                                {
+                                    if order.compare((result.creationDate)!) ==  NSComparisonResult.OrderedDescending
+                                    {
+                                    menorData = result.creationDate
+                                    }
+                                }
+                                else{
+                                    menorData = result.creationDate
+                                }
                                 paciente.arrayExames.append(CKReference(recordID: result.recordID, action: .None))
                                 paciente.exames.append(Exame(codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String, data: result.valueForKey("data") as! String, hora: result.valueForKey("hora") as! String, aprovado: result.valueForKey("aprovado") as! Int, realizado:result.valueForKey("realizado") as! Int))
                             }

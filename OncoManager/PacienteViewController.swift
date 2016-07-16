@@ -24,10 +24,22 @@ class PacienteViewController: UIViewController {
     var historicoTableView: HistoricoPacienteTableView!
     
     var pacienteName = "Paciente"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dataAtual = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        //calendar.components([.Day , .Month , .Year], fromDate: dataAtual)
+        print(dataAtual)
+        let date1 = calendar.startOfDayForDate(menorData)
+        let date2 = calendar.startOfDayForDate(dataAtual)
+        
+        let flags = NSCalendarUnit.Day
+        let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
+        
+        diasTratamento.text = String(components.day) + " " + "dias"// This will return the number of day(s) between dates
         self.navigationItem.title = pacienteName // recebe o nome da tableView pelo segue
         timeView.layer.shadowOpacity = 0.2
         timeView.layer.shadowRadius = 0.2
