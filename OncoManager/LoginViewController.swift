@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
        // testePaciente.arrayExames.removeAll()
        // testePaciente.exames.removeAll()
        // DaoCloudKit().addExameToPaciente(testeExame, paciente: testePaciente)
-       // DaoCloudKit().fetchExamesFromPaciente(testePaciente)
+       DaoCloudKit().fetchExamesFromPaciente(testePaciente)
        // DaoCloudKit().fetchPacientes()
         // Do any additional setup after loading the view.
     }

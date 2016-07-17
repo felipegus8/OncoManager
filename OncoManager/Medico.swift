@@ -9,6 +9,7 @@
 import Foundation
 
 public var medicos:[Medico] = []
+public var menorData:NSDate!
 public class Medico
 {
     var nome:String!
