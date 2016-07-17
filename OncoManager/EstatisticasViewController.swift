@@ -68,12 +68,26 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     
     @IBAction func nextGraphFunction(sender: AnyObject) {
         
+        if i < listGraphcs.count - 1{
+            
+            
+            if i < listGraphcs.count - 1 && i >= 0 {
+                i = i + 1
+            }
+            graphTitleLabel.text = listGraphcs[i]
+            setChart(months, values: points[i])
+        }
 
     }
     
     @IBAction func backGraphFunction(sender: AnyObject) {
         
-        
+        if i > 0 {
+            
+            i = i - 1
+            graphTitleLabel.text = listGraphcs[i]
+            setChart(months, values: points[i])
+        }
     }
 
     
