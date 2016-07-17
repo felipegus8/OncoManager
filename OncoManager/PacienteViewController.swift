@@ -70,6 +70,9 @@ class PacienteViewController: UIViewController {
         
     }
     
+    @IBAction func addEventPressed(sender: AnyObject) {
+        performSegueWithIdentifier("goToAddEvent", sender: sender)
+    }
 
     /*
     // MARK: - Navigation

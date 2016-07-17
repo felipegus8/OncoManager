@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E11B70C1D39AA700013A1B4 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E11B70B1D39AA700013A1B4 /* AddEventViewController.swift */; };
 		2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */; };
 		2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C61D36C7E300910B20 /* LoginViewController.swift */; };
 		2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C81D36C80500910B20 /* PacientesViewController.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E11B70B1D39AA700013A1B4 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstatisticasViewController.swift; sourceTree = "<group>"; };
 		2EC251C61D36C7E300910B20 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2EC251C81D36C80500910B20 /* PacientesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacientesViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */,
 				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
 				2EC251D21D37333900910B20 /* NovoAdmViewController.swift */,
+				2E11B70B1D39AA700013A1B4 /* AddEventViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */,
 				9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */,
 				2EC251CB1D36C80D00910B20 /* PacienteViewController.swift in Sources */,
+				2E11B70C1D39AA700013A1B4 /* AddEventViewController.swift in Sources */,
 				9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */,
 				9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */,
 				2EC251CF1D37282B00910B20 /* OMTextField.swift in Sources */,
