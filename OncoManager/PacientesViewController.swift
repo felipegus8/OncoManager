@@ -17,8 +17,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(menorData)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessPacienteCpf), name: "notificationSuccessPacienteCpf", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessLoadExamesFromPaciente), name: "notificationSuccessLoadExamesFromPaciente", object: nil)
 
        // self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
@@ -40,22 +39,19 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = self.listaPacientes.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListaPacienteCell
         
         cell.nomePaciente.text = pacientes[indexPath.row].nome
-        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         pacienteSelecionado = pacientes[indexPath.row]
+        DaoCloudKit().fetchExamesFromPaciente(pacienteSelecionado)        
+        
+    }
+    func actOnNotificationSuccessLoadExamesFromPaciente ()
+    {
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToPaciente", sender: self)
         })
-       // DaoCloudKit().fetchPacienteByCpf(pacientes[indexPath.row].cpf)
-        
-        
-    }
-    func actOnNotificationSuccessPacienteCpf ()
-    {
-        
     }
     
     //MARK: envia nome do paciente selecionado para o titulo da navigationBar na tela seguinte

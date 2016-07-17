@@ -338,7 +338,7 @@ public class DaoCloudKit
                                 paciente.exames.append(Exame(codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String, data: result.valueForKey("data") as! String, hora: result.valueForKey("hora") as! String, aprovado: result.valueForKey("aprovado") as! Int, realizado:result.valueForKey("realizado") as! Int))
                             }
                             
-                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadPaciente", object: nil)
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadExamesFromPaciente", object: nil)
                             
                             
                         }
@@ -351,7 +351,7 @@ public class DaoCloudKit
                     
                     if paciente.exames.count == 0
                     {
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadPaciente", object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadExamesFromPaciente", object: nil)
                     }
                     else{
                         NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorLoadPaciente", object: nil)

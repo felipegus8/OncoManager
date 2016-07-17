@@ -26,13 +26,7 @@ class LoginViewController: UIViewController {
         senhaTxtField.secureTextEntry = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
-       //DaoCloudKit().addPaciente(testePaciente)
-       // testePaciente.arrayExames.removeAll()
-       // testePaciente.exames.removeAll()
-       // DaoCloudKit().addExameToPaciente(testeExame, paciente: testePaciente)
-       DaoCloudKit().fetchExamesFromPaciente(testePaciente)
-       // DaoCloudKit().fetchPacientes()
-        // Do any additional setup after loading the view.
+               // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
