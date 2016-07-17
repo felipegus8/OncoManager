@@ -7,29 +7,29 @@
 //
 
 import UIKit
-
 import Charts
-
 
 class EstatisticasViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var graphTitleLabel: UILabel!
     
+    let listGraphcs:[String] = ["Paciente x Plano","Paciente x Cirurgia","Paciente x Exame", "Paciente x Médico", "Paciente x Hospital"]
+    var i = 0
+    var months: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    var unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
     
-    var months: [String]!
-    
+    let points: [[Double]] = [[20.0, 14.0, 16.0, 13.0, 12.0, 16.0, 14.0, 18.0, 12.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 12.0, 16.0, 14.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 16.0, 3.0, 2.0, 6.0, 4.0, 8.0, 12.0, 14.0, 5.0, 4.0]]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
         
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        
-        setChart(months, values: unitsSold)
+        setChart(months, values: points[0])
+        graphTitleLabel.text = listGraphcs[0]
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
-        
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -63,6 +63,16 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Adicionar uma LINHA LIMITE no gráfico
         let ll = ChartLimitLine(limit: 10.0, label: "Target")
         chartView.rightAxis.addLimitLine(ll)
+        
+    }
+    
+    @IBAction func nextGraphFunction(sender: AnyObject) {
+        
+
+    }
+    
+    @IBAction func backGraphFunction(sender: AnyObject) {
+        
         
     }
 
