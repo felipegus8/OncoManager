@@ -30,8 +30,10 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
        // scrollView.contentSize.height = 1400
-        scrollView.contentInset.bottom = 1400
         linkDelegate()
+       // scrollView.contentSize.width = self.view.frame.width
+       // peso.frame.size.width = 0.45*matricula.frame.width
+       // altura.frame.size.width = 0.45*matricula.frame.width
 
         // Do any additional setup after loading the view.
     }
@@ -80,9 +82,9 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         convenio.delegate = self
         tipoPlano.delegate = self
         matricula.delegate = self
-        peso.delegate = self
-        altura.delegate = self
-        tipoOperacao.delegate = self
+        //peso.delegate = self
+        //altura.delegate = self
+        //tipoOperacao.delegate = self
     }
     
     @IBAction func stopEditing(sender: UITapGestureRecognizer) {
