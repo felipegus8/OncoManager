@@ -32,8 +32,8 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
        // scrollView.contentSize.height = 1400
         linkDelegate()
        // scrollView.contentSize.width = self.view.frame.width
-       // peso.frame.size.width = 0.45*matricula.frame.width
-       // altura.frame.size.width = 0.45*matricula.frame.width
+        //peso.frame.size.width = 0.45*matricula.frame.width
+        //altura.frame.size.width = 0.45*matricula.frame.width
 
         // Do any additional setup after loading the view.
     }
@@ -44,11 +44,11 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        scrollView.scrollEnabled = false
+        //scrollView.scrollEnabled = false
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        scrollView.scrollEnabled = true
+       // scrollView.scrollEnabled = true
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
@@ -92,7 +92,13 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         //print(sender.description)
     }
+    @IBAction func cadastrarPressed(sender: UIButton) {
+         self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    @IBAction func closePressed(sender: UIButton) {
+         self.dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
