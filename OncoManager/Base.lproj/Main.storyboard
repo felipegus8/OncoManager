@@ -2021,7 +2021,6 @@
                                             <constraint firstItem="PXv-Rw-EDE" firstAttribute="top" secondItem="WLl-3K-B7S" secondAttribute="top" id="9Rr-o9-EXP"/>
                                             <constraint firstItem="J1L-q4-bFj" firstAttribute="trailing" secondItem="PXv-Rw-EDE" secondAttribute="trailing" id="AmW-C2-ldj"/>
                                             <constraint firstItem="E1a-OZ-cde" firstAttribute="top" secondItem="J1L-q4-bFj" secondAttribute="bottom" constant="20" id="Dme-e0-jaJ"/>
-                                            <constraint firstItem="E1a-OZ-cde" firstAttribute="top" secondItem="J1L-q4-bFj" secondAttribute="bottom" constant="20" id="ERh-sd-Oo2"/>
                                             <constraint firstItem="QCg-Ps-qPq" firstAttribute="top" secondItem="36l-k9-eT4" secondAttribute="bottom" constant="20" id="GTs-bl-6Ni"/>
                                             <constraint firstItem="36l-k9-eT4" firstAttribute="trailing" secondItem="PXv-Rw-EDE" secondAttribute="trailing" id="ItL-0V-mMO"/>
                                             <constraint firstItem="LE8-VG-aTh" firstAttribute="top" secondItem="QCg-Ps-qPq" secondAttribute="bottom" constant="20" id="JGt-7f-ZZL"/>
@@ -2104,7 +2103,6 @@
                                                 <exclude reference="fPC-Am-hMo"/>
                                                 <exclude reference="hQz-SK-cb0"/>
                                                 <exclude reference="Dme-e0-jaJ"/>
-                                                <exclude reference="ERh-sd-Oo2"/>
                                                 <exclude reference="Jes-EQ-Bhr"/>
                                                 <exclude reference="QEW-Ac-4tD"/>
                                                 <exclude reference="o9O-Rj-5aS"/>
@@ -2161,7 +2159,6 @@
                                                 <include reference="fPC-Am-hMo"/>
                                                 <include reference="hQz-SK-cb0"/>
                                                 <include reference="Dme-e0-jaJ"/>
-                                                <include reference="ERh-sd-Oo2"/>
                                                 <include reference="Jes-EQ-Bhr"/>
                                                 <include reference="QEW-Ac-4tD"/>
                                                 <include reference="o9O-Rj-5aS"/>
@@ -2171,6 +2168,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="WLl-3K-B7S" secondAttribute="trailing" id="g28-wf-K2w"/>
+                                    <constraint firstItem="WLl-3K-B7S" firstAttribute="width" secondItem="VRP-Wz-7j2" secondAttribute="width" id="g9F-xi-xmz"/>
                                     <constraint firstItem="WLl-3K-B7S" firstAttribute="leading" secondItem="VRP-Wz-7j2" secondAttribute="leading" id="jVf-I6-Its"/>
                                     <constraint firstAttribute="bottom" secondItem="WLl-3K-B7S" secondAttribute="bottom" id="r9i-WO-Kn0"/>
                                     <constraint firstItem="WLl-3K-B7S" firstAttribute="top" secondItem="VRP-Wz-7j2" secondAttribute="top" id="wik-O7-HTi"/>
@@ -2181,6 +2179,7 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="g28-wf-K2w"/>
+                                        <exclude reference="g9F-xi-xmz"/>
                                         <exclude reference="jVf-I6-Its"/>
                                         <exclude reference="r9i-WO-Kn0"/>
                                         <exclude reference="wik-O7-HTi"/>
@@ -2192,6 +2191,7 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="g28-wf-K2w"/>
+                                        <include reference="g9F-xi-xmz"/>
                                         <include reference="jVf-I6-Its"/>
                                         <include reference="r9i-WO-Kn0"/>
                                         <include reference="wik-O7-HTi"/>
