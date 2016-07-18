@@ -54,6 +54,13 @@ class LoginViewController: UIViewController {
             self.performSegueWithIdentifier("goToHome", sender: self)
         })
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        //super.touchesBegan(touches, withEvent: event)
+        
+        view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 

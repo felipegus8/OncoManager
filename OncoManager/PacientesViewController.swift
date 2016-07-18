@@ -54,6 +54,10 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
+    @IBAction func novoPacientePressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToNovoPaciente", sender: sender)
+    }
+    
     //MARK: envia nome do paciente selecionado para o titulo da navigationBar na tela seguinte
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

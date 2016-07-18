@@ -10,6 +10,7 @@ import UIKit
 
 class OMTextField: UITextField {
 
+    var scrollView = UIScrollView()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -22,6 +23,10 @@ class OMTextField: UITextField {
         self.backgroundColor = UIColor.whiteColor()
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -29,5 +34,5 @@ class OMTextField: UITextField {
         // Drawing code
     }
     */
-
+    
 }
