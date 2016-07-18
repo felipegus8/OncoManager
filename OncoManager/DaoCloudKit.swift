@@ -83,9 +83,9 @@ public class DaoCloudKit
                     print("primeira vez que ta criando o exame")
                     record.setObject(exame.cpf, forKey: "cpf")
                     record.setObject(exame.codigo, forKey: "codigo")
-                    record.setObject(exame.data, forKey: "novaData")
+                    record.setObject(exame.dataRealizado, forKey: "dataRealizado")
+                    record.setObject(exame.dataMarcado, forKey: "dataMarcado")
                     record.setObject(exame.nome, forKey: "nome")
-                   // record.setObject(exame.hora, forKey: "hora")
                     record.setObject(exame.local, forKey: "local")
                     record.setObject(exame.medico, forKey: "medico")
                     record.setObject(exame.aprovado, forKey: "aprovado")
@@ -472,7 +472,7 @@ public class DaoCloudKit
             else {
                 exames.removeAll()
                 for result in results! {
-                    var novoExame = Exame(cpf: result.valueForKey("cpf") as! Int, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String, data: result.valueForKey("novaData") as! NSDate, aprovado: result.valueForKey("aprovado") as! Int, realizado: result.valueForKey("realizado") as! Int)
+                    var novoExame = Exame(cpf: result.valueForKey("cpf") as! Int, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, aprovado: result.valueForKey("aprovado") as! Int, realizado: result.valueForKey("realizado") as! Int)
                     exames.append(novoExame)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessExames", object: nil)

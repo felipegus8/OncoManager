@@ -115,7 +115,7 @@ class HistoricoPacienteTableView: UITableViewController {
         if examesDoPaciente.count > indexPath.row
         {
         cell.title.text = examesDoPaciente[indexPath.row].nome
-        cell.subtitle.text = String(examesDoPaciente[indexPath.row].data)
+        cell.subtitle.text = String(examesDoPaciente[indexPath.row].dataRealizado)
         cell.details.text = examesDoPaciente[indexPath.row].local
         }
         
