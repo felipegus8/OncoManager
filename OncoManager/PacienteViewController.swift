@@ -32,13 +32,13 @@ class PacienteViewController: UIViewController {
         {
             if  let order = menorData
             {
-                if order.compare((exame.data)!) ==  NSComparisonResult.OrderedDescending
+                if order.compare((exame.dataMarcado)!) ==  NSComparisonResult.OrderedDescending
                 {
-                    menorData = exame.data
+                    menorData = exame.dataMarcado
                 }
             }
             else{
-                menorData = exame.data
+                menorData = exame.dataMarcado
             }
 
         }

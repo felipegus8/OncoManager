@@ -17,20 +17,21 @@ public class Exame
     var nome:String!
     var medico:String!
     var local:String!
-    var data:NSDate!
-    //var hora:String!
+    var dataMarcado:NSDate!
+    var dataRealizado:NSDate!
     var aprovado:Int!
     var realizado:Int!
     
 
-    init(cpf:Int,codigo:Int,nome:String,medico:String,local:String,data:NSDate,/*hora:String*/aprovado:Int,realizado:Int)
+    init(cpf:Int,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,aprovado:Int,realizado:Int)
     {
         self.cpf = cpf
         self.codigo = codigo
         self.nome = nome
         self.medico = medico
         self.local = local
-        self.data = data
+        self.dataMarcado = dataMarcado
+        self.dataRealizado = dataRealizado
        // self.hora = hora
         self.aprovado = aprovado
         self.realizado = realizado
