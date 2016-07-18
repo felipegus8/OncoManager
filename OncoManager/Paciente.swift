@@ -34,8 +34,8 @@ public class Paciente
     var convenio:String!
     var tipoPlano:String!
     var matriculaPlano:String!
-    var exames:[Exame] = []
-    var arrayExames:[CKReference] = []
+   // var exames:[Exame] = []
+   // var arrayExames:[CKReference] = []
     
     init(cpf:Int,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String,claustrofobico:Int)
     {
@@ -63,11 +63,12 @@ public class Paciente
         self.matriculaPlano = matriculaPlano
         self.claustrofobico = claustrofobico
     }
-    func addExame(exame: Exame) {
+   /* func addExame(exame: Exame) {
         self.exames.append(exame)
     }
     func getExames() -> ([Exame])
     {
         return self.exames
     }
+ */
 }

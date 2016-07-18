@@ -8,26 +8,30 @@
 
 import Foundation
 public var nomeExames:[NomeExame] = []
+public var exames:[Exame] = []
+public var examesDoPaciente:[Exame] = []
 public class Exame
 {
+    var cpf:Int!
     var codigo:Int!
     var nome:String!
     var medico:String!
     var local:String!
-    var data:String!
-    var hora:String!
+    var data:NSDate!
+    //var hora:String!
     var aprovado:Int!
     var realizado:Int!
     
 
-    init(codigo:Int,nome:String,medico:String,local:String,data:String,hora:String,aprovado:Int,realizado:Int)
+    init(cpf:Int,codigo:Int,nome:String,medico:String,local:String,data:NSDate,/*hora:String*/aprovado:Int,realizado:Int)
     {
+        self.cpf = cpf
         self.codigo = codigo
         self.nome = nome
         self.medico = medico
         self.local = local
         self.data = data
-        self.hora = hora
+       // self.hora = hora
         self.aprovado = aprovado
         self.realizado = realizado
     }

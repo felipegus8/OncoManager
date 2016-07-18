@@ -28,7 +28,22 @@ class PacienteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        for exame in examesDoPaciente
+        {
+            if  let order = menorData
+            {
+                if order.compare((exame.data)!) ==  NSComparisonResult.OrderedDescending
+                {
+                    menorData = exame.data
+                }
+            }
+            else{
+                menorData = exame.data
+            }
+
+        }
+ 
+        print(menorData)
         let dataAtual = NSDate()
         let calendar = NSCalendar.currentCalendar()
         //calendar.components([.Day , .Month , .Year], fromDate: dataAtual)
@@ -40,6 +55,7 @@ class PacienteViewController: UIViewController {
         let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
         
         diasTratamento.text = String(components.day) + " " + "dias"// This will return the number of day(s) between dates
+ 
         self.navigationItem.title = pacienteName // recebe o nome da tableView pelo segue
         timeView.layer.shadowOpacity = 0.2
         timeView.layer.shadowRadius = 0.2

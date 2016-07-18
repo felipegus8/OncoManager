@@ -111,14 +111,14 @@ class HistoricoPacienteTableView: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier("HistCell", forIndexPath: indexPath) as! HistoricoPacienteCell
         print(indexPath.row)
-        print(pacienteSelecionado.exames.count)
-        if pacienteSelecionado.exames.count > indexPath.row
+        print(examesDoPaciente.count)
+        if examesDoPaciente.count > indexPath.row
         {
-        cell.title.text = pacienteSelecionado.exames[indexPath.row].nome
-        cell.subtitle.text = pacienteSelecionado.exames[indexPath.row].data
-        cell.details.text = pacienteSelecionado.exames[indexPath.row].local
+        cell.title.text = examesDoPaciente[indexPath.row].nome
+        cell.subtitle.text = String(examesDoPaciente[indexPath.row].data)
+        cell.details.text = examesDoPaciente[indexPath.row].local
         }
-    
+        
          //Configure the cell...
 
         return cell

@@ -17,7 +17,8 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessLoadExamesFromPaciente), name: "notificationSuccessLoadExamesFromPaciente", object: nil)
+       /* NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessLoadExamesFromPaciente), name: "notificationSuccessLoadExamesFromPaciente", object: nil)
+ */
 
        // self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
@@ -44,16 +45,24 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         pacienteSelecionado = pacientes[indexPath.row]
-        DaoCloudKit().fetchExamesFromPaciente(pacienteSelecionado)        
-        
-    }
-    func actOnNotificationSuccessLoadExamesFromPaciente ()
-    {
+        for exame in exames
+        {
+            if exame.cpf == pacienteSelecionado.cpf
+            {
+                examesDoPaciente.append(exame)
+            }
+        }
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToPaciente", sender: self)
         })
+       // DaoCloudKit().fetchExamesFromPaciente(pacienteSelecionado)
+        
     }
-    
+    /*func actOnNotificationSuccessLoadExamesFromPaciente ()
+    {
+        
+    }
+    */
     @IBAction func novoPacientePressed(sender: AnyObject) {
         self.performSegueWithIdentifier("goToNovoPaciente", sender: sender)
     }
@@ -77,6 +86,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        examesDoPaciente.removeAll()
     }
     
     override func viewWillDisappear(animated: Bool) {
