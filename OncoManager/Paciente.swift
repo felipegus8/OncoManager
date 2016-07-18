@@ -12,14 +12,14 @@ public var pacientes:[Paciente] = []
 public var pacienteSelecionado:Paciente!
 public class Paciente
 {
-    var cpf:Int!
+    var cpf:Double!
     var nome:String!
     var email:String!
     var bairro:String!
     var bairroPrefere:String!
     var dataNasc:String!
-    var telefoneFixo:Int!
-    var celular:Int!
+    var telefoneFixo:Double!
+    var celular:Double!
     var peso:Double!
     var altura:Double!
     var alergia:Int!
@@ -37,7 +37,7 @@ public class Paciente
    // var exames:[Exame] = []
    // var arrayExames:[CKReference] = []
     
-    init(cpf:Int,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Int,celular:Int,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String,claustrofobico:Int)
+    init(cpf:Double,nome:String,bairro:String,bairroPrefere:String,dataNasc:String,email:String,telefoneFixo:Double,celular:Double,peso:Double,altura:Double,alergia:Int,marcapasso:Int,clipesCirurgico:Int,operado:Int,tipoOperacao:String?,cadeirante:Int,diabetico:Int,hipertenso:Int,convenio:String,tipoPlano:String,matriculaPlano:String,claustrofobico:Int)
     {
         self.cpf = cpf
         self.nome = nome

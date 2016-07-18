@@ -12,7 +12,7 @@ public var exames:[Exame] = []
 public var examesDoPaciente:[Exame] = []
 public class Exame
 {
-    var cpf:Int!
+    var cpf:Double!
     var codigo:Int!
     var nome:String!
     var medico:String!
@@ -23,7 +23,7 @@ public class Exame
     var realizado:Int!
     
 
-    init(cpf:Int,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,aprovado:Int,realizado:Int)
+    init(cpf:Double,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,aprovado:Int,realizado:Int)
     {
         self.cpf = cpf
         self.codigo = codigo
