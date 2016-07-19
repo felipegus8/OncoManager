@@ -46,6 +46,8 @@ class LoginViewController: UIViewController {
         i=0
     }
     @IBAction func signInPressed(sender: AnyObject) {
+        if DaoCloudKit().cloudAvailable() == true
+        {
         if ((emailTxtField.text?.isEmpty == true) || (senhaTxtField.text?.isEmpty == true))
         {
             let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,6 +67,12 @@ class LoginViewController: UIViewController {
         DaoCloudKit().fetchAdminByEmail(emailTxtField.text, senha: senhaTxtField.text)
         }
         }
+        }
+        }
+        else{
+            let alert=UIAlertController(title:"Erro", message: "Você não está logado no iCloud", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alert,animated: true, completion: nil)
         }
     }
     
