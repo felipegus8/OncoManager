@@ -45,13 +45,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         pacienteSelecionado = pacientes[indexPath.row]
-        for exame in exames
-        {
-            if exame.cpf == pacienteSelecionado.cpf
-            {
-                examesDoPaciente.append(exame)
-            }
-        }
+        examesDoPaciente(pacienteSelecionado.cpf,paciente:pacienteSelecionado)
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToPaciente", sender: self)
         })
@@ -96,4 +90,15 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
 
+}
+func examesDoPaciente(cpf:Double,paciente:Paciente)
+{
+    examesDoPaciente.removeAll()
+    for exame in exames
+    {
+        if exame.cpf == paciente.cpf
+        {
+            examesDoPaciente.append(exame)
+        }
+    }
 }
