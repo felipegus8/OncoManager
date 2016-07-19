@@ -26,6 +26,7 @@ public class Exame
 
     init(tipoProcedimento:String,cpf:Double,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,aprovado:Int,realizado:Int)
     {
+        self.tipoProcedimento = tipoProcedimento
         self.cpf = cpf
         self.codigo = codigo
         self.nome = nome
@@ -33,7 +34,6 @@ public class Exame
         self.local = local
         self.dataMarcado = dataMarcado
         self.dataRealizado = dataRealizado
-       // self.hora = hora
         self.aprovado = aprovado
         self.realizado = realizado
     }
