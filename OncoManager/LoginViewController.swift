@@ -23,17 +23,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         let formatter = NSDateFormatter()
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
-        let dataRealizado = formatter.dateFromString("23-06-2016 17:00")
-        let dataMarcado = formatter.dateFromString("21-06-2016 15:00")
+      //  let dataRealizado = formatter.dateFromString("23-06-2016 17:00")
+       // let dataMarcado = formatter.dateFromString("21-06-2016 15:00")
         
-        let testeExame =  Exame(tipoProcedimento: "Exame",cpf:16798089766,codigo: 80, nome: "TesteExame", medico: "TestandoExame", local: "Quinta", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, aprovado: 0, realizado: 1)
+       // let testeExame =  Exame(tipoProcedimento: "Exame",cpf:16798089766,codigo: 80, nome: "TesteExame", medico: "TestandoExame", local: "Quinta", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, aprovado: 0, realizado: 1)
       /*  let testePaciente = Paciente(cpf: 16798089766, nome: "Teste", bairro: "Magé", bairroPrefere: "Niteroi", dataNasc: "26-09-1962", email: "qualquer", telefoneFixo: 2345980135, celular: 346725789, peso: 78, altura: 1.70, alergia: 0, marcapasso: 0, clipesCirurgico: 0, operado: 0, tipoOperacao: nil, cadeirante: 0, diabetico: 1, hipertenso: 0, convenio: "Assim", tipoPlano: "Ruim", matriculaPlano: "12345",claustrofobico:0)
  */
         senhaTxtField.secureTextEntry = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessExames), name: "notificationSuccessExames", object: nil)
-            DaoCloudKit().addExame(testeExame)
+            // DaoCloudKit().addExame(testeExame)
                // Do any additional setup after loading the view.
     }
 
@@ -81,20 +81,12 @@ class LoginViewController: UIViewController {
     }
     func actOnNotificationSuccessLogin()
     {
-        if i == 1
-        {
-        i+=1
         DaoCloudKit().fetchPacientes()
-        }
         
     }
     func actOnNotificationSuccessPacientes()
     {
-        if i==2
-        {
-        i+=1
         DaoCloudKit().fetchExames()
-        }
     }
     func actOnNotificationSuccessExames()
     {
