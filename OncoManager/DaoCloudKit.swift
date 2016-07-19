@@ -89,7 +89,6 @@ public class DaoCloudKit
                     record.setObject(exame.nome, forKey: "nome")
                     record.setObject(exame.local, forKey: "local")
                     record.setObject(exame.medico, forKey: "medico")
-                    record.setObject(exame.aprovado, forKey: "aprovado")
                     record.setObject(exame.realizado, forKey: "realizado")
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
@@ -476,7 +475,7 @@ public class DaoCloudKit
                 exames.removeAll()
                 for result in results! {
 
-                    var novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, aprovado: result.valueForKey("aprovado") as! Int, realizado: result.valueForKey("realizado") as! Int)
+                    var novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, realizado: result.valueForKey("realizado") as! Int)
                     exames.append(novoExame)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessExames", object: nil)
