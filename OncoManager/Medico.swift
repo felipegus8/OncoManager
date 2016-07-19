@@ -14,10 +14,10 @@ public class Medico
 {
     var nome:String!
     var email: String!
-    var crm: Int!
-    var telefone: Int?
+    var crm: Double!
+    var telefone: Double?
     
-    init(nome: String, email: String, crm: Int,telefone:Int?) {
+    init(nome: String, email: String, crm: Double,telefone:Double?) {
         
         self.nome = nome
         self.email = email

@@ -13,10 +13,10 @@ class NovoAdmViewController: UIViewController {
     @IBOutlet weak var nome: OMTextField!
     @IBOutlet weak var email: OMTextField!
     @IBOutlet weak var senha: OMTextField!
+    var i = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         senha.secureTextEntry = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationSuccessCadastroAdmin), name: "notificationSuccessCadastroAdmin", object: nil)
 
         // Do any additional setup after loading the view.
     }
@@ -31,9 +31,31 @@ class NovoAdmViewController: UIViewController {
     }
     
     @IBAction func cadastro(sender: OMButton) {
+        if ((nome.text?.isEmpty == true) || (email.text?.isEmpty == true) || (senha.text?.isEmpty == true))
+        {
+            let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alert,animated: true, completion: nil)
+
+        }
+        else{
+            if isValidEmail(email.text!) == false{
+                let alert=UIAlertController(title:"Erro", message: "Email Inválido", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alert,animated: true, completion: nil)
+            }
+            else{
+        if i == 0
+        {
         DaoCloudKit().addAdmin(Admin(email: email.text!, senha: senha.text!, nome: nome.text!))
+            i+=1
+        }
+            }
+        }
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        i=0
+    }
     func  actOnNotificationSuccessCadastroAdmin()
     {
         dispatch_async(dispatch_get_main_queue(),{

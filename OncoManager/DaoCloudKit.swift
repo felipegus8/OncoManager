@@ -223,6 +223,9 @@ public class DaoCloudKit
                         if (error != nil) {
                             print(error)
                         }
+                        else{
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSaveSuccessPaciente", object: nil)
+                        }
                     })
                 }
             }
@@ -497,7 +500,7 @@ public class DaoCloudKit
             else {
                 medicos.removeAll()
                 for result in results! {
-                    var novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Int, telefone: result.valueForKey("telefone") as? Int)
+                    var novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Double, telefone: result.valueForKey("telefone") as? Double)
                     medicos.append(novoMedico)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessMedicos", object: nil)

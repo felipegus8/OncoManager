@@ -26,9 +26,17 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var altura: OMTextField!
     @IBOutlet weak var tipoOperacao: OMTextField!
     
+    @IBOutlet weak var clipesCirurgico: UISwitch!
+    @IBOutlet weak var marcapasso: UISwitch!
+    @IBOutlet weak var hipertenso: UISwitch!
+    @IBOutlet weak var diabetico: UISwitch!
+    @IBOutlet weak var cadeirante: UISwitch!
+    @IBOutlet weak var claustrofobico: UISwitch!
+    @IBOutlet weak var operado: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSaveSuccessPaciente", object: nil)
+        offSwitches()
        // scrollView.contentSize.height = 1400
         linkDelegate()
        // scrollView.contentSize.width = self.view.frame.width
@@ -37,7 +45,16 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
     }
-
+    func offSwitches()
+    {
+        clipesCirurgico.on = false
+        marcapasso.on = false
+        hipertenso.on = false
+        diabetico.on = false
+        cadeirante.on = false
+        claustrofobico.on = false
+        operado.on = false
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,9 +110,20 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         //print(sender.description)
     }
     @IBAction func cadastrarPressed(sender: UIButton) {
-         self.dismissViewControllerAnimated(true, completion: nil)
+        let intMarcapasso = (marcapasso.on == true) ? 1 : 0
+        let intClipes = (clipesCirurgico.on == true) ? 1 : 0
+        let intHipertenso = (hipertenso.on == true) ? 1 : 0
+        let intDiabetico = (diabetico.on == true) ? 1 : 0
+        let intCadeirante = (cadeirante.on == true) ? 1 : 0
+        let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
+        let intOperado = (operado.on == true) ? 1 : 0
+        // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
+        DaoCloudKit().addPaciente(Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: nil, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico))
     }
-
+    func actOnNotificationSuccessSavePaciente()
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     @IBAction func closePressed(sender: UIButton) {
          self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var novaConta: UIButton!
 
-    
+    var i = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         let formatter = NSDateFormatter()
@@ -42,10 +42,30 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        i=0
+    }
     @IBAction func signInPressed(sender: AnyObject) {
-        
+        if ((emailTxtField.text?.isEmpty == true) || (senhaTxtField.text?.isEmpty == true))
+        {
+            let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alert,animated: true, completion: nil)
+        }
+        else{
+        if isValidEmail(emailTxtField.text!) == false{
+            let alert=UIAlertController(title:"Erro", message: "Email Inválido", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alert,animated: true, completion: nil)
+        }
+        else{
+        if i==0
+        {
+        i+=1
         DaoCloudKit().fetchAdminByEmail(emailTxtField.text, senha: senhaTxtField.text)
+        }
+        }
+        }
     }
     
     @IBAction func novaContaPressed(sender: AnyObject) {
@@ -53,12 +73,20 @@ class LoginViewController: UIViewController {
     }
     func actOnNotificationSuccessLogin()
     {
+        if i == 1
+        {
+        i+=1
         DaoCloudKit().fetchPacientes()
+        }
         
     }
     func actOnNotificationSuccessPacientes()
     {
+        if i==2
+        {
+        i+=1
         DaoCloudKit().fetchExames()
+        }
     }
     func actOnNotificationSuccessExames()
     {
