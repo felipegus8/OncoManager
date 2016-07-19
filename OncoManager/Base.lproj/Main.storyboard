@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gmv-8z-RK7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,33 +39,11 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não possui uma conta?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tja-zh-4TL">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGl-h6-pBH">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Criar uma nova conta.">
-                                    <color key="titleColor" red="0.98584312080536918" green="0.46666666666666667" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="novaContaPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Al-GR-ldD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-N0-Jvd">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Esqueceu a senha?">
                                     <color key="titleColor" red="0.98584312080000003" green="0.46666666670000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTz-0M-D75" customClass="OMButton" customModule="OncoManager" customModuleProvider="target">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Sign In"/>
-                                <connections>
-                                    <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ATS-gB-uTQ"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="E-mail" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ocx-oW-qyZ" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -106,96 +84,109 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGl-h6-pBH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Criar uma nova conta.">
+                                    <color key="titleColor" red="0.98584312080536918" green="0.46666666666666667" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="novaContaPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Al-GR-ldD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTz-0M-D75" customClass="OMButton" customModule="OncoManager" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ai0-F3-25c"/>
+                                </constraints>
+                                <state key="normal" title="Sign In"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ai0-F3-25c"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ai0-F3-25c"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ATS-gB-uTQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Ocx-oW-qyZ" secondAttribute="trailing" constant="24" id="1RU-AO-53C"/>
-                            <constraint firstItem="tja-zh-4TL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A0V-L8-Okm"/>
-                            <constraint firstItem="vTz-0M-D75" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bi8-lb-UvR"/>
-                            <constraint firstItem="tja-zh-4TL" firstAttribute="top" secondItem="vTz-0M-D75" secondAttribute="bottom" constant="52" id="Ea4-Lm-gvE"/>
+                            <constraint firstAttribute="trailing" secondItem="vTz-0M-D75" secondAttribute="trailing" constant="64" id="DXR-Yv-OYx"/>
+                            <constraint firstItem="RGl-h6-pBH" firstAttribute="centerX" secondItem="vTz-0M-D75" secondAttribute="centerX" id="EBX-S5-iPK"/>
                             <constraint firstItem="Ale-LW-Rjp" firstAttribute="top" secondItem="Ocx-oW-qyZ" secondAttribute="bottom" constant="20" id="GGl-eP-qK0"/>
+                            <constraint firstItem="vTz-0M-D75" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="63" id="JtZ-wB-uT2"/>
                             <constraint firstItem="rpE-Xh-9bj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KiA-aP-Kh1"/>
                             <constraint firstItem="Ocx-oW-qyZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="L6T-Pj-Aat"/>
-                            <constraint firstItem="rpE-Xh-9bj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="US3-vd-4Ni"/>
-                            <constraint firstItem="vTz-0M-D75" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="63" id="WIR-J9-g6U"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RGl-h6-pBH" secondAttribute="bottom" constant="30" id="ZGN-ca-zSs"/>
-                            <constraint firstItem="RGl-h6-pBH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gwC-wF-2Rl"/>
-                            <constraint firstItem="vTz-0M-D75" firstAttribute="top" secondItem="5Mg-N0-Jvd" secondAttribute="bottom" constant="78" id="jNM-gR-kTX"/>
+                            <constraint firstItem="rpE-Xh-9bj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="US3-vd-4Ni"/>
                             <constraint firstItem="5Mg-N0-Jvd" firstAttribute="trailing" secondItem="Ocx-oW-qyZ" secondAttribute="trailing" id="kRI-GA-hjM"/>
-                            <constraint firstItem="Ocx-oW-qyZ" firstAttribute="top" secondItem="rpE-Xh-9bj" secondAttribute="bottom" constant="80" id="l5W-yf-5HP"/>
                             <constraint firstItem="Ale-LW-Rjp" firstAttribute="leading" secondItem="Ocx-oW-qyZ" secondAttribute="leading" id="l82-OY-5qt"/>
-                            <constraint firstAttribute="trailing" secondItem="vTz-0M-D75" secondAttribute="trailing" constant="64" id="qWM-dh-B6z"/>
+                            <constraint firstItem="RGl-h6-pBH" firstAttribute="top" secondItem="vTz-0M-D75" secondAttribute="bottom" constant="39" id="lmC-45-F15"/>
                             <constraint firstItem="Ale-LW-Rjp" firstAttribute="trailing" secondItem="Ocx-oW-qyZ" secondAttribute="trailing" id="tIv-iT-ntP"/>
+                            <constraint firstItem="Ocx-oW-qyZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tPq-ge-WE8"/>
                             <constraint firstItem="Ocx-oW-qyZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vCl-Ky-7CK"/>
-                            <constraint firstItem="RGl-h6-pBH" firstAttribute="top" secondItem="tja-zh-4TL" secondAttribute="bottom" constant="4" id="vDn-j1-pHs">
-                                <variation key="widthClass=compact" constant="8"/>
-                            </constraint>
-                            <constraint firstItem="5Mg-N0-Jvd" firstAttribute="top" secondItem="Ale-LW-Rjp" secondAttribute="bottom" constant="15" id="z6E-bt-aN4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RGl-h6-pBH" secondAttribute="bottom" constant="30" id="vfi-7Q-136"/>
+                            <constraint firstItem="5Mg-N0-Jvd" firstAttribute="top" secondItem="Ale-LW-Rjp" secondAttribute="bottom" constant="5" id="z6E-bt-aN4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Ale-LW-Rjp"/>
-                                <exclude reference="tja-zh-4TL"/>
-                                <exclude reference="RGl-h6-pBH"/>
                                 <exclude reference="5Mg-N0-Jvd"/>
-                                <exclude reference="vTz-0M-D75"/>
                                 <exclude reference="Ocx-oW-qyZ"/>
                                 <exclude reference="rpE-Xh-9bj"/>
+                                <exclude reference="RGl-h6-pBH"/>
+                                <exclude reference="vTz-0M-D75"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ZGN-ca-zSs"/>
+                                <exclude reference="KiA-aP-Kh1"/>
+                                <exclude reference="US3-vd-4Ni"/>
+                                <exclude reference="1RU-AO-53C"/>
+                                <exclude reference="L6T-Pj-Aat"/>
+                                <exclude reference="tPq-ge-WE8"/>
+                                <exclude reference="vCl-Ky-7CK"/>
                                 <exclude reference="GGl-eP-qK0"/>
                                 <exclude reference="l82-OY-5qt"/>
                                 <exclude reference="tIv-iT-ntP"/>
-                                <exclude reference="1RU-AO-53C"/>
-                                <exclude reference="L6T-Pj-Aat"/>
-                                <exclude reference="l5W-yf-5HP"/>
-                                <exclude reference="vCl-Ky-7CK"/>
                                 <exclude reference="kRI-GA-hjM"/>
                                 <exclude reference="z6E-bt-aN4"/>
-                                <exclude reference="gwC-wF-2Rl"/>
-                                <exclude reference="vDn-j1-pHs"/>
-                                <exclude reference="Bi8-lb-UvR"/>
-                                <exclude reference="WIR-J9-g6U"/>
-                                <exclude reference="jNM-gR-kTX"/>
-                                <exclude reference="qWM-dh-B6z"/>
-                                <exclude reference="A0V-L8-Okm"/>
-                                <exclude reference="Ea4-Lm-gvE"/>
-                                <exclude reference="KiA-aP-Kh1"/>
-                                <exclude reference="US3-vd-4Ni"/>
+                                <exclude reference="DXR-Yv-OYx"/>
+                                <exclude reference="JtZ-wB-uT2"/>
+                                <exclude reference="EBX-S5-iPK"/>
+                                <exclude reference="lmC-45-F15"/>
+                                <exclude reference="vfi-7Q-136"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Ale-LW-Rjp"/>
-                                <include reference="tja-zh-4TL"/>
-                                <include reference="RGl-h6-pBH"/>
                                 <include reference="5Mg-N0-Jvd"/>
-                                <include reference="vTz-0M-D75"/>
                                 <include reference="Ocx-oW-qyZ"/>
                                 <include reference="rpE-Xh-9bj"/>
+                                <include reference="RGl-h6-pBH"/>
+                                <include reference="vTz-0M-D75"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ZGN-ca-zSs"/>
+                                <include reference="KiA-aP-Kh1"/>
+                                <include reference="US3-vd-4Ni"/>
+                                <include reference="1RU-AO-53C"/>
+                                <include reference="L6T-Pj-Aat"/>
+                                <include reference="tPq-ge-WE8"/>
+                                <include reference="vCl-Ky-7CK"/>
                                 <include reference="GGl-eP-qK0"/>
                                 <include reference="l82-OY-5qt"/>
                                 <include reference="tIv-iT-ntP"/>
-                                <include reference="1RU-AO-53C"/>
-                                <include reference="L6T-Pj-Aat"/>
-                                <include reference="l5W-yf-5HP"/>
-                                <include reference="vCl-Ky-7CK"/>
                                 <include reference="kRI-GA-hjM"/>
                                 <include reference="z6E-bt-aN4"/>
-                                <include reference="gwC-wF-2Rl"/>
-                                <include reference="vDn-j1-pHs"/>
-                                <include reference="Bi8-lb-UvR"/>
-                                <include reference="WIR-J9-g6U"/>
-                                <include reference="jNM-gR-kTX"/>
-                                <include reference="qWM-dh-B6z"/>
-                                <include reference="A0V-L8-Okm"/>
-                                <include reference="Ea4-Lm-gvE"/>
-                                <include reference="KiA-aP-Kh1"/>
-                                <include reference="US3-vd-4Ni"/>
+                                <include reference="DXR-Yv-OYx"/>
+                                <include reference="JtZ-wB-uT2"/>
+                                <include reference="EBX-S5-iPK"/>
+                                <include reference="lmC-45-F15"/>
+                                <include reference="vfi-7Q-136"/>
                             </mask>
                         </variation>
                     </view>
@@ -1957,7 +1948,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Convênio" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VW2-Qu-44Z" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Convênio" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VW2-Qu-44Z" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>

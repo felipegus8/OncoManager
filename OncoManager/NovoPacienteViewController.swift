@@ -10,10 +10,10 @@ import UIKit
 
 //MARK: TEXTFIELD TAGS:
 // nascimento.tag = 13
-// convenio.tag = ?
+// convenio.tag = 14
 //tipoPlano.tag = ?
 
-class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
+class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -40,11 +40,14 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var operado: UISwitch!
     
     let datePicker = UIDatePicker()
+    let pickerView = UIPickerView()
+    var convenioData: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSaveSuccessPaciente", object: nil)
-        setPickerFrame()
+        
+        setupPickers()
         offSwitches()
         linkDelegate()
         
@@ -53,23 +56,44 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    func setPickerFrame(){
-        //let w = view.frame.width
-        //let h = view.frame.height
+    func loadPickerData(){
+        
+        convenioData = ["Allianz", "Amil", "Bradesco", "CarePlus", "Furnas", "Golden Cross", "Medial", "Mediservice", "Petrobrás", "Sul América", "Unimed", "Vale"]
+    }
+    
+    func setupPickers(){
+        
         let loc = NSLocale(localeIdentifier: "pt_BR")
         datePicker.locale = loc
         datePicker.datePickerMode = UIDatePickerMode.Date
-        
-        //datePicker.frame = CGRectMake(0*w,0.654*h,1*w,0.346*h)
         datePicker.backgroundColor = UIColor.whiteColor()
-        //view.addSubview(datePicker)
-        //datePicker.hidden = true
-    
+        pickerView.backgroundColor = UIColor.whiteColor()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        loadPickerData()
     }
     
     func changedTxtFieldDate() {
         //MARK: adicionar aqui a função de converter hora do DatePicker
-        nascimento.text = datePicker.date.description
+        let date: String?
+        date = datePicker.date.convertNsDateToStringWithoutHour()
+        nascimento.text = date
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return convenioData.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return convenioData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        convenio.text = convenioData[row]
     }
     
     func offSwitches()
@@ -82,19 +106,21 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         claustrofobico.on = false
         operado.on = false
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    
+    
+
     func textFieldDidBeginEditing(textField: UITextField) {
         
+        switch textField.tag{
         //MARK: aciona o datePicker
-        if textField.tag == 13 {
-            //datePicker.hidden = false
+        case 13:
             textField.inputView = datePicker
+        case 14:
+            textField.inputView = pickerView
+        default:
+            break
         }
-        
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -142,6 +168,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         //print(sender.description)
     }
+    
     @IBAction func cadastrarPressed(sender: UIButton) {
         let intMarcapasso = (marcapasso.on == true) ? 1 : 0
         let intClipes = (clipesCirurgico.on == true) ? 1 : 0
@@ -150,16 +177,19 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
         let intCadeirante = (cadeirante.on == true) ? 1 : 0
         let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
         let intOperado = (operado.on == true) ? 1 : 0
+        
         // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
         let paciente = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
         
         DaoCloudKit().addPaciente(paciente)
         pacientes.append(paciente)
     }
+    
     func actOnNotificationSuccessSavePaciente()
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func closePressed(sender: UIButton) {
          self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -167,6 +197,13 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         view.bringSubviewToFront(datePicker)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     /*
     // MARK: - Navigation
 

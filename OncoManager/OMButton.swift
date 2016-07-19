@@ -20,7 +20,7 @@ class OMButton: UIButton {
         self.frame.size.width = 288
         self.layer.cornerRadius = 15.0
         self.layer.frame.size.width = CGFloat(100.0)
-        self.backgroundColor = UIColor(red:0.00, green:0.47, blue:0.24, alpha:1.0)
+        self.backgroundColor = UIColor.greenOM()
         self.tintColor = UIColor.whiteColor()
         self.setTitleColor(UIColor.whiteColor(), forState: .Selected)
     }
