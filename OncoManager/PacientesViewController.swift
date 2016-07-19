@@ -86,6 +86,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        self.listaPacientes.reloadData()
         examesDoPaciente.removeAll()
     }
     

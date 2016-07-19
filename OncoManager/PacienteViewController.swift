@@ -42,7 +42,8 @@ class PacienteViewController: UIViewController {
             }
 
         }
- 
+        if examesDoPaciente.count > 0
+        {
         print(menorData)
         let dataAtual = NSDate()
         let calendar = NSCalendar.currentCalendar()
@@ -55,7 +56,7 @@ class PacienteViewController: UIViewController {
         let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
         
         diasTratamento.text = String(components.day) + " " + "dias"// This will return the number of day(s) between dates
- 
+        }
         self.navigationItem.title = pacienteName // recebe o nome da tableView pelo segue
         timeView.layer.shadowOpacity = 0.2
         timeView.layer.shadowRadius = 0.2
