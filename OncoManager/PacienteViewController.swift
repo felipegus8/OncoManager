@@ -47,6 +47,12 @@ class PacienteViewController: UIViewController {
         print(menorData)
         let dataAtual = NSDate()
         let calendar = NSCalendar.currentCalendar()
+        /*
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        print(formatter.dateFromString(String(dataAtual)))
+        formatter.dateFromString(String(menorData))
+ */
         //calendar.components([.Day , .Month , .Year], fromDate: dataAtual)
         print(dataAtual)
         let date1 = calendar.startOfDayForDate(menorData)
