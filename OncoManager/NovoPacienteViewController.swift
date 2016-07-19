@@ -8,6 +8,11 @@
 
 import UIKit
 
+//MARK: TEXTFIELD TAGS:
+// nascimento.tag = 13
+// convenio.tag = ?
+//tipoPlano.tag = ?
+
 class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -33,18 +38,40 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cadeirante: UISwitch!
     @IBOutlet weak var claustrofobico: UISwitch!
     @IBOutlet weak var operado: UISwitch!
+    
+    let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSaveSuccessPaciente", object: nil)
+        setPickerFrame()
         offSwitches()
-       // scrollView.contentSize.height = 1400
         linkDelegate()
-       // scrollView.contentSize.width = self.view.frame.width
-        //peso.frame.size.width = 0.45*matricula.frame.width
-        //altura.frame.size.width = 0.45*matricula.frame.width
+        
+        datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
+        
 
-        // Do any additional setup after loading the view.
     }
+    
+    func setPickerFrame(){
+        //let w = view.frame.width
+        //let h = view.frame.height
+        let loc = NSLocale(localeIdentifier: "pt_BR")
+        datePicker.locale = loc
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        
+        //datePicker.frame = CGRectMake(0*w,0.654*h,1*w,0.346*h)
+        datePicker.backgroundColor = UIColor.whiteColor()
+        //view.addSubview(datePicker)
+        //datePicker.hidden = true
+    
+    }
+    
+    func changedTxtFieldDate() {
+        //MARK: adicionar aqui a função de converter hora do DatePicker
+        nascimento.text = datePicker.date.description
+    }
+    
     func offSwitches()
     {
         clipesCirurgico.on = false
@@ -61,11 +88,17 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        //scrollView.scrollEnabled = false
+        
+        //MARK: aciona o datePicker
+        if textField.tag == 13 {
+            //datePicker.hidden = false
+            textField.inputView = datePicker
+        }
+        
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-       // scrollView.scrollEnabled = true
+        
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
@@ -76,12 +109,12 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        //super.touchesBegan(touches, withEvent: event)
+        
         let touch = touches.first!
         let vieW = touch.view
         
         print(vieW!.tag)
-        
+        //finaliza a edição quando o usuario toca fora da scrollView
         if(vieW?.tag != 8){
             scrollView.endEditing(true)
             view.endEditing(true)
@@ -129,6 +162,10 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func closePressed(sender: UIButton) {
          self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        view.bringSubviewToFront(datePicker)
     }
     /*
     // MARK: - Navigation
