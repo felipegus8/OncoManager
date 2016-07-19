@@ -116,7 +116,7 @@ class HistoricoPacienteTableView: UITableViewController {
         if examesDoPaciente.count > indexPath.row
         {
         cell.title.text = examesDoPaciente[indexPath.row].nome
-        stringFinal = convertNsDateToString(examesDoPaciente[indexPath.row].dataRealizado)
+        stringFinal = (examesDoPaciente[indexPath.row].dataRealizado).convertNsDateToString()
         cell.subtitle.text = stringFinal
         cell.details.text = examesDoPaciente[indexPath.row].local
         }
@@ -173,28 +173,4 @@ class HistoricoPacienteTableView: UITableViewController {
     */
 
 }
-    func convertNsDateToString(data:NSDate) -> String
-    {
-        var stringFinal:String!
-        let stringAux = String(data)
-        let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")
-        let dataAux2 = dataaux.stringByReplacingOccurrencesOfString(" ", withString: "-")
-        
-        let fullNameArr = dataAux2.componentsSeparatedByString("-")
-        print(fullNameArr)
-        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + fullNameArr[3] + ":" + fullNameArr[4]
-        return stringFinal
-    }
 
-    func convertNsDateToStringWithoutHour(data:NSDate) -> String
-    {
-        var stringFinal:String!
-        let stringAux = String(data)
-        let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")
-        let dataAux2 = dataaux.stringByReplacingOccurrencesOfString(" ", withString: "-")
-        
-        let fullNameArr = dataAux2.componentsSeparatedByString("-")
-        print(fullNameArr)
-        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0]
-        return stringFinal
-    }

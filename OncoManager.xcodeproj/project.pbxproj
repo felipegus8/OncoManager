@@ -21,6 +21,7 @@
 		2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */; };
 		2EDEB3A51D395A4100AC93B4 /* OMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */; };
 		9C1FFFF61D36C65A00C298A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FFFF41D36C65A00C298A7 /* Main.storyboard */; };
+		9C7395311D3EAF1E009D5EAB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7395301D3EAF1E009D5EAB /* Extensions.swift */; };
 		9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CC91D3679930016CD3C /* Paciente.swift */; };
 		9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCB1D3679A90016CD3C /* Exame.swift */; };
 		9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CCD1D367F050016CD3C /* Medico.swift */; };
@@ -102,6 +103,7 @@
 		2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStatus.swift; sourceTree = "<group>"; };
 		9C1FFFF51D36C65A00C298A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9C7395301D3EAF1E009D5EAB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C8F0CC91D3679930016CD3C /* Paciente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		9C8F0CCB1D3679A90016CD3C /* Exame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exame.swift; sourceTree = "<group>"; };
 		9C8F0CCD1D367F050016CD3C /* Medico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medico.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */,
 				2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */,
 				2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */,
+				9C7395301D3EAF1E009D5EAB /* Extensions.swift */,
 			);
 			name = CustomUIKitClasses;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				2E11B70C1D39AA700013A1B4 /* AddEventViewController.swift in Sources */,
 				9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */,
 				9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */,
+				9C7395311D3EAF1E009D5EAB /* Extensions.swift in Sources */,
 				2EC251CF1D37282B00910B20 /* OMTextField.swift in Sources */,
 				2E11B7121D3C40AD0013A1B4 /* NovoPacienteViewController.swift in Sources */,
 				2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */,
