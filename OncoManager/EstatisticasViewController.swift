@@ -16,7 +16,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     
     let listGraphcs:[String] = ["Paciente x Plano","Paciente x Cirurgia","Paciente x Exame", "Paciente x Médico", "Paciente x Hospital"]
     var i = 0
-    var months: [String] = ["Janeiro", "Fevereiro", "Março", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    var months: [String] = ["Jan", "Feb", "Março", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
     
     let points: [[Double]] = [[20.0, 14.0, 16.0, 13.0, 12.0, 16.0, 14.0, 18.0, 12.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 12.0, 16.0, 14.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 16.0, 3.0, 2.0, 6.0, 4.0, 8.0, 12.0, 14.0, 5.0, 4.0]]
@@ -30,6 +30,15 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
+        
+        
+        for exame in nomeExames {
+            print("TABELA COM TODOS OS EXAMES: \(exame)")
+        }
+        
+        for exame in exames {
+            print("TABELA COM O NOME DOS EXAMES: \(exame)")
+        }
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -41,8 +50,16 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Units Sold")
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Meses")
+        
+        //Largura das barras do gráfico
+        chartDataSet.barSpace = 0.2
+        
         let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        
+        //Nome e tamanho da fonte do número em cima da barra
+        chartData.setValueFont(UIFont(name: "Avenir", size: 9))
+        
         chartView.data = chartData
         
         //Colocar cores nos gráficos: .liberty(), .joyful(), .pastel(), .coloful(), .vordiplom()
@@ -51,14 +68,17 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         //Colocar as informações do eixo x na parte abaixo do gráfico
         chartView.xAxis.labelPosition = .Bottom
+        chartView.xAxis.labelRotationAngle = 80
         
         //Colocar cor no plano de fundo do gráfico:
-        //chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
         
         //Colocar animação no gráfico.
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         //Mais opções em - SÓ QUE ESSA TA DANDO PROBLEMA:http://www.appcoda.com/ios-charts-api-tutorial/
         //barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInOutElastic)
+        
+        
         
         //Adicionar uma LINHA LIMITE no gráfico
         let ll = ChartLimitLine(limit: 10.0, label: "Target")
