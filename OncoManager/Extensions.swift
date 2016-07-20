@@ -13,6 +13,7 @@ extension NSDate
 {
     func convertNsDateToString() -> String
     {
+        print("Na função:");print(self)
         var stringFinal:String!
         let stringAux = String(self)
         let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")

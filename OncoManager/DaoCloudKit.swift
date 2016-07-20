@@ -8,7 +8,7 @@
 
 import Foundation
 import CloudKit
-
+let defaults = NSUserDefaults.standardUserDefaults()
 public class DaoCloudKit
 {
     func cloudAvailable()->(Bool)
@@ -93,6 +93,8 @@ public class DaoCloudKit
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
                             print(error)
+                        }
+                        else{
                         }
                     })
                 }
@@ -476,7 +478,9 @@ public class DaoCloudKit
                 for result in results! {
 
                     var novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, realizado: result.valueForKey("realizado") as! Int)
+                    print(result.valueForKey("dataRealizado") as! NSDate)
                     exames.append(novoExame)
+                    
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessExames", object: nil)
             }

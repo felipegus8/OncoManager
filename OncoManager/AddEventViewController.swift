@@ -27,7 +27,6 @@ class AddEventViewController: UIViewController {
     
     var eventoArray = ["Exame","Consulta","Cirurgia"]
     var index = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,9 +70,17 @@ class AddEventViewController: UIViewController {
 
             }
             else{
-               /* DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text, cpf: pacienteSelecionado.cpf, codigo: 90, nome: nome.text, medico: medico.text, local: local.text, dataMarcado: <#T##NSDate#>, dataRealizado: <#T##NSDate#>, realizado: <#T##Int#>)
+                if let codigo =  defaults.objectForKey("codigo")
+                {
+                    var codigoVar = codigo as! Int + 1
+                    defaults.setObject(codigoVar, forKey: "codigo")
+                }
+                else{
+                    defaults.setObject(0, forKey: "codigo")
+                }
+             /*   DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: dataMarcado.text, dataRealizado: <#T##NSDate#>, realizado: 0))
                  
- */
+    */
                 
             }
         }
