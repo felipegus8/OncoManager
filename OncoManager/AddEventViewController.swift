@@ -8,18 +8,30 @@
 
 import UIKit
 
+enum Evento: Int {
+    case Exame = 0
+    case Consulta = 1
+    case Cirurgia = 2
+}
+
 class AddEventViewController: UIViewController {
 
-    @IBOutlet weak var tipoEvento: OMTextField!
+    @IBOutlet weak var tituloLabel: UILabel!
+    @IBOutlet weak var titulo: OMTextField!
     @IBOutlet weak var local: OMTextField!
     @IBOutlet weak var dataHoraRealizado: OMTextField!
     @IBOutlet weak var medico: OMTextField!
     @IBOutlet weak var dataMarcado: OMTextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var eventoArray = ["Exame","Consulta","Cirurgia"]
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        scrollView.scrollEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -33,6 +45,22 @@ class AddEventViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func nextPressed(sender: UIButton) {
+        if index < 2 {
+        index += 1
+        tituloLabel.text = eventoArray[index]
+        print(eventoArray[index])
+        }
+    }
+    
+    @IBAction func backPressed(sender: UIButton) {
+        if index > 0 {
+        index -= 1
+        tituloLabel.text = eventoArray[index]
+        print(eventoArray[index])
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
