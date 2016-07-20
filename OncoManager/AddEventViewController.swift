@@ -10,6 +10,13 @@ import UIKit
 
 class AddEventViewController: UIViewController {
 
+    @IBOutlet weak var tipoEvento: OMTextField!
+    @IBOutlet weak var local: OMTextField!
+    @IBOutlet weak var dataHoraRealizado: OMTextField!
+    @IBOutlet weak var medico: OMTextField!
+    @IBOutlet weak var dataMarcado: OMTextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
