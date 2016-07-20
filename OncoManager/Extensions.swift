@@ -21,7 +21,8 @@ extension NSDate
         
         let fullNameArr = dataAux2.componentsSeparatedByString("-")
         print(fullNameArr)
-        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + fullNameArr[3] + ":" + fullNameArr[4]
+        let corrigeHora = Int(fullNameArr[3])! - 2
+        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + String(corrigeHora) + ":" + fullNameArr[4]
         return stringFinal
     }
     

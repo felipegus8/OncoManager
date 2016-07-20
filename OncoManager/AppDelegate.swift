@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        
+      //  NSTimeZone.setDefaultTimeZone(NSTimeZone(name: "UTC-3")!)
+
         // Override point for customization after application launch.
         return true
     }
