@@ -16,14 +16,15 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     
     let listGraphcs:[String] = ["Paciente x Plano","Paciente x Cirurgia","Paciente x Exame", "Paciente x Médico", "Paciente x Hospital"]
     var i = 0
-    var months: [String] = ["Jan", "Feb", "Março", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    var unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-    
-    let points: [[Double]] = [[20.0, 14.0, 16.0, 13.0, 12.0, 16.0, 14.0, 18.0, 12.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 12.0, 16.0, 14.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 16.0, 3.0, 2.0, 6.0, 4.0, 8.0, 12.0, 14.0, 5.0, 4.0]]
+    var months: [String] = ["Raio X", "Raio Y", "TesteConsulta"]
+    let points: [[Double]] = [ [20, 14,3], [3, 4,3], [10, 14,3],[10, 14,3],[10, 14,3] ]
+    var contDias:[Double] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
+        
+        //contDias = calculaTempoMedioDeTodosOsExames(months, listaDeTodosOsExames: exames )
         
         setChart(months, values: points[0])
         graphTitleLabel.text = listGraphcs[0]
@@ -32,12 +33,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.descriptionText = ""
         
         
-        for exame in nomeExames {
-            print("TABELA COM TODOS OS EXAMES: \(exame)")
+        for exame in exames {
+            print("TABELA COM O NOME DOS EXAMES: \(exame.nome), \(exame.tipoProcedimento)")
         }
         
-        for exame in exames {
-            print("TABELA COM O NOME DOS EXAMES: \(exame)")
+       
+        
+        for aux in contDias{
+            print(aux)
         }
     }
     
@@ -110,11 +113,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    func calculaTempoMedioDeTodosOsExames(listaDeExames: [String], listaDeTodosOsExames: [Exame] ) -> [Int] {
+    func calculaTempoMedioDeTodosOsExames(listaDeExames: [String], listaDeTodosOsExames: [Exame] ) -> [Double] {
         var index = 0
-        var totDias: Int!
-        var contTempo:  [Int] = []
-        var contVezes: [Int] = []
+        var totDias: Double!
+        var contTempo:  [Double] = []
+        var contVezes: [Double] = []
         var diffDateComponents: NSDateComponents!
         
         //Inicializa os vetores contadormédiodedias e qtddevezesdeummesmoexame
@@ -129,11 +132,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             //indice do vetor acumulador
             index = listaDeExames.indexOf(exame.nome)!
             
-            if exame.tipoProcedimento == "Exame" {
+            if exame.tipoProcedimento == "Exame" || exame.tipoProcedimento == "Consulta" || exame.tipoProcedimento == "Cirurgia" {
                 
                 diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: exame.dataMarcado, toDate: exame.dataRealizado, options: NSCalendarOptions.init(rawValue: 0))
                 
-                totDias = diffDateComponents.day
+                totDias = Double(diffDateComponents.day)
                 
                 contTempo[index] = totDias + contTempo[index]
                 contVezes[index] = contVezes[index] + 1
