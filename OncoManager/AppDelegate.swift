@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        
+        NSTimeZone.setDefaultTimeZone(NSTimeZone(forSecondsFromGMT: -10800))
+
         // Override point for customization after application launch.
         return true
     }

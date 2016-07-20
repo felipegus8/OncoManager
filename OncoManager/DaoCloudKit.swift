@@ -428,7 +428,7 @@ public class DaoCloudKit
             else {
                 pacientes.removeAll()
                 for result in results! {
-                    var pacienteNovo = Paciente(cpf: result.valueForKey("cpf") as! Double, nome: result.valueForKey("nome") as! String, bairro: result.valueForKey("bairro") as! String, bairroPrefere: result.valueForKey("bairroPrefere") as! String, dataNasc: result.valueForKey("dataNasc") as! String, email: result.valueForKey("email") as! String, telefoneFixo: result.valueForKey("telefoneFixo") as! Double, celular: result.valueForKey("celular") as! Double, peso: result.valueForKey("peso") as! Double, altura: result.valueForKey("altura") as! Double, alergia: result.valueForKey("alergia") as! Int, marcapasso: result.valueForKey("marcapasso") as! Int, clipesCirurgico: result.valueForKey("clipesCirurgico") as! Int, operado: result.valueForKey("operado") as! Int, tipoOperacao: result.valueForKey("tipoOperacao") as? String, cadeirante: result.valueForKey("cadeirante") as! Int, diabetico: result.valueForKey("diabetico") as! Int, hipertenso: result.valueForKey("hipertenso") as! Int, convenio: result.valueForKey("convenio") as! String, tipoPlano: result.valueForKey("tipoPlano") as! String, matriculaPlano: result.valueForKey("matriculaPlano") as! String, claustrofobico: result.valueForKey("claustrofobico") as! Int)
+                    let pacienteNovo = Paciente(cpf: result.valueForKey("cpf") as! Double, nome: result.valueForKey("nome") as! String, bairro: result.valueForKey("bairro") as! String, bairroPrefere: result.valueForKey("bairroPrefere") as! String, dataNasc: result.valueForKey("dataNasc") as! String, email: result.valueForKey("email") as! String, telefoneFixo: result.valueForKey("telefoneFixo") as! Double, celular: result.valueForKey("celular") as! Double, peso: result.valueForKey("peso") as! Double, altura: result.valueForKey("altura") as! Double, alergia: result.valueForKey("alergia") as! Int, marcapasso: result.valueForKey("marcapasso") as! Int, clipesCirurgico: result.valueForKey("clipesCirurgico") as! Int, operado: result.valueForKey("operado") as! Int, tipoOperacao: result.valueForKey("tipoOperacao") as? String, cadeirante: result.valueForKey("cadeirante") as! Int, diabetico: result.valueForKey("diabetico") as! Int, hipertenso: result.valueForKey("hipertenso") as! Int, convenio: result.valueForKey("convenio") as! String, tipoPlano: result.valueForKey("tipoPlano") as! String, matriculaPlano: result.valueForKey("matriculaPlano") as! String, claustrofobico: result.valueForKey("claustrofobico") as! Int)
                     
                         pacientes.append(pacienteNovo)
                     }
@@ -452,7 +452,7 @@ public class DaoCloudKit
             else {
                 nomeExames.removeAll()
                 for result in results! {
-                      var novoExame = NomeExame(nome: result.valueForKey("nome") as! String)
+                      let novoExame = NomeExame(nome: result.valueForKey("nome") as! String)
                     nomeExames.append(novoExame)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessNomeExames", object: nil)
@@ -475,10 +475,17 @@ public class DaoCloudKit
             }
             else {
                 exames.removeAll()
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "dd/MM/yyyy - HH:mm"
+                // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
+                formatter.timeZone = NSTimeZone(forSecondsFromGMT: 10800)
                 for result in results! {
-
-                    var novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, realizado: result.valueForKey("realizado") as! Int)
-                    print(result.valueForKey("dataRealizado") as! NSDate)
+                    let dataRealString = ((result.valueForKey("dataRealizado") as! NSDate)).consertaHorarioDeVerao()
+                   let dataRealizadoCerto = formatter.dateFromString(dataRealString)
+                    let dataMarcadoString = ((result.valueForKey("dataMarcado") as! NSDate)).consertaHorarioDeVerao()
+                    let dataMarcadoCerto = formatter.dateFromString(dataMarcadoString)
+                    print(dataRealizadoCerto)
+                    let novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:dataMarcadoCerto!, dataRealizado: dataRealizadoCerto!, realizado: result.valueForKey("realizado") as! Int)
                     exames.append(novoExame)
                     
                 }
@@ -503,7 +510,7 @@ public class DaoCloudKit
             else {
                 medicos.removeAll()
                 for result in results! {
-                    var novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Double, telefone: result.valueForKey("telefone") as? Double)
+                    let novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Double, telefone: result.valueForKey("telefone") as? Double)
                     medicos.append(novoMedico)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessMedicos", object: nil)
