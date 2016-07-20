@@ -48,7 +48,6 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSaveSuccessPaciente", object: nil)
         
         setupPickers()
-        offSwitches()
         linkDelegate()
         
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
@@ -95,20 +94,6 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         convenio.text = convenioData[row]
     }
-    
-    func offSwitches()
-    {
-        clipesCirurgico.on = false
-        marcapasso.on = false
-        hipertenso.on = false
-        diabetico.on = false
-        cadeirante.on = false
-        claustrofobico.on = false
-        operado.on = false
-    }
-    
-    
-    
 
     func textFieldDidBeginEditing(textField: UITextField) {
         

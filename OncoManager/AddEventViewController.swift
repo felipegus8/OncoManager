@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum Evento: Int {
-    case Exame = 0
-    case Consulta = 1
-    case Cirurgia = 2
-}
+//MARK: TEXTFIELD TAGS:
+//dataHoraRealizado.tag = 10
+//dataMarcado.tag = 11
+//titulo.tag = 12
+//medico.tag = 13
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var tituloLabel: UILabel!
     @IBOutlet weak var titulo: OMTextField!
@@ -25,13 +25,25 @@ class AddEventViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var datePickerHour = UIDatePicker()
+    var datePicker = UIDatePicker()
+    var pickerView = UIPickerView()
+    var medicoData: [String]!
+    var exameData: [String]!
+    var pickerData: [String]!
+    var tag = 0
     var eventoArray = ["Exame","Consulta","Cirurgia"]
+    
     var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.scrollEnabled = false
-        // Do any additional setup after loading the view.
+        setupPickers()
+        linkDelegate()
+        
+        datePicker.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerHour.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDateHour), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +54,107 @@ class AddEventViewController: UIViewController {
 
     @IBAction func closeEvent(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func linkDelegate() {
+        dataHoraRealizado.delegate = self
+        dataMarcado.delegate = self
+        titulo.delegate = self
+        medico.delegate = self
+    }
+    
+    func setupPickers(){
+        
+        let loc = NSLocale(localeIdentifier: "pt_BR")
+        datePicker.locale = loc
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        datePicker.backgroundColor = UIColor.whiteColor()
+        datePicker.frame.size.height = 0.23*self.view.frame.height
+        
+        datePickerHour.locale = loc
+        datePickerHour.backgroundColor = UIColor.whiteColor()
+        
+        pickerView.backgroundColor = UIColor.whiteColor()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.frame.size.height = self.view.frame.height*0.35
+        loadPickerData()
+    }
+    
+    //MARK: carregar aqui a lista de exames e médicos
+    func loadPickerData() {
+        medicoData = ["Dra. Claudia","Dr. Eduardo","Dra. Lúcia","Dr. Pedro"]
+        exameData = ["Biopsia","Endoscopia","Ressonância","Tomografia Computadorizada","Ultrassonografia"]
+    }
+    
+    //MARK: converte a Data para String e altera o texto do textfield
+    func changedTxtFieldDate() {
+        let date: String?
+        date = datePicker.date.convertNsDateToStringWithoutHour()
+        dataMarcado.text = date
+    }
+    
+    func changedTxtFieldDateHour() {
+        let date: String?
+        date = datePickerHour.date.convertNsDateToString()
+        dataHoraRealizado.text = date
+    }
+    
+    //MARK: PickerView dataSource
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        switch tag {
+        case 12:
+            titulo.text = pickerData[row]
+        case 13:
+            medico.text = pickerData[row]
+        default:
+            break
+        }
+        
+    }
+    
+    //MARK: delegate do text field -> aciona o pickerView
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        tag = textField.tag
+        
+        switch textField.tag{
+            
+        //MARK: aciona o datePicker
+        case 10:
+            textField.inputView = datePickerHour
+        case 11:
+            textField.inputView = datePicker
+        case 12:
+            pickerData = exameData
+            textField.inputView = pickerView
+        case 13:
+            pickerData = medicoData
+            textField.inputView = pickerView
+            
+        default:
+            break
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        //textField.resign
+        self.view.endEditing(true)
+        return false
     }
 
     @IBAction func nextPressed(sender: UIButton) {
@@ -60,6 +173,27 @@ class AddEventViewController: UIViewController {
         }
         
     }
+    
+    //fecha a inputView (picker ou teclado) com UIGesture
+    @IBAction func stopEditing(sender: UITapGestureRecognizer) {
+        
+        self.view.endEditing(true)
+        //print(sender.description)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        let touch = touches.first!
+        let vieW = touch.view
+        
+        print(vieW!.tag)
+        //finaliza a edição quando o usuario toca fora da scrollView
+        if(vieW?.tag != 8){
+            scrollView.endEditing(true)
+            view.endEditing(true)
+        }
+    }
+    
     @IBAction func cadastro(sender: AnyObject) {
         if DaoCloudKit().cloudAvailable() == true{
             if ((titulo.text?.isEmpty == true) || (local.text?.isEmpty == true) || (dataHoraRealizado.text?.isEmpty == true) || (medico.text?.isEmpty == true) || (dataMarcado.text?.isEmpty == true))
@@ -79,8 +213,7 @@ class AddEventViewController: UIViewController {
                     defaults.setObject(0, forKey: "codigo")
                 }
              /*   DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: dataMarcado.text, dataRealizado: <#T##NSDate#>, realizado: 0))
-                 
-    */
+            */
                 
             }
         }
