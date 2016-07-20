@@ -10,12 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-  
     @IBOutlet weak var signIn: OMButton!
-    
     @IBOutlet weak var emailTxtField: OMTextField!
     @IBOutlet weak var senhaTxtField: OMTextField!
-    
     @IBOutlet weak var novaConta: UIButton!
 
     var i = 0

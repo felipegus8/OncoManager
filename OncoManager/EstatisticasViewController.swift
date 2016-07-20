@@ -16,7 +16,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     
     let listGraphcs:[String] = ["Paciente x Plano","Paciente x Cirurgia","Paciente x Exame", "Paciente x Médico", "Paciente x Hospital"]
     var i = 0
-    var months: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    var months: [String] = ["Janeiro", "Fevereiro", "Março", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
     
     let points: [[Double]] = [[20.0, 14.0, 16.0, 13.0, 12.0, 16.0, 14.0, 18.0, 12.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 6.0, 3.0, 2.0, 6.0, 4.0, 8.0, 2.0, 14.0, 15.0, 14.0], [3.0, 4.0, 6.0, 3.0, 12.0, 16.0, 14.0, 8.0, 2.0, 4.0, 5.0, 4.0], [10.0, 14.0, 16.0, 3.0, 2.0, 6.0, 4.0, 8.0, 12.0, 14.0, 5.0, 4.0]]
@@ -53,7 +53,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.xAxis.labelPosition = .Bottom
         
         //Colocar cor no plano de fundo do gráfico:
-        chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        //chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
         
         //Colocar animação no gráfico.
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
@@ -89,7 +89,51 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             setChart(months, values: points[i])
         }
     }
+    
+    func calculaTempoMedioDeTodosOsExames(listaDeExames: [String], listaDeTodosOsExames: [Exame] ) -> [Int] {
+        var index = 0
+        var totDias: Int!
+        var contTempo:  [Int] = []
+        var contVezes: [Int] = []
+        var diffDateComponents: NSDateComponents!
+        
+        //Inicializa os vetores contadormédiodedias e qtddevezesdeummesmoexame
+        for i in 0..<listaDeExames.count{
+            
+            contTempo.append(0)
+            contVezes.append(0)
+        }
+        
+        for exame in listaDeTodosOsExames {
+            
+            //indice do vetor acumulador
+            index = listaDeExames.indexOf(exame.nome)!
+            
+            if exame.tipoProcedimento == "Exame" {
+                
+                diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: exame.dataMarcado, toDate: exame.dataRealizado, options: NSCalendarOptions.init(rawValue: 0))
+                
+                totDias = diffDateComponents.day
+                
+                contTempo[index] = totDias + contTempo[index]
+                contVezes[index] = contVezes[index] + 1
+            }
+            
+        }
+        
+        for i in 1..<listaDeExames.count{
+            if contVezes[i] == 0{
+                contTempo[i] = 0
+            }
+            else{
+                contTempo[i] = contTempo[i]/contVezes[i]
+            }
+        }
+        
+        return contTempo
+    }
 
     
+        
 }
  
