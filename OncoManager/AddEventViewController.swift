@@ -61,6 +61,8 @@ class AddEventViewController: UIViewController {
         }
         
     }
+    @IBAction func cadastro(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 
