@@ -20,11 +20,10 @@ public class Exame
     var local:String!
     var dataMarcado:NSDate!
     var dataRealizado:NSDate!
-    var aprovado:Int!
     var realizado:Int!
     
 
-    init(tipoProcedimento:String,cpf:Double,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,aprovado:Int,realizado:Int)
+    init(tipoProcedimento:String,cpf:Double,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,realizado:Int)
     {
         self.tipoProcedimento = tipoProcedimento
         self.cpf = cpf
@@ -34,7 +33,6 @@ public class Exame
         self.local = local
         self.dataMarcado = dataMarcado
         self.dataRealizado = dataRealizado
-        self.aprovado = aprovado
         self.realizado = realizado
     }
 }
