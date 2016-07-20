@@ -115,6 +115,7 @@ class HistoricoPacienteTableView: UITableViewController {
         let stringFinal:String!
         if examesDoPaciente.count > indexPath.row
         {
+        print(examesDoPaciente[indexPath.row].nome)
         cell.title.text = examesDoPaciente[indexPath.row].nome
         stringFinal = (examesDoPaciente[indexPath.row].dataRealizado).convertNsDateToString()
         cell.subtitle.text = stringFinal

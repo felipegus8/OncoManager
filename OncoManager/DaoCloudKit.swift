@@ -476,9 +476,16 @@ public class DaoCloudKit
             else {
                 exames.removeAll()
                 for result in results! {
-
-                    let novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:result.valueForKey("dataMarcado") as! NSDate, dataRealizado: result.valueForKey("dataRealizado") as! NSDate, realizado: result.valueForKey("realizado") as! Int)
-                    print(result.valueForKey("dataRealizado") as! NSDate)
+                    let formatter = NSDateFormatter()
+                    formatter.dateFormat = "dd/MM/yyyy - HH:mm"
+                   // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
+                    formatter.timeZone = NSTimeZone(abbreviation: "BRT")
+                    let dataRealString = ((result.valueForKey("dataRealizado") as! NSDate)).convertNsDateToString()
+                   let dataRealizadoCerto = formatter.dateFromString(dataRealString)
+                    let dataMarcadoString = ((result.valueForKey("dataMarcado") as! NSDate)).convertNsDateToString()
+                    let dataMarcadoCerto = formatter.dateFromString(dataMarcadoString)
+                    print(dataRealizadoCerto)
+                    let novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:dataMarcadoCerto!, dataRealizado: dataRealizadoCerto!, realizado: result.valueForKey("realizado") as! Int)
                     exames.append(novoExame)
                     
                 }

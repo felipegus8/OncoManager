@@ -21,10 +21,10 @@ class LoginViewController: UIViewController {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
         formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
-
-       let dataRealizado = formatter.dateFromString("02-01-2016 17:00")
-        let dataMarcado = formatter.dateFromString("01-01-2016 15:00")
-        let testeExame =  Exame(tipoProcedimento: "Consulta",cpf:16798089766,codigo: 700, nome: "TesteConsulta", medico: "TestandoExame", local: "Quinta", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, realizado: 1)
+       let dataRealizado = formatter.dateFromString("01-03-2016 17:00")
+        let dataMarcado = formatter.dateFromString("01-02-2016 15:00")
+        
+        let testeExame =  Exame(tipoProcedimento: "Exame",cpf:16798089766,codigo: 7000, nome: "Raio Y", medico: "TestandoExame", local: "Copa", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, realizado: 1)
       /*  let testePaciente = Paciente(cpf: 16798089766, nome: "Teste", bairro: "Magé", bairroPrefere: "Niteroi", dataNasc: "26-09-1962", email: "qualquer", telefoneFixo: 2345980135, celular: 346725789, peso: 78, altura: 1.70, alergia: 0, marcapasso: 0, clipesCirurgico: 0, operado: 0, tipoOperacao: nil, cadeirante: 0, diabetico: 1, hipertenso: 0, convenio: "Assim", tipoPlano: "Ruim", matriculaPlano: "12345",claustrofobico:0)
  */
         senhaTxtField.secureTextEntry = true

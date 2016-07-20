@@ -13,16 +13,13 @@ extension NSDate
 {
     func convertNsDateToString() -> String
     {
-        print("Na função:");print(self)
         var stringFinal:String!
         let stringAux = String(self)
         let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")
         let dataAux2 = dataaux.stringByReplacingOccurrencesOfString(" ", withString: "-")
         
         let fullNameArr = dataAux2.componentsSeparatedByString("-")
-        print(fullNameArr)
-        let corrigeHora = Int(fullNameArr[3])! - 2
-        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + String(corrigeHora) + ":" + fullNameArr[4]
+        stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + fullNameArr[3] + ":" + fullNameArr[4]
         return stringFinal
     }
     
@@ -38,7 +35,6 @@ extension NSDate
         stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0]
         return stringFinal
     }
-    
 }
 
 extension UIColor {
