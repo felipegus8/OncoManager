@@ -62,6 +62,21 @@ class AddEventViewController: UIViewController {
         
     }
     @IBAction func cadastro(sender: AnyObject) {
+        if DaoCloudKit().cloudAvailable() == true{
+            if ((titulo.text?.isEmpty == true) || (local.text?.isEmpty == true) || (dataHoraRealizado.text?.isEmpty == true) || (medico.text?.isEmpty == true) || (dataMarcado.text?.isEmpty == true))
+            {
+                let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alert,animated: true, completion: nil)
+
+            }
+            else{
+               /* DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text, cpf: pacienteSelecionado.cpf, codigo: 90, nome: nome.text, medico: medico.text, local: local.text, dataMarcado: <#T##NSDate#>, dataRealizado: <#T##NSDate#>, realizado: <#T##Int#>)
+                 
+ */
+                
+            }
+        }
     }
     /*
     // MARK: - Navigation
