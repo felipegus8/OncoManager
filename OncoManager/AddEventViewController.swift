@@ -277,16 +277,16 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
             }
             else{
-                if let codigo =  defaults.objectForKey("codigo")
+                var maiorValor:Int = 0
+                for valor in exames
                 {
-                    var codigoVar = codigo as! Int + 1
-                    defaults.setObject(codigoVar, forKey: "codigo")
-                }
-                else{
-                    defaults.setObject(0, forKey: "codigo")
+                    if Int(valor.codigo) > maiorValor
+                    {
+                        maiorValor = valor.codigo
+                    }
                 }
                 print("Chamou o cloud")
-                let instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
+                let instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo:maiorValor + 1 ,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
                 DaoCloudKit().addExame(instanciaExame)
                 exames.append(instanciaExame)
                 examesDoPaciente.append(instanciaExame)
