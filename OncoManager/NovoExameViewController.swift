@@ -8,11 +8,14 @@
 
 import UIKit
 
-class NovoExameViewController: UIViewController {
+class NovoExameViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var nomeExame: OMTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        nomeExame.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -22,14 +25,27 @@ class NovoExameViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: funcoes para desligar o teclado-------------------
+    //desliga pela tecla return
+    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        self.view.endEditing(true)
+        print(textField.placeholder)
+        return false
     }
-    */
+    //desliga ao tocar fora do textfield
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+    }
+    // -------------------------------------------------------
 
+    //fecha tela no 'x'
+    @IBAction func closeModalPressed(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: armazenar dados no iCloud
+    @IBAction func cadastrarPressed(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

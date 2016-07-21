@@ -116,6 +116,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     {
         //textField.resign
         self.view.endEditing(true)
+        print(textField.placeholder)
         return false
     }
     

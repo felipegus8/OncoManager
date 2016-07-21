@@ -21,6 +21,7 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        linkDelegate()
         // Do any additional setup after loading the view.
     }
 
@@ -37,31 +38,26 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         crm.delegate = self
     }
     
+    //MARK: funcoes para desligar o teclado-------------------
+    //desliga pela tecla return
     func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
-        //textField.resign
         self.view.endEditing(true)
-        return true
+        print(textField.placeholder)
+        return false
     }
-    
+    //desliga ao tocar fora da scroll view
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        let touch = touches.first!
-        
-//        let vieW = touch.view
-//        print(vieW!.tag)
-//        //finaliza a edição quando o usuario toca fora da scrollView
-//        if(vieW?.tag != 8){
-        
             scrollView.endEditing(true)
             view.endEditing(true)
     }
-    
+    //desliga ao tocar na scroll view
     @IBAction func stopEditing(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-
+    // -------------------------------------------------------
     
+    //fecha tela no 'x'
     @IBAction func closeModalPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

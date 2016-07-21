@@ -2780,6 +2780,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="closeModalPressed:" destination="nTr-MI-qbN" eventType="touchUpInside" id="JL4-pn-aty"/>
                                     <action selector="closePressed:" destination="gmv-8z-RK7" eventType="touchUpInside" id="mcx-Hh-7dW"/>
                                 </connections>
                             </button>
@@ -2826,6 +2827,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="cadastrarPressed:" destination="nTr-MI-qbN" eventType="touchUpInside" id="qLq-Y6-pjq"/>
                                     <action selector="cadastro:" destination="LBn-s8-Pfj" eventType="touchUpInside" id="d0Z-P5-OlC"/>
                                 </connections>
                             </button>
@@ -2886,6 +2888,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="nomeExame" destination="BSR-Fl-zEJ" id="t7e-ax-8M2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sq-hG-8Vv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
