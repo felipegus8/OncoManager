@@ -12,6 +12,8 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var listaPacientes: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //var selectedName = "" // nome do paciente selecionado
     
     
