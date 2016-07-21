@@ -95,8 +95,12 @@ public class DaoCloudKit
                             print(error)
                         }
                         else{
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessCadastroExame", object: nil)
                         }
                     })
+                }
+                else{
+                    print("Já existe esse exame")
                 }
             }
         }

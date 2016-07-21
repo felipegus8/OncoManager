@@ -61,6 +61,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         datePicker.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
         datePickerHour.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDateHour), forControlEvents: UIControlEvents.ValueChanged)
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEventViewController.actOnNotificationSuccessAddEvento), name: "notificationSuccessCadastroExame", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -268,11 +270,18 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 else{
                     defaults.setObject(0, forKey: "codigo")
                 }
-             /*   DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: dataMarcado.text, dataRealizado: <#T##NSDate#>, realizado: 0))
-            */
+                print("Chamou o cloud")
+                DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: datePickerHour.date, realizado: 0))
+            
                 
             }
         }
+    }
+    func actOnNotificationSuccessAddEvento()
+    {
+         dispatch_async(dispatch_get_main_queue(),{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
     /*
     // MARK: - Navigation

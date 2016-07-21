@@ -104,7 +104,7 @@ class HistoricoPacienteTableView: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return examesDoPaciente.count
     }
 
     
