@@ -145,6 +145,7 @@ class HistoricoPacienteTableView: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             DaoCloudKit().deleteExame(examesDoPaciente[indexPath.row])
+            examesDoPaciente.removeAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
     }
