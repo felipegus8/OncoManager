@@ -119,7 +119,7 @@ public class DaoCloudKit
             if error == nil {
                 
                 print("Já existe esse exame")
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroExame", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroNovoExame", object: nil)
                 
             }
                 
@@ -134,6 +134,9 @@ public class DaoCloudKit
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
                             print(error)
+                        }
+                        else{
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessCadastroNovoExame", object: nil)
                         }
                     })
                 }
@@ -169,6 +172,9 @@ public class DaoCloudKit
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
                             print(error)
+                        }
+                        else{
+                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessCadastroMedico", object: nil)
                         }
                     })
                 }

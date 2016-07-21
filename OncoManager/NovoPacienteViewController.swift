@@ -49,7 +49,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
         
         setupPickers()
         linkDelegate()
-        
+        setKeyboards()
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
         
 
@@ -71,7 +71,15 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
         pickerView.delegate = self
         loadPickerData()
     }
-    
+    func setKeyboards()
+    {
+        cpf.keyboardType = .NumberPad
+        telFixo.keyboardType = .NumberPad
+        cel.keyboardType = .NumberPad
+        matricula.keyboardType = .NumberPad
+        peso.keyboardType = .DecimalPad
+        altura.keyboardType = .DecimalPad
+    }
     func changedTxtFieldDate() {
         //MARK: adicionar aqui a função de converter hora do DatePicker
         let date: String?

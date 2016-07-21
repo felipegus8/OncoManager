@@ -49,6 +49,11 @@ class LoginViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationErrorSenha), name:
             "notificationErrorPassword", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessNomeExames), name: "notificationSuccessNomeExames", object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessMedicos), name: "notificationSuccessMedicos", object: nil)
+
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -93,7 +98,6 @@ class LoginViewController: UIViewController {
     func actOnNotificationSuccessLogin()
     {
         DaoCloudKit().fetchPacientes()
-        
     }
     func actOnNotificationSuccessPacientes()
     {
@@ -101,11 +105,19 @@ class LoginViewController: UIViewController {
     }
     func actOnNotificationSuccessExames()
     {
+        DaoCloudKit().fetchNomeExames()
+        
+    }
+    func actOnNotificationSuccessNomeExames()
+    {
+         DaoCloudKit().fetchMedicos()
+    }
+    func actOnNotificationSuccessMedicos()
+    {
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToHome", sender: self)
         })
     }
-    
     func actOnNotificationErrorEmail()
     {
         i = 0

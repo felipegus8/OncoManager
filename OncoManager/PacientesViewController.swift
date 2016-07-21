@@ -83,6 +83,7 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         self.listaPacientes.reloadData()
+        print("Entrou na view Will Appear doa pacientes")
         examesDoPaciente.removeAll()
     }
     
