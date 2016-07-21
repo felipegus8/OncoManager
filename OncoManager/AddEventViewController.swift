@@ -26,7 +26,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    
+    var instanciaExame:Exame!
     var datePickerHour = UIDatePicker()
     var datePicker = UIDatePicker()
     var pickerView = UIPickerView()
@@ -193,10 +193,17 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             textField.inputView = datePicker
         case 12:
             if (textField.placeholder == "Tipo de exame"){
+                if pickerData != nil{
+            pickerData.removeAll()
+                }
             pickerData = exameData
             textField.inputView = pickerView
             }
         case 13:
+            if pickerData != nil
+            {
+            pickerData.removeAll()
+            }
             pickerData = medicoData
             textField.inputView = pickerView
             
@@ -297,18 +304,19 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                         maiorValor = valor.codigo
                     }
                 }
+                maiorValor+=1
+                print(maiorValor)
                 print("Chamou o cloud")
-                let instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo:maiorValor + 1 ,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
+                instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo:maiorValor,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
                 DaoCloudKit().addExame(instanciaExame)
-                exames.append(instanciaExame)
-                examesDoPaciente.append(instanciaExame)
-                
             }
         }
         }
     }
     func actOnNotificationSuccessAddEvento()
     {
+        exames.append(instanciaExame)
+        examesDoPaciente.append(instanciaExame)
          dispatch_async(dispatch_get_main_queue(),{
             self.dismissViewControllerAnimated(true, completion: nil)
         })
