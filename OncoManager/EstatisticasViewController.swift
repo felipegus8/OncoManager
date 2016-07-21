@@ -69,12 +69,12 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Meses")
         
         //Largura das barras do gráfico
-        chartDataSet.barSpace = 0.2
+        //chartDataSet.barSpace = 0.2
         
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         
         //Nome e tamanho da fonte do número em cima da barra
-        chartData.setValueFont(UIFont(name: "Avenir", size: 9))
+        //chartData.setValueFont(UIFont(name: "Avenir", size: 9))
         
         chartView.data = chartData
         
@@ -84,7 +84,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         //Colocar as informações do eixo x na parte abaixo do gráfico
         chartView.xAxis.labelPosition = .Bottom
-        chartView.xAxis.labelRotationAngle = 80
+        //chartView.xAxis.labelRotationAngle = 80
         
         //Colocar cor no plano de fundo do gráfico:
         chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
