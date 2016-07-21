@@ -13,6 +13,7 @@
 		2E5A36611D41198A008AAD3A /* NovoMedicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */; };
 		2E5A36631D411998008AAD3A /* NovoExameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36621D411998008AAD3A /* NovoExameViewController.swift */; };
 		2E5A36681D414C17008AAD3A /* TabBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36671D414C17008AAD3A /* TabBarControl.swift */; };
+		2EB7BF5B1D417AA3002BCC66 /* EditarPacienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7BF5A1D417AA3002BCC66 /* EditarPacienteViewController.swift */; };
 		2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */; };
 		2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C61D36C7E300910B20 /* LoginViewController.swift */; };
 		2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C81D36C80500910B20 /* PacientesViewController.swift */; };
@@ -34,7 +35,6 @@
 		9C8F0CD31D3680300016CD3C /* DaoCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD21D3680300016CD3C /* DaoCloudKit.swift */; };
 		9C8F0CD61D3681650016CD3C /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F0CD51D3681650016CD3C /* Admin.swift */; };
 		9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */; };
-		9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */; };
 		9CF3BAB11D353A0B00D83B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */; };
 		9CF3BAB41D353A0B00D83B1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */; };
 		9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF3BABC1D353A2600D83B1B /* CloudKit.framework */; };
@@ -99,6 +99,7 @@
 		2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoMedicoViewController.swift; sourceTree = "<group>"; };
 		2E5A36621D411998008AAD3A /* NovoExameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoExameViewController.swift; sourceTree = "<group>"; };
 		2E5A36671D414C17008AAD3A /* TabBarControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControl.swift; sourceTree = "<group>"; };
+		2EB7BF5A1D417AA3002BCC66 /* EditarPacienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarPacienteViewController.swift; sourceTree = "<group>"; };
 		2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstatisticasViewController.swift; sourceTree = "<group>"; };
 		2EC251C61D36C7E300910B20 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2EC251C81D36C80500910B20 /* PacientesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacientesViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		9CA2D7581D3930420093B8B0 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		9CF3BAA61D353A0B00D83B1B /* OncoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OncoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF3BAB31D353A0B00D83B1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF3BAB51D353A0B00D83B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,10 +184,10 @@
 				2EC251C81D36C80500910B20 /* PacientesViewController.swift */,
 				2EC251C61D36C7E300910B20 /* LoginViewController.swift */,
 				2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */,
-				9CF3BAAB1D353A0B00D83B1B /* ViewController.swift */,
 				2EC251D21D37333900910B20 /* NovoAdmViewController.swift */,
 				2E11B70B1D39AA700013A1B4 /* AddEventViewController.swift */,
 				2E11B7111D3C40AD0013A1B4 /* NovoPacienteViewController.swift */,
+				2EB7BF5A1D417AA3002BCC66 /* EditarPacienteViewController.swift */,
 				2E5A365B1D41195C008AAD3A /* NovoDadoViewController.swift */,
 				2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */,
 				2E5A36621D411998008AAD3A /* NovoExameViewController.swift */,
@@ -360,7 +360,6 @@
 				2E5A36611D41198A008AAD3A /* NovoMedicoViewController.swift in Sources */,
 				2E5A36681D414C17008AAD3A /* TabBarControl.swift in Sources */,
 				9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */,
-				9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */,
 				9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */,
 				2EC251D11D372E9000910B20 /* OMButton.swift in Sources */,
 				2EDEB39E1D383D0900AC93B4 /* HistoricoPacienteTableView.swift in Sources */,
@@ -380,6 +379,7 @@
 				2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */,
 				9C8F0CCE1D367F050016CD3C /* Medico.swift in Sources */,
 				2EDEB3A51D395A4100AC93B4 /* OMStatus.swift in Sources */,
+				2EB7BF5B1D417AA3002BCC66 /* EditarPacienteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
