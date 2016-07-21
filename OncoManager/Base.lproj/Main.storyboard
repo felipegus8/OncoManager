@@ -2231,10 +2231,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="lnR-oh-aXc" id="4iU-gy-Cm5"/>
                         <outlet property="dataHoraRealizado" destination="ZbE-Sv-7a4" id="ipN-4F-2ai"/>
                         <outlet property="dataMarcado" destination="NlF-50-rgc" id="ICt-fw-J9w"/>
                         <outlet property="local" destination="ScX-ll-j7O" id="sal-Ie-2CE"/>
                         <outlet property="medico" destination="8cl-Cw-WjP" id="4SZ-e3-0up"/>
+                        <outlet property="nextButton" destination="N8b-ke-6KU" id="tGe-6D-YTu"/>
                         <outlet property="scrollView" destination="uRi-XQ-InE" id="fgN-l1-JrP"/>
                         <outlet property="titulo" destination="Qlf-GV-uO2" id="OZi-MZ-9Eg"/>
                         <outlet property="tituloLabel" destination="vse-34-A4y" id="HN0-uL-vBh"/>

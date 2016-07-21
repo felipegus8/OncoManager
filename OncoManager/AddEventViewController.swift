@@ -24,6 +24,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var dataMarcado: OMTextField!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var datePickerHour = UIDatePicker()
     var datePicker = UIDatePicker()
@@ -33,14 +35,29 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var pickerData: [String]!
     var tag = 0
     var eventoArray = ["Exame","Consulta","Cirurgia"]
+    var currentEvent: String!
+
+    struct EventoPlaceholder {
+        var titulo: String!
+        var local: String!
+        var dataHoraRealizado: String!
+        var medico: String!
+        var dataMarcado: String!
+    }
+    
+    var eventoPlArray: [Int:EventoPlaceholder]!
     
     var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.scrollEnabled = false
         setupPickers()
+        setupPlaceholderData()
         linkDelegate()
+        
+        backButton.alpha = 0.25
         
         datePicker.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
         datePickerHour.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDateHour), forControlEvents: UIControlEvents.ValueChanged)
@@ -55,6 +72,17 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBAction func closeEvent(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    //Configura o nome dos placeholders para cada tipo de evento
+    func setupPlaceholderData(){
+        let exame = EventoPlaceholder(titulo: "Tipo de exame", local: "Local", dataHoraRealizado: "Data do exame", medico: "Médico solicitante", dataMarcado: "Data de agendamento")
+        let consulta = EventoPlaceholder(titulo: "Tipo de consulta", local: "Local", dataHoraRealizado: "Data da consulta", medico: "Médico", dataMarcado: "Data de agendamento")
+        let cirurgia = EventoPlaceholder(titulo: "Tipo de cirurgia", local: "Local", dataHoraRealizado: "Data da cirurgia", medico: "Médico responsável", dataMarcado: "Data de agendamento")
+        
+        eventoPlArray = [0:exame, 1:consulta, 2: cirurgia]
+    }
+    
+
     
     func linkDelegate() {
         dataHoraRealizado.delegate = self
@@ -85,6 +113,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func loadPickerData() {
         medicoData = ["Dra. Claudia","Dr. Eduardo","Dra. Lúcia","Dr. Pedro"]
         exameData = ["Biopsia","Endoscopia","Ressonância","Tomografia Computadorizada","Ultrassonografia"]
+        
     }
     
     //MARK: converte a Data para String e altera o texto do textfield
@@ -128,7 +157,6 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     //MARK: delegate do text field -> aciona o pickerView
     func textFieldDidBeginEditing(textField: UITextField) {
-        
         tag = textField.tag
         
         switch textField.tag{
@@ -139,8 +167,10 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         case 11:
             textField.inputView = datePicker
         case 12:
+            if (textField.placeholder == "Tipo de exame"){
             pickerData = exameData
             textField.inputView = pickerView
+            }
         case 13:
             pickerData = medicoData
             textField.inputView = pickerView
@@ -156,19 +186,45 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.view.endEditing(true)
         return false
     }
+    
+    func changePlaceholders(index: Int){
+        
+        titulo.placeholder = eventoPlArray[index]?.titulo
+        local.placeholder = eventoPlArray[index]?.local
+        dataHoraRealizado.placeholder = eventoPlArray[index]?.dataHoraRealizado
+        medico.placeholder = eventoPlArray[index]?.medico
+        dataMarcado.placeholder = eventoPlArray[index]?.dataMarcado
+        
+    }
 
     @IBAction func nextPressed(sender: UIButton) {
+       
         if index < 2 {
         index += 1
         tituloLabel.text = eventoArray[index]
+        changePlaceholders(index)
+            if backButton.alpha == 0.25 {
+                backButton.alpha = 1
+            }
+            if index == 2 {
+                nextButton.alpha = 0.25
+            }
         print(eventoArray[index])
         }
     }
     
     @IBAction func backPressed(sender: UIButton) {
+        
         if index > 0 {
         index -= 1
         tituloLabel.text = eventoArray[index]
+        changePlaceholders(index)
+            if nextButton.alpha == 0.25 {
+                nextButton.alpha = 1
+            }
+            if index == 0 {
+                backButton.alpha = 0.25
+            }
         print(eventoArray[index])
         }
         
