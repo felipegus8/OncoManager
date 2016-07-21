@@ -97,8 +97,8 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         
         //Adicionar uma LINHA LIMITE no gráfico
-        let ll = ChartLimitLine(limit: 10.0, label: "Target")
-        chartView.rightAxis.addLimitLine(ll)
+        //let ll = ChartLimitLine(limit: 10.0, label: "Target")
+        //chartView.rightAxis.addLimitLine(ll)
         
     }
     
