@@ -15,6 +15,7 @@ extension NSDate
     {
         var stringFinal:String!
         let stringAux = String(self)
+        print(stringAux)
         let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")
         let dataAux2 = dataaux.stringByReplacingOccurrencesOfString(" ", withString: "-")
         

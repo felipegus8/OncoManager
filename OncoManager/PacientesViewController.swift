@@ -17,8 +17,6 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       /* NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PacientesViewController.actOnNotificationSuccessLoadExamesFromPaciente), name: "notificationSuccessLoadExamesFromPaciente", object: nil)
- */
 
        // self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
@@ -53,11 +51,14 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
        // DaoCloudKit().fetchExamesFromPaciente(pacienteSelecionado)
         
     }
-    /*func actOnNotificationSuccessLoadExamesFromPaciente ()
-    {
-        
+    
+     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            DaoCloudKit().deletePaciente(pacientes[indexPath.row])
+            tableView.reloadData()
+        }
     }
-    */
     @IBAction func novoPacientePressed(sender: AnyObject) {
         self.performSegueWithIdentifier("goToNovoPaciente", sender: sender)
     }

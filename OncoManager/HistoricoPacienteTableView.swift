@@ -18,7 +18,6 @@ class HistoricoPacienteCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
         
     }
@@ -104,6 +103,8 @@ class HistoricoPacienteTableView: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("Entrou no number of rows in section");
+        print(examesDoPaciente.count)
         return examesDoPaciente.count
     }
 
@@ -126,7 +127,9 @@ class HistoricoPacienteTableView: UITableViewController {
 
         return cell
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -136,17 +139,15 @@ class HistoricoPacienteTableView: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            DaoCloudKit().deleteExame(examesDoPaciente[indexPath.row])
+            self.tableView.reloadData()
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

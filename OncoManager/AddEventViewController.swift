@@ -95,13 +95,15 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func setupPickers(){
         
-        let loc = NSLocale(localeIdentifier: "pt_BR")
-        datePicker.locale = loc
+      //  let loc = NSLocale(localeIdentifier: "pt_BR")
+        //datePicker.locale = loc
+        //datePicker.timeZone = NSTimeZone(forSecondsFromGMT: -10800)
         datePicker.datePickerMode = UIDatePickerMode.Date
         datePicker.backgroundColor = UIColor.whiteColor()
         datePicker.frame.size.height = 0.23*self.view.frame.height
         
-        datePickerHour.locale = loc
+      //  datePickerHour.locale = loc
+       // datePickerHour.timeZone = NSTimeZone(forSecondsFromGMT: -10800)
         datePickerHour.backgroundColor = UIColor.whiteColor()
         
         pickerView.backgroundColor = UIColor.whiteColor()
@@ -121,12 +123,14 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     //MARK: converte a Data para String e altera o texto do textfield
     func changedTxtFieldDate() {
         let date: String?
+        print(datePicker.date)
         date = datePicker.date.convertNsDateToStringWithoutHour()
         dataMarcado.text = date
     }
     
     func changedTxtFieldDateHour() {
         let date: String?
+        print(datePickerHour.date)
         date = datePickerHour.date.convertNsDateToString()
         dataHoraRealizado.text = date
     }
