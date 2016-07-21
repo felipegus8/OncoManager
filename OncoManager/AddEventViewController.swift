@@ -30,8 +30,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var datePickerHour = UIDatePicker()
     var datePicker = UIDatePicker()
     var pickerView = UIPickerView()
-    var medicoData: [String]!
-    var exameData: [String]!
+    var medicoData: [String] = []
+    var exameData: [String] = []
     var pickerData: [String]!
     var tag = 0
     var eventoArray = ["Exame","Consulta","Cirurgia"]
@@ -120,8 +120,14 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     //MARK: carregar aqui a lista de exames e médicos
     func loadPickerData() {
-        medicoData = ["Dra. Claudia","Dr. Eduardo","Dra. Lúcia","Dr. Pedro"]
-        exameData = ["Biopsia","Endoscopia","Ressonância","Tomografia Computadorizada","Ultrassonografia"]
+       for medico in medicos
+       {
+        medicoData.append(medico.nome)
+        }
+        for exame in nomeExames
+        {
+            exameData.append(exame.nome)
+        }
         
     }
     
