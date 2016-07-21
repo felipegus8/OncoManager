@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1890,7 +1890,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTi-GP-HMr">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Tipo de exame" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-GV-uO2" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Tipo de exame" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-GV-uO2" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1930,7 +1930,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Data/Hora" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZbE-Sv-7a4" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Data/Hora" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZbE-Sv-7a4" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1950,7 +1950,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Médico" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Cw-WjP" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Médico" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Cw-WjP" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1970,7 +1970,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Data de agendamento" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-50-rgc" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Data de agendamento" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-50-rgc" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -2099,6 +2099,7 @@
                                         </variation>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="HTi-GP-HMr" firstAttribute="top" secondItem="uRi-XQ-InE" secondAttribute="top" id="AxN-b5-8oC"/>
                                     <constraint firstItem="HTi-GP-HMr" firstAttribute="width" secondItem="uRi-XQ-InE" secondAttribute="width" id="Iad-Il-ghi"/>
@@ -2130,6 +2131,9 @@
                                         <include reference="wsZ-kj-MAI"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MD8-D3-2nK" appends="YES" id="i40-qc-yEH"/>
+                                </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-A5-8NT" userLabel="close">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2227,16 +2231,23 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="lnR-oh-aXc" id="4iU-gy-Cm5"/>
                         <outlet property="dataHoraRealizado" destination="ZbE-Sv-7a4" id="ipN-4F-2ai"/>
                         <outlet property="dataMarcado" destination="NlF-50-rgc" id="ICt-fw-J9w"/>
                         <outlet property="local" destination="ScX-ll-j7O" id="sal-Ie-2CE"/>
                         <outlet property="medico" destination="8cl-Cw-WjP" id="4SZ-e3-0up"/>
+                        <outlet property="nextButton" destination="N8b-ke-6KU" id="tGe-6D-YTu"/>
                         <outlet property="scrollView" destination="uRi-XQ-InE" id="fgN-l1-JrP"/>
                         <outlet property="titulo" destination="Qlf-GV-uO2" id="OZi-MZ-9Eg"/>
                         <outlet property="tituloLabel" destination="vse-34-A4y" id="HN0-uL-vBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAh-i1-jsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MD8-D3-2nK">
+                    <connections>
+                        <action selector="stopEditing:" destination="Z5x-ZA-i9x" id="QHv-uD-0oC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2945.25" y="-702.5"/>
         </scene>
