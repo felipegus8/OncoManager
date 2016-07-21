@@ -13,11 +13,11 @@ import Charts
 
 // ********** DADOS QUE VIRÃO DO ICLOUD *********** //
 
-var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Raio X"]
+var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Exame5", "Exame6", "Raio X"]
 var eixoX_PacientexPlano = ["Plano1","Plano2","Plano3","Plano4" ]
 var eixoX_TempoxCirurgia = ["Cirurgia1","Cirurgi2","Cirurgia3"]
 
-var valueX_TempoxExame = [20.0, 14.0,3.0,0.0]
+var valueX_TempoxExame = [20.0, 14.0,3.0,5.0,3.0,6.0,9.0]
 var valueX_PacientexPlano = [3.0, 4.0,3.0,0.0]
 var valueX_TempoxCirurgia = [10.0, 14.0,3.0]
 
@@ -39,9 +39,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         chartView.delegate = self
         
+        //Vetor com os dados do GRAFICO 1 do aplicativo
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         
-        setChart(vLabelEixoX[0], values: contDias)
+        //Dados para teste
+        setChart(vLabelEixoX[0], values: vValueEixoX[0])
+        
+        //Gera o GRÁFICO 1
+        //setChart(vLabelEixoX[0], values: contDias)
         graphTitleLabel.text = listGraphcs[0]
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
@@ -89,12 +94,36 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.data = chartData
         
         //Colocar cores nos gráficos: .liberty(), .joyful(), .pastel(), .coloful(), .vordiplom()
-        chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
+        //chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
         //chartDataSet.colors = ChartColorTemplates.liberty()
+        chartDataSet.colors = [.redColor(), .yellowColor(), .greenColor()]
+        chartDataSet.colors = ChartColorTemplates.joyful()
+        
+        //Desabilita a leganda do Gráfico
+        chartView.legend.enabled = false
+        
+        //Desabilita o Zoom
+        chartView.scaleYEnabled = false
+        chartView.scaleXEnabled = false
+        chartView.pinchZoomEnabled = false
+        chartView.doubleTapToZoomEnabled = false
+        
+        // Desabilita o Highlighter na seleção de uma barra do gráfico
+        //chartView.highlighter = nil
+        
+        //Reduz o número de informações no eixo Y do gráfico
+        chartView.rightAxis.enabled = false
+        chartView.xAxis.drawGridLinesEnabled = false
         
         //Colocar as informações do eixo x na parte abaixo do gráfico
         chartView.xAxis.labelPosition = .Bottom
         chartView.xAxis.labelRotationAngle = 80
+        
+        //Mostrar todas as variáveis do eixo X
+        //chartView.xAxis.setLabelsToSkip(0)
+        
+        //Valor mínimo de um gráfico
+        chartView.leftAxis.axisMinValue = 0.0
         
         //Colocar cor no plano de fundo do gráfico:
         chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
