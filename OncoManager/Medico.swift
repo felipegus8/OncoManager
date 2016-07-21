@@ -15,13 +15,15 @@ public class Medico
     var nome:String!
     var email: String!
     var crm: Double!
+    var especialidade:String!
     var telefone: Double?
     
-    init(nome: String, email: String, crm: Double,telefone:Double?) {
+    init(nome: String, email: String, crm: Double,especialidade:String,telefone:Double?) {
         
         self.nome = nome
         self.email = email
         self.crm = crm
+        self.especialidade = especialidade
         self.telefone = telefone
     }
 }

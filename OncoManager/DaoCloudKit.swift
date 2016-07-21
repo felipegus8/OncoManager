@@ -165,7 +165,7 @@ public class DaoCloudKit
                     record.setObject(medico.crm, forKey: "crm")
                     record.setObject(medico.nome, forKey: "nome")
                     record.setObject(medico.telefone, forKey: "telefone")
-                    
+                    record.setObject(medico.especialidade, forKey: "especialidade")
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
                             print(error)
@@ -516,7 +516,8 @@ public class DaoCloudKit
             else {
                 medicos.removeAll()
                 for result in results! {
-                    let novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Double, telefone: result.valueForKey("telefone") as? Double)
+                    let novoMedico = Medico(nome: result.valueForKey("nome") as! String, email: result.valueForKey("email") as! String, crm: result.valueForKey("crm") as! Double, especialidade:result.valueForKey("especialidade") as! String,telefone: result.valueForKey("telefone") as? Double)
+                    
                     medicos.append(novoMedico)
                 }
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessMedicos", object: nil)
