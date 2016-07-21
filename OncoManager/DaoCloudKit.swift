@@ -543,4 +543,50 @@ public class DaoCloudKit
 
     }
     }
+    func editExame(exame:Exame)
+    {
+        let recordId = CKRecordID(recordName: String(exame.codigo))
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        
+        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            if error == nil {
+                
+                print("Já existe esse paciente")
+                fetchedRecord!.setObject(exame.tipoProcedimento, forKey: "tipo")
+                 fetchedRecord!.setObject(exame.cpf, forKey: "cpf")
+                 fetchedRecord!.setObject(exame.codigo, forKey: "codigo")
+                 fetchedRecord!.setObject(exame.dataRealizado, forKey: "dataRealizado")
+                 fetchedRecord!.setObject(exame.dataMarcado, forKey: "dataMarcado")
+                 fetchedRecord!.setObject(exame.nome, forKey: "nome")
+                 fetchedRecord!.setObject(exame.local, forKey: "local")
+                 fetchedRecord!.setObject(exame.medico, forKey: "medico")
+                 fetchedRecord!.setObject(exame.realizado, forKey: "realizado")
+                
+                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    }
+                    else{
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditExame", object: nil)
+                    }
+
+            })
+            }
+            else {
+                
+                if(fetchedRecord == nil) {
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditExame", object: nil)
+                    
+            }
+            }
+        }
+
+    }
+    func editPaciente(paciente:Paciente)
+    {
+        
+    }
 }
