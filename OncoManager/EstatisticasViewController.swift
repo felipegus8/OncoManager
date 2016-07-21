@@ -45,15 +45,19 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
         
-        
+        print("Teste do Wellington")
         for exame in exames {
-            print("TABELA COM O NOME DOS EXAMES: \(exame.nome), \(exame.tipoProcedimento)")
+            print("TABELA COM O NOME DOS EXAMES: nome: \(exame.nome), data marcado: \(exame.dataMarcado), \(exame.dataRealizado)")
         }
         
        
         
         for aux in contDias{
             print(aux)
+        }
+        
+        for aux in nomeExames{
+            print(aux.nome)
         }
     }
     
@@ -168,7 +172,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
         }
         
-        for i in 1..<listaDeExames.count{
+        for i in 0..<listaDeExames.count{
             if contVezes[i] == 0{
                 contTempo[i] = 0
             }
