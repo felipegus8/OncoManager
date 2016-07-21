@@ -100,7 +100,7 @@ public class DaoCloudKit
                     })
                 }
                 else{
-                    print("Já existe esse exame")
+                    
                 }
             }
         }

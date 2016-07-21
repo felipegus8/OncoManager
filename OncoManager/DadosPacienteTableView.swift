@@ -90,7 +90,7 @@ class DadosPacienteTableView: UITableViewController {
         cell.category.text = categories[indexPath.row]
         switch indexPath.row {
         case 0:
-            cell.answer.text = String(pacienteSelecionado.cpf)
+            cell.answer.text = String(Int(pacienteSelecionado.cpf))
         case 1:
             cell.answer.text = pacienteSelecionado.dataNasc
         case 2:
@@ -98,9 +98,9 @@ class DadosPacienteTableView: UITableViewController {
         case 3:
             cell.answer.text = pacienteSelecionado.bairro
         case 4:
-            cell.answer.text = String(pacienteSelecionado.telefoneFixo)
+            cell.answer.text = String(Int(pacienteSelecionado.telefoneFixo))
         case 5:
-            cell.answer.text = String(pacienteSelecionado.celular)
+            cell.answer.text = String(Int(pacienteSelecionado.celular))
         case 6:
             cell.answer.text = pacienteSelecionado.convenio
         case 7:

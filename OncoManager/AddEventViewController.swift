@@ -48,7 +48,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var eventoPlArray: [Int:EventoPlaceholder]!
     
     var index = 0
-    
+    var date1:NSDate!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +56,12 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         setupPickers()
         setupPlaceholderData()
         linkDelegate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy - HH:mm"
+        // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
+        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 10800)
         
+
         backButton.alpha = 0.25
         
         datePicker.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
@@ -95,17 +100,15 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func setupPickers(){
         
-      //  let loc = NSLocale(localeIdentifier: "pt_BR")
-        //datePicker.locale = loc
-        //datePicker.timeZone = NSTimeZone(forSecondsFromGMT: -10800)
+        let loc = NSLocale(localeIdentifier: "pt_BR")
+        datePicker.locale = loc
         datePicker.datePickerMode = UIDatePickerMode.Date
         datePicker.backgroundColor = UIColor.whiteColor()
         datePicker.frame.size.height = 0.23*self.view.frame.height
-        
-      //  datePickerHour.locale = loc
-       // datePickerHour.timeZone = NSTimeZone(forSecondsFromGMT: -10800)
+        datePickerHour.locale = loc
+        datePickerHour.datePickerMode = UIDatePickerMode.DateAndTime
+       // datePickerHour.timeZone = NS
         datePickerHour.backgroundColor = UIColor.whiteColor()
-        
         pickerView.backgroundColor = UIColor.whiteColor()
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -130,9 +133,17 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func changedTxtFieldDateHour() {
         let date: String?
-        print(datePickerHour.date)
+        print(datePickerHour.date.localTime)
         date = datePickerHour.date.convertNsDateToString()
-        dataHoraRealizado.text = date
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy - HH:mm"
+        //formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
+        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 10800)
+        
+        date1=formatter.dateFromString(date!)
+        let dateFinal = date1?.convertNsDateToString()
+        dataHoraRealizado.text = dateFinal
     }
     
     //MARK: PickerView dataSource
@@ -275,8 +286,10 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                     defaults.setObject(0, forKey: "codigo")
                 }
                 print("Chamou o cloud")
-                DaoCloudKit().addExame(Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: datePickerHour.date, realizado: 0))
-            
+                let instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo: defaults.objectForKey("codigo") as! Int, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
+                DaoCloudKit().addExame(instanciaExame)
+                exames.append(instanciaExame)
+                examesDoPaciente.append(instanciaExame)
                 
             }
         }

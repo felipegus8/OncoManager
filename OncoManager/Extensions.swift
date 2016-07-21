@@ -11,6 +11,10 @@ import UIKit
 
 extension NSDate
 {
+    var localTime: String {
+        return descriptionWithLocale(NSLocale.currentLocale())
+    }
+
     func convertNsDateToString() -> String
     {
         var stringFinal:String!
@@ -18,10 +22,9 @@ extension NSDate
         print(stringAux)
         let dataaux = stringAux.stringByReplacingOccurrencesOfString(":", withString: "-")
         let dataAux2 = dataaux.stringByReplacingOccurrencesOfString(" ", withString: "-")
-        
         let fullNameArr = dataAux2.componentsSeparatedByString("-")
         stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0] + " - " + fullNameArr[3] + ":" + fullNameArr[4]
-        
+        print(stringFinal)
         return stringFinal
     }
     
@@ -65,4 +68,12 @@ extension UIColor {
         return UIColor(red:0.00, green:0.47, blue:0.24, alpha:1.0)
     }
 
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
+    }
 }
