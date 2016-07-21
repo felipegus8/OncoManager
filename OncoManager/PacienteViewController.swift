@@ -28,41 +28,6 @@ class PacienteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for exame in examesDoPaciente
-        {
-            if  let order = menorData
-            {
-                if order.compare((exame.dataMarcado)!) ==  NSComparisonResult.OrderedDescending
-                {
-                    menorData = exame.dataMarcado
-                }
-            }
-            else{
-                menorData = exame.dataMarcado
-            }
-
-        }
-        if examesDoPaciente.count > 0
-        {
-        print(menorData)
-        let dataAtual = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        /*
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm"
-        print(formatter.dateFromString(String(dataAtual)))
-        formatter.dateFromString(String(menorData))
- */
-        //calendar.components([.Day , .Month , .Year], fromDate: dataAtual)
-        print(dataAtual)
-        let date1 = calendar.startOfDayForDate(menorData)
-        let date2 = calendar.startOfDayForDate(dataAtual)
-        
-        let flags = NSCalendarUnit.Day
-        let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
-        
-        diasTratamento.text = String(components.day) + " " + "dias"// This will return the number of day(s) between dates
-        }
         self.navigationItem.title = pacienteName // recebe o nome da tableView pelo segue
         timeView.layer.shadowOpacity = 0.2
         timeView.layer.shadowRadius = 0.2
@@ -82,7 +47,41 @@ class PacienteViewController: UIViewController {
         dadosTableView.view.hidden = true
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(animated: Bool) {
+        print("Entrou na view Will Appear do paciente unico")
+        if examesDoPaciente.count > 0
+        {
+            menorData = examesDoPaciente[0].dataMarcado
+            for exame in examesDoPaciente
+            {
+                if  let order = menorData
+                {
+                    if order.compare((exame.dataMarcado)!) ==  NSComparisonResult.OrderedDescending
+                    {
+                        menorData = exame.dataMarcado
+                    }
+                }
+                else{
+                    menorData = exame.dataMarcado
+                }
+                
+            }
+            print(menorData)
+            print("Conta aí")
+            print(examesDoPaciente.count)
+            let dataAtual = NSDate()
+            let calendar = NSCalendar.currentCalendar()
+            print(dataAtual)
+            let date1 = calendar.startOfDayForDate(menorData)
+            let date2 = calendar.startOfDayForDate(dataAtual)
+            
+            let flags = NSCalendarUnit.Day
+            let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
+            
+            diasTratamento.text = String(components.day) + " " + "dias"// This will return the number of day(s) between dates
+        }
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
