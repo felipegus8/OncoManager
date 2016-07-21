@@ -9,6 +9,8 @@
 import UIKit
 import Charts
 
+
+
 // ********** DADOS QUE VIRÃO DO ICLOUD *********** //
 
 var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Raio X"]
@@ -191,4 +193,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     
         
 }
+ 
+ 
  
