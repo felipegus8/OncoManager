@@ -22,6 +22,9 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         linkDelegate()
+        crm.keyboardType = .NumberPad
+        telefone.keyboardType = .NumberPad
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessAddMedico), name: "notificationSuccessCadastroMedico", object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -64,7 +67,13 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        DaoCloudKit().addMedico(Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!)))
     }
-
+    
+    func actOnNotificationSuccessAddMedico()
+    {
+         dispatch_async(dispatch_get_main_queue(),{
+        self.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
 }
