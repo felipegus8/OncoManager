@@ -17,6 +17,9 @@ class NovoAdmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         senha.secureTextEntry = true
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationSuccessCadastroAdmin), name: "notificationSuccessCadastroAdmin", object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationErrorCadastroAdmin), name: "notificationErrorCadastroAdmin", object: nil)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -61,6 +64,16 @@ class NovoAdmViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue(),{
             self.dismissViewControllerAnimated(true, completion: nil)
         })
+    }
+    func actOnNotificationErrorCadastroAdmin()
+    {
+        i = 0
+        let alert=UIAlertController(title:"Erro", message: "Email já está cadastrado", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+            self.presentViewController(alert,animated: true, completion: nil)
+        })
+
     }
     /*
     // MARK: - Navigation
