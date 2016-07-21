@@ -9,24 +9,37 @@
 import UIKit
 import Charts
 
+// ********** DADOS QUE VIRÃO DO ICLOUD *********** //
+
+var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Raio X"]
+var eixoX_PacientexPlano = ["Plano1","Plano2","Plano3","Plano4" ]
+var eixoX_TempoxCirurgia = ["Cirurgia1","Cirurgi2","Cirurgia3"]
+
+var valueX_TempoxExame = [20.0, 14.0,3.0,0.0]
+var valueX_PacientexPlano = [3.0, 4.0,3.0,0.0]
+var valueX_TempoxCirurgia = [10.0, 14.0,3.0]
+
+         // ********** FIM *********** //
+
 class EstatisticasViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     
-    let listGraphcs:[String] = ["Paciente x Plano","Paciente x Cirurgia","Paciente x Exame", "Paciente x Médico", "Paciente x Hospital"]
-    var i = 0
-    var months: [String] = ["Raio X", "Raio Y", "TesteConsulta"]
-    let points: [[Double]] = [ [20, 14,3], [3, 4,3], [10, 14,3],[10, 14,3],[10, 14,3] ]
+    let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano", "Tempo x Cirurgia"]
+    let vLabelEixoX: [[String]] = [eixoX_TempoxExame, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
+    let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano, valueX_TempoxCirurgia ]
+
     var contDias:[Double] = []
+    var i = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
         
-        //contDias = calculaTempoMedioDeTodosOsExames(months, listaDeTodosOsExames: exames )
+        contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         
-        setChart(months, values: points[0])
+        setChart(vLabelEixoX[0], values: contDias)
         graphTitleLabel.text = listGraphcs[0]
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
@@ -58,7 +71,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Largura das barras do gráfico
         chartDataSet.barSpace = 0.2
         
-        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         
         //Nome e tamanho da fonte do número em cima da barra
         chartData.setValueFont(UIFont(name: "Avenir", size: 9))
@@ -98,7 +111,13 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 i = i + 1
             }
             graphTitleLabel.text = listGraphcs[i]
-            setChart(months, values: points[i])
+            //Dados para teste
+            //setChart(vLabelEixoX[i], values: vValueEixoX[i])
+            
+            //Dados do iCloud
+            contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            setChart(vLabelEixoX[i], values: contDias)
+        
         }
 
     }
@@ -109,12 +128,16 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             i = i - 1
             graphTitleLabel.text = listGraphcs[i]
-            setChart(months, values: points[i])
+            //Dados para teste
+            //setChart(vLabelEixoX[i], values: vValueEixoX[i])
+            
+            //Dados do iCloud
+            contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            setChart(vLabelEixoX[i], values: contDias)
         }
     }
     
     func calculaTempoMedioDeTodosOsExames(listaDeExames: [String], listaDeTodosOsExames: [Exame] ) -> [Double] {
-        var index = 0
         var totDias: Double!
         var contTempo:  [Double] = []
         var contVezes: [Double] = []
@@ -130,16 +153,17 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         for exame in listaDeTodosOsExames {
             
             //indice do vetor acumulador
-            index = listaDeExames.indexOf(exame.nome)!
-            
+            var index = listaDeExames.indexOf(exame.nome)
+            if index != nil {
             if exame.tipoProcedimento == "Exame" || exame.tipoProcedimento == "Consulta" || exame.tipoProcedimento == "Cirurgia" {
                 
                 diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: exame.dataMarcado, toDate: exame.dataRealizado, options: NSCalendarOptions.init(rawValue: 0))
                 
                 totDias = Double(diffDateComponents.day)
                 
-                contTempo[index] = totDias + contTempo[index]
-                contVezes[index] = contVezes[index] + 1
+                contTempo[index!] = totDias + contTempo[index!]
+                contVezes[index!] = contVezes[index!] + 1
+            }
             }
             
         }
