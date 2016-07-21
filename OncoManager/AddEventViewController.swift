@@ -36,7 +36,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var tag = 0
     var eventoArray = ["Exame","Consulta","Cirurgia"]
     var currentEvent: String!
-
+    var i = 0
     struct EventoPlaceholder {
         var titulo: String!
         var local: String!
@@ -68,6 +68,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         datePickerHour.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDateHour), forControlEvents: UIControlEvents.ValueChanged)
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEventViewController.actOnNotificationSuccessAddEvento), name: "notificationSuccessCadastroExame", object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEventViewController.actOnNotificationErrorAddEvento), name: "notificationErrorCadastroExame", object: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -268,9 +270,13 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @IBAction func cadastro(sender: AnyObject) {
+        if i == 0
+        {
+            i+=1
         if DaoCloudKit().cloudAvailable() == true{
             if ((titulo.text?.isEmpty == true) || (local.text?.isEmpty == true) || (dataHoraRealizado.text?.isEmpty == true) || (medico.text?.isEmpty == true) || (dataMarcado.text?.isEmpty == true))
             {
+                i = 0
                 let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alert,animated: true, completion: nil)
@@ -293,11 +299,21 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 
             }
         }
+        }
     }
     func actOnNotificationSuccessAddEvento()
     {
          dispatch_async(dispatch_get_main_queue(),{
             self.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
+     func actOnNotificationErrorAddEvento()
+     {
+        i=0
+        let alert=UIAlertController(title:"Erro", message: "Não foi possivel adicionar o procedimento", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
         })
     }
     /*
