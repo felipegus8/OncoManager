@@ -21,18 +21,14 @@ class LoginViewController: UIViewController {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
         formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
-       let dataRealizado = formatter.dateFromString("01-03-2016 17:00")
-        let dataMarcado = formatter.dateFromString("01-02-2016 15:00")
+     //  let dataRealizado = formatter.dateFromString("01-03-2016 17:00")
+       // let dataMarcado = formatter.dateFromString("01-02-2016 15:00")
         
-        let testeExame =  Exame(tipoProcedimento: "Exame",cpf:16798089766,codigo: 700, nome: "Raio X", medico: "TestandoExame", local: "Copa", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, realizado: 1)
+     /*   let testeExame =  Exame(tipoProcedimento: "Exame",cpf:16798089766,codigo: 700, nome: "Raio X", medico: "TestandoExame", local: "Copa", dataMarcado:dataMarcado! ,dataRealizado:dataRealizado!, realizado: 1)
         let testePaciente = Paciente(cpf: 1893607393, nome: "Teste", bairro: "Magé", bairroPrefere: "Niteroi", dataNasc: "26-09-1962", email: "qualquer", telefoneFixo: 2345980135, celular: 346725789, peso: 78, altura: 1.70, alergia: 0, marcapasso: 0, clipesCirurgico: 0, operado: 0, tipoOperacao: nil, cadeirante: 0, diabetico: 1, hipertenso: 0, convenio: "Assim", tipoPlano: "Ruim", matriculaPlano: "12345",claustrofobico:0)
- 
+ */
         senhaTxtField.secureTextEntry = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessExames), name: "notificationSuccessExames", object: nil)
-       // DaoCloudKit().addExame(testeExame)
-        DaoCloudKit().deletePaciente(testePaciente)
+        addObservers()
         // Do any additional setup after loading the view.
     }
 
@@ -40,7 +36,21 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func addObservers()
+    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessLogin), name: "notificationSuccessLogin", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessPacientes), name: "notificationSuccessPacientes", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessExames), name: "notificationSuccessExames", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationErrorEmail), name:
+            "notificationErrorEmail", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationErrorSenha), name:
+            "notificationErrorPassword", object: nil)
+
+    }
     override func viewWillAppear(animated: Bool) {
         i=0
     }
@@ -49,12 +59,14 @@ class LoginViewController: UIViewController {
         {
             if ((emailTxtField.text?.isEmpty == true) || (senhaTxtField.text?.isEmpty == true))
             {
+                i = 0
                 let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alert,animated: true, completion: nil)
             }
             else{
                 if isValidEmail(emailTxtField.text!) == false{
+                    i = 0
                     let alert=UIAlertController(title:"Erro", message: "Email Inválido", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
                     self.presentViewController(alert,animated: true, completion: nil)
@@ -91,6 +103,27 @@ class LoginViewController: UIViewController {
     {
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToHome", sender: self)
+        })
+    }
+    
+    func actOnNotificationErrorEmail()
+    {
+        i = 0
+        print("Entrou na funcao")
+        let alert=UIAlertController(title:"Erro", message: "Email não cadastrado", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
+        })
+    }
+    
+    func actOnNotificationErrorSenha()
+    {
+        i = 0
+        let alert=UIAlertController(title:"Erro", message: "Senha Incorreta", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
         })
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

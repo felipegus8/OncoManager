@@ -323,11 +323,13 @@ public class DaoCloudKit
                             return
                         }
                         else {
+                            print("senha errada")
                             NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorPassword", object: nil)
                             return
                         }
                     }
                 }
+                print("Email não existe")
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEmail", object: nil)
             }
         }
