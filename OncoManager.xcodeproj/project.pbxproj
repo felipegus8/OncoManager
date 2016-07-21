@@ -12,6 +12,7 @@
 		2E5A365C1D41195C008AAD3A /* NovoDadoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A365B1D41195C008AAD3A /* NovoDadoViewController.swift */; };
 		2E5A36611D41198A008AAD3A /* NovoMedicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */; };
 		2E5A36631D411998008AAD3A /* NovoExameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36621D411998008AAD3A /* NovoExameViewController.swift */; };
+		2E5A36681D414C17008AAD3A /* TabBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A36671D414C17008AAD3A /* TabBarControl.swift */; };
 		2EC251C51D36C7C200910B20 /* EstatisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */; };
 		2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C61D36C7E300910B20 /* LoginViewController.swift */; };
 		2EC251C91D36C80500910B20 /* PacientesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251C81D36C80500910B20 /* PacientesViewController.swift */; };
@@ -97,6 +98,7 @@
 		2E5A365B1D41195C008AAD3A /* NovoDadoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoDadoViewController.swift; sourceTree = "<group>"; };
 		2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoMedicoViewController.swift; sourceTree = "<group>"; };
 		2E5A36621D411998008AAD3A /* NovoExameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoExameViewController.swift; sourceTree = "<group>"; };
+		2E5A36671D414C17008AAD3A /* TabBarControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControl.swift; sourceTree = "<group>"; };
 		2EC251C41D36C7C200910B20 /* EstatisticasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstatisticasViewController.swift; sourceTree = "<group>"; };
 		2EC251C61D36C7E300910B20 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2EC251C81D36C80500910B20 /* PacientesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacientesViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				2E5A365B1D41195C008AAD3A /* NovoDadoViewController.swift */,
 				2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */,
 				2E5A36621D411998008AAD3A /* NovoExameViewController.swift */,
+				2E5A36671D414C17008AAD3A /* TabBarControl.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				2EC251CD1D3717D700910B20 /* ListaPacienteCell.swift in Sources */,
 				2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */,
 				2E5A36611D41198A008AAD3A /* NovoMedicoViewController.swift in Sources */,
+				2E5A36681D414C17008AAD3A /* TabBarControl.swift in Sources */,
 				9C8F0CCA1D3679930016CD3C /* Paciente.swift in Sources */,
 				9CF3BAAC1D353A0B00D83B1B /* ViewController.swift in Sources */,
 				9C8F0CCC1D3679A90016CD3C /* Exame.swift in Sources */,
