@@ -11,12 +11,13 @@ import UIKit
 class NovoExameViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nomeExame: OMTextField!
-    
+    var nomeExameNovo:NomeExame!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nomeExame.delegate = self
           NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationSuccessAddExame), name: "notificationSuccessCadastroNovoExame", object: nil)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -47,11 +48,13 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
-        DaoCloudKit().addNomeExame(NomeExame(nome: nomeExame.text!))
+        nomeExameNovo = NomeExame(nome: nomeExame.text!)
+        DaoCloudKit().addNomeExame(nomeExameNovo)
        
     }
     func actOnNotificationSuccessAddExame()
     {
+        nomeExames.append(nomeExameNovo)
         dispatch_async(dispatch_get_main_queue(),{
          self.dismissViewControllerAnimated(true, completion: nil)
         })
