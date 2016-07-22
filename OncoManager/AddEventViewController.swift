@@ -61,7 +61,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
         formatter.timeZone = NSTimeZone(forSecondsFromGMT: 10800)
         
-
+        dataMarcado.text = NSDate().convertNsDateToStringWithoutHour()
         backButton.alpha = 0.25
         
         datePicker.addTarget(self, action: #selector(AddEventViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
