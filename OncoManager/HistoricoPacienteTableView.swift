@@ -81,7 +81,10 @@ class HistoricoPacienteTableView: UITableViewController {
         tableView.registerClass(HistoricoPacienteCell.self, forCellReuseIdentifier: "HistCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HistoricoPacienteTableView.actOnNotificationSuccessDeleteExame), name: "notificationSucessDeleteExame", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HistoricoPacienteTableView.actOnNotificationErrorDeleteExame), name: "notificationErrorDeleteExame", object: nil)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -146,10 +149,22 @@ class HistoricoPacienteTableView: UITableViewController {
             // Delete the row from the data source
             DaoCloudKit().deleteExame(examesDoPaciente[indexPath.row])
             examesDoPaciente.removeAtIndex(indexPath.row)
-            self.tableView.reloadData()
         }
     }
-
+    func actOnNotificationSuccessDeleteExame()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+        self.tableView.reloadData()
+        })
+    }
+    func actOnNotificationErrorDeleteExame()
+    {
+        let alert=UIAlertController(title:"Erro", message: "Erro ao deletar o exame", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
+        })
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

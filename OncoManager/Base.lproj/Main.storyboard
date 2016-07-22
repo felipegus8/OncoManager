@@ -540,7 +540,7 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Estatísticas" image="exitModal" selectedImage="exitModal" id="HVu-pN-Vx8"/>
+                    <tabBarItem key="tabBarItem" title="Estatísticas" image="estatisticas" selectedImage="estatisticas" id="HVu-pN-Vx8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="chartView" destination="Htd-72-O6L" id="AJa-nW-r5N"/>
@@ -702,7 +702,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pacientes" image="exitModal" id="ORT-48-2IV"/>
+                    <tabBarItem key="tabBarItem" title="Pacientes" image="pacientes" selectedImage="pacientes" id="ORT-48-2IV"/>
                     <navigationItem key="navigationItem" id="smz-5n-1zr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -1554,6 +1554,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.054901960780000002" green="0.40000000000000002" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="cGJ-r9-URQ" kind="relationship" relationship="viewControllers" id="zYa-Q1-la6"/>
@@ -1675,7 +1680,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Adicionar Dado" image="exitModal" id="eYR-DC-kQh"/>
+                    <tabBarItem key="tabBarItem" title="Adicionar Dado" image="adicionar" selectedImage="adicionar" id="eYR-DC-kQh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="LEE-2s-zEZ" kind="presentation" identifier="goToNovoMedico" id="2Lp-n3-0S8"/>
@@ -4248,7 +4253,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="adicionar" width="23" height="24"/>
+        <image name="estatisticas" width="23" height="26"/>
         <image name="exitModal" width="26" height="26"/>
         <image name="logo" width="471" height="132"/>
+        <image name="pacientes" width="25" height="25"/>
     </resources>
 </document>
