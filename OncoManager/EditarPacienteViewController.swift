@@ -76,6 +76,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
          peso.text = String(pacienteSelecionado.peso)
          altura.text = String(pacienteSelecionado.altura)
          tipoOperacao.text = pacienteSelecionado.tipoOperacao
+        bairroPreferencia.text = pacienteSelecionado.bairroPrefere
     }
     func setSwitches()
     {
@@ -86,6 +87,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
        cadeirante.on = (pacienteSelecionado.cadeirante == 1) ? true : false
         claustrofobico.on = (pacienteSelecionado.claustrofobico == 1) ? true : false
         operado.on = (pacienteSelecionado.operado == 1) ? true : false
+        alergia.on = (pacienteSelecionado.alergia == 1) ? true : false
     }
     func setupPickers(){
         
@@ -174,6 +176,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         nascimento.delegate = self
         email.delegate = self
         bairro.delegate = self
+        bairroPreferencia.delegate = self
         telFixo.delegate = self
         cel.delegate = self
         convenio.delegate = self
@@ -198,9 +201,9 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
        let intCadeirante = (cadeirante.on == true) ? 1 : 0
      let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
       let intOperado = (operado.on == true) ? 1 : 0
-        
-       // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
-       pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
+        let intAlergia = (alergia.on == true) ? 1 : 0
+
+       pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:bairroPreferencia.text! , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: intAlergia, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
      
         DaoCloudKit().editPaciente(pacienteSelecionado)
     }
