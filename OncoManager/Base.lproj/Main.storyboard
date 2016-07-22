@@ -573,6 +573,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-Aw-0M9">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="an1-YY-P9D"/>
+                                    <constraint firstAttribute="height" constant="30" id="ttB-7n-XPL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.054901960784313725" green="0.40000000000000002" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="an1-YY-P9D"/>
+                                        <exclude reference="ttB-7n-XPL"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="an1-YY-P9D"/>
+                                        <include reference="ttB-7n-XPL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="novoPacientePressed:" destination="uEK-zO-oBq" eventType="touchUpInside" id="WGu-wv-lGW"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ei-Hs-yox">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -615,32 +641,6 @@
                                     <outlet property="delegate" destination="uEK-zO-oBq" id="yte-Wr-afm"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-Aw-0M9">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="an1-YY-P9D"/>
-                                    <constraint firstAttribute="height" constant="30" id="ttB-7n-XPL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.054901960784313725" green="0.40000000000000002" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="an1-YY-P9D"/>
-                                        <exclude reference="ttB-7n-XPL"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="an1-YY-P9D"/>
-                                        <include reference="ttB-7n-XPL"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="novoPacientePressed:" destination="uEK-zO-oBq" eventType="touchUpInside" id="WGu-wv-lGW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -661,8 +661,8 @@
                             <mask key="subviews">
                                 <exclude reference="9Gr-Xu-xi1"/>
                                 <exclude reference="DF3-lV-QQI"/>
-                                <exclude reference="4ei-Hs-yox"/>
                                 <exclude reference="ZNz-Aw-0M9"/>
+                                <exclude reference="4ei-Hs-yox"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="IyH-4h-eQg"/>
@@ -683,8 +683,8 @@
                             <mask key="subviews">
                                 <include reference="9Gr-Xu-xi1"/>
                                 <include reference="DF3-lV-QQI"/>
-                                <include reference="4ei-Hs-yox"/>
                                 <include reference="ZNz-Aw-0M9"/>
+                                <include reference="4ei-Hs-yox"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="IyH-4h-eQg"/>
@@ -3692,7 +3692,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="248" id="Nbr-1P-hyv"/>
                                                 </constraints>
-                                                <state key="normal" title="Atualizar"/>
+                                                <state key="normal" title="Cadastrar"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="Nbr-1P-hyv"/>
@@ -3704,7 +3704,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="editarButton:" destination="Pz8-Fy-1jz" eventType="touchUpInside" id="HTU-I9-VdW"/>
+                                                    <action selector="cadastrarPressed:" destination="Pz8-Fy-1jz" eventType="touchUpInside" id="rXK-Vz-mmQ"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Telefone Fixo" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nga-81-8I3" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
