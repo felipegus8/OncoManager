@@ -149,6 +149,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
         nascimento.delegate = self
         email.delegate = self
         bairro.delegate = self
+        bairroPreferencia.delegate = self
         telFixo.delegate = self
         cel.delegate = self
         convenio.delegate = self
@@ -173,9 +174,9 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
         let intCadeirante = (cadeirante.on == true) ? 1 : 0
         let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
         let intOperado = (operado.on == true) ? 1 : 0
+        let intAlergia = (alergia.on == true) ? 1 : 0
         
-        // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
-        let paciente = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 0, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
+        let paciente = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:bairroPreferencia.text! , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: intAlergia, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
         
         DaoCloudKit().addPaciente(paciente)
         pacientes.append(paciente)
