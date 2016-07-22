@@ -722,6 +722,7 @@ public class DaoCloudKit
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessDeleteExame", object: nil)
             }
             else{
+                print(error)
                 NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorDeleteExame", object: nil)
                 
             }
