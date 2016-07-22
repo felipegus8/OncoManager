@@ -119,10 +119,13 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
      func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if !searchActive
+        {
         if editingStyle == .Delete {
             // Delete the row from the data source
             DaoCloudKit().deletePaciente(pacientes[indexPath.row])
             tableView.reloadData()
+            }
         }
     }
     @IBAction func novoPacientePressed(sender: AnyObject) {
