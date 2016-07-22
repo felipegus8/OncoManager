@@ -9,7 +9,8 @@
 import UIKit
 import Charts
 
-
+var nomeDosExames: [String] = []
+let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano]
 
 // ********** DADOS QUE VIRÃO DO ICLOUD *********** //
 
@@ -28,9 +29,12 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     
-    let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano", "Tempo x Cirurgia"]
-    let vLabelEixoX: [[String]] = [eixoX_TempoxExame, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
-    let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano, valueX_TempoxCirurgia ]
+
+    let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
+
+    let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano]
+    
+  
 
     var contDias:[Double] = []
     var i = 0
@@ -38,6 +42,13 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chartView.delegate = self
+        
+        //Cria vetor com o nome dos exames
+        for exame in nomeExames {
+            nomeDosExames.append(exame.nome)
+        }
+
+        //let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
         
         //Vetor com os dados do GRAFICO 1 do aplicativo
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
@@ -52,24 +63,15 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
         
-        print("Teste do Wellington")
-        for exame in exames {
-            print("TABELA COM O NOME DOS EXAMES: nome: \(exame.nome), data marcado: \(exame.dataMarcado), \(exame.dataRealizado)")
-        }
-        
+
        
-        
-        for aux in contDias{
-            print(aux)
+
+        for aux in vLabelEixoX[0]{
+            print("NOME DOS EXAMES: \(aux)")
         }
         
-        for aux in nomeExames{
-            print(aux.nome)
-        }
-        
-        for aux in medicos{
-            print(aux.nome)
-        }
+
+ 
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -219,7 +221,25 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         return contTempo
     }
 
-    
+    func calculaNumeroPacientesxPlano(listaDePlanos: [String], listaDeTodosOsPacientes: [Paciente] ) -> [Double] {
+        var qtdPacientesxPlano: [Double] = []
+        
+        //Inicializa os vetores contadormédiodedias e qtddevezesdeummesmoexame
+        for i in 0..<listaDePlanos.count{
+            qtdPacientesxPlano.append(0)
+        }
+        
+        for paciente in listaDeTodosOsPacientes {
+            
+            //indice do vetor acumulador
+            var index = listaDePlanos.indexOf(paciente.convenio)
+            
+            qtdPacientesxPlano[index!] = qtdPacientesxPlano[index!] + 1
+            
+        }
+        
+        return qtdPacientesxPlano
+    }
         
 }
  
