@@ -22,9 +22,9 @@ class PacienteViewController: UIViewController {
     
     var dadosTableView: DadosPacienteTableView!
     var historicoTableView: HistoricoPacienteTableView!
+    var selectedBut = 0
     
     var pacienteName = "Paciente"
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,19 +93,75 @@ class PacienteViewController: UIViewController {
         
         switch segment {
         case .DadosPaciente:
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: nil /*#selector(self.goToEditPaciente)*/)
+            selectedBut = 1
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.greenOM()
             historicoTableView.view.hidden = true
             dadosTableView.view.hidden = false
-            break
-        default:
+            print("selectedBut: \(selectedBut)")
+            
+        case .Historico:
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(self.navButtonPressed(_:)))
+            selectedBut = 0
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.greenOM()
             historicoTableView.view.hidden = false
             dadosTableView.view.hidden = true
+            print("selectedBut: \(selectedBut)")
+        
+        default:
             break
         }
         
+        
+        
     }
     
-    @IBAction func addEventPressed(sender: AnyObject) {
-        performSegueWithIdentifier("goToAddEvent", sender: sender)
+    func goToEditPaciente() {
+        performSegueWithIdentifier("goToEditPaciente", sender: self)
+    }
+    
+    func goToAddPaciente() {
+        performSegueWithIdentifier("goToAddEvent", sender: self)
+    }
+    
+    @IBAction func navButtonPressed(sender: UIBarButtonItem) {
+        print("===========entrou na funcao")
+
+            performSegueWithIdentifier("goToAddEvent", sender: self)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        switch segue.identifier{
+        case "goToEditPaciente"?:
+            
+            let destinationVC = segue.destinationViewController as! EditarPacienteViewController
+            destinationVC.altura.text = String(pacienteSelecionado.altura)
+            destinationVC.bairro.text = pacienteSelecionado.bairro
+            destinationVC.cel.text = String(pacienteSelecionado.celular)
+            destinationVC.convenio.text = pacienteSelecionado.convenio
+            destinationVC.cpf.text = String(pacienteSelecionado.cpf)
+            destinationVC.email.text = pacienteSelecionado.email
+            destinationVC.matricula.text = pacienteSelecionado.matriculaPlano
+            destinationVC.nascimento.text = pacienteSelecionado.dataNasc
+            destinationVC.nome.text = pacienteSelecionado.nome
+            destinationVC.peso.text = String(pacienteSelecionado.peso)
+            destinationVC.telFixo.text = String(pacienteSelecionado.telefoneFixo)
+            destinationVC.cadeirante.on = Bool(pacienteSelecionado.cadeirante)
+            destinationVC.claustrofobico.on = Bool(pacienteSelecionado.claustrofobico)
+            destinationVC.clipesCirurgico.on = Bool(pacienteSelecionado.clipesCirurgico)
+            destinationVC.diabetico.on = Bool(pacienteSelecionado.diabetico)
+            destinationVC.hipertenso.on = Bool(pacienteSelecionado.hipertenso)
+            destinationVC.marcapasso.on = Bool(pacienteSelecionado.marcapasso)
+            destinationVC.operado.on = Bool(pacienteSelecionado.operado)
+            destinationVC.tipoOperacao.text = pacienteSelecionado.tipoOperacao
+            
+        default:
+            break
+            
+        }
+        
     }
     
     /*

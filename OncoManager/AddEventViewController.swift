@@ -243,6 +243,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
         print(eventoArray[index])
         }
+        zeraTextField(titulo, local: local, dataHoraRealizado: dataHoraRealizado, medico: medico, dataMarcado: dataMarcado)
     }
     
     @IBAction func backPressed(sender: UIButton) {
@@ -259,7 +260,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
         print(eventoArray[index])
         }
-        
+        zeraTextField(titulo, local: local, dataHoraRealizado: dataHoraRealizado, medico: medico, dataMarcado: dataMarcado)
     }
     
     //fecha a inputView (picker ou teclado) com UIGesture
@@ -331,14 +332,13 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.presentViewController(alert,animated: true, completion: nil)
         })
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func zeraTextField(titulo: OMTextField, local: OMTextField, dataHoraRealizado: OMTextField, medico: OMTextField, dataMarcado: OMTextField){
+        titulo.text = ""
+        local.text = ""
+        dataHoraRealizado.text = ""
+        medico.text = ""
+        dataMarcado.text = ""
     }
-    */
 
 }
