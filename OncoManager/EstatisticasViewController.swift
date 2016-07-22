@@ -29,13 +29,9 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     
-
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
-
     let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano]
-    
-  
-
+    //let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
     var contDias:[Double] = []
     var i = 0
 
@@ -43,35 +39,30 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         chartView.delegate = self
         
-        //Cria vetor com o nome dos exames
-        for exame in nomeExames {
-            nomeDosExames.append(exame.nome)
-        }
-
-        //let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
-        
-        //Vetor com os dados do GRAFICO 1 do aplicativo
-        contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
-        
-        //Gera o GRÁFICO 1 SEM usar iCloud
-        //setChart(vLabelEixoX[0], values: vValueEixoX[0])
-        
-        //Gera o GRÁFICO 1 usando iCloud
-        setChart(vLabelEixoX[0], values: contDias)
+        //Título do gráfico
         graphTitleLabel.text = listGraphcs[0]
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
         
-
-       
-
+        //Cria vetor com o nome dos exames
+        for exame in nomeExames {
+            nomeDosExames.append(exame.nome)
+        }
+        
+        //Gera o GRÁFICO 1 SEM usar iCloud
+        //setChart(vLabelEixoX[0], values: vValueEixoX[0])
+        
+        //Gera o GRÁFICO 1 usando iCloud
+        contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
+        setChart(vLabelEixoX[0], values: contDias)
+        
+        // ***** TESTES ***** //
+/*
         for aux in vLabelEixoX[0]{
             print("NOME DOS EXAMES: \(aux)")
         }
-        
-
- 
+ */
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -152,6 +143,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 i = i + 1
             }
             graphTitleLabel.text = listGraphcs[i]
+            
             //Dados para teste
             //setChart(vLabelEixoX[i], values: vValueEixoX[i])
             
@@ -169,6 +161,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             i = i - 1
             graphTitleLabel.text = listGraphcs[i]
+            
             //Dados para teste
             //setChart(vLabelEixoX[i], values: vValueEixoX[i])
             
