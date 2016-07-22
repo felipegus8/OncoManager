@@ -45,7 +45,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSaveSuccessPaciente", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSuccessEditPaciente", object: nil)
         
         setupPickers()
         linkDelegate()
@@ -54,7 +54,6 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         setSwitches()
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
     }
-    
     func loadPickerData(){
         
         convenioData = ["Allianz", "Amil", "Bradesco", "CarePlus", "Furnas", "Golden Cross", "Medial", "Mediservice", "Petrobrás", "Sul América", "Unimed", "Vale"]
@@ -78,13 +77,13 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     func setSwitches()
     {
-        (pacienteSelecionado.clipesCirurgico == 1) ? clipesCirurgico.on : !clipesCirurgico.on
-        (pacienteSelecionado.marcapasso == 1) ? marcapasso.on : !marcapasso.on
-        (pacienteSelecionado.hipertenso == 1) ? hipertenso.on : !hipertenso.on
-        (pacienteSelecionado.diabetico == 1) ? diabetico.on : !diabetico.on
-        (pacienteSelecionado.cadeirante == 1) ? cadeirante.on : !cadeirante.on
-        (pacienteSelecionado.claustrofobico == 1) ? claustrofobico.on : !claustrofobico.on
-        (pacienteSelecionado.operado == 1) ? operado.on : !operado.on
+        clipesCirurgico.on = (pacienteSelecionado.clipesCirurgico == 1) ? true : false
+        marcapasso.on = (pacienteSelecionado.marcapasso == 1) ? true : false
+       hipertenso.on = (pacienteSelecionado.hipertenso == 1) ? true : false
+        diabetico.on = (pacienteSelecionado.diabetico == 1) ? true : false
+       cadeirante.on = (pacienteSelecionado.cadeirante == 1) ? true : false
+        claustrofobico.on = (pacienteSelecionado.claustrofobico == 1) ? true : false
+        operado.on = (pacienteSelecionado.operado == 1) ? true : false
     }
     func setupPickers(){
         
@@ -189,7 +188,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         //print(sender.description)
     }
     
-    @IBAction func alterarPressed(sender: UIButton) {
+    @IBAction func editarButton(sender: AnyObject) {
         let intMarcapasso = (marcapasso.on == true) ? 1 : 0
      let intClipes = (clipesCirurgico.on == true) ? 1 : 0
      let intHipertenso = (hipertenso.on == true) ? 1 : 0
@@ -201,15 +200,19 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
        // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
        pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
      
-     DaoCloudKit().editPaciente(pacienteSelecionado)
+        DaoCloudKit().editPaciente(pacienteSelecionado)
     }
     
     func actOnNotificationSuccessSavePaciente()
     {
+        index = 0
+        dispatch_async(dispatch_get_main_queue(),{
         self.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
     
     @IBAction func closePressed(sender: UIButton) {
+        index = 0
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

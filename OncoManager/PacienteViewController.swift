@@ -93,7 +93,7 @@ class PacienteViewController: UIViewController {
         
         switch segment {
         case .DadosPaciente:
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: nil /*#selector(self.goToEditPaciente)*/)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(self.goToEditPaciente))
             selectedBut = 1
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.greenOM()
             historicoTableView.view.hidden = true
