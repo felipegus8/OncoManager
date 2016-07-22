@@ -22,6 +22,8 @@
 		2EC251CF1D37282B00910B20 /* OMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251CE1D37282B00910B20 /* OMTextField.swift */; };
 		2EC251D11D372E9000910B20 /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251D01D372E9000910B20 /* OMButton.swift */; };
 		2EC251D31D37333900910B20 /* NovoAdmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC251D21D37333900910B20 /* NovoAdmViewController.swift */; };
+		2EDE7DDA1D42BA4C0043CB2A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF3BABC1D353A2600D83B1B /* CloudKit.framework */; };
+		2EDE7DE01D42C1A10043CB2A /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE7DDF1D42C1A10043CB2A /* EditEventViewController.swift */; };
 		2EDEB39E1D383D0900AC93B4 /* HistoricoPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */; };
 		2EDEB3A01D383D1A00AC93B4 /* DadosPacienteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */; };
 		2EDEB3A51D395A4100AC93B4 /* OMStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */; };
@@ -37,7 +39,6 @@
 		9CF3BAAA1D353A0B00D83B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3BAA91D353A0B00D83B1B /* AppDelegate.swift */; };
 		9CF3BAB11D353A0B00D83B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB01D353A0B00D83B1B /* Assets.xcassets */; };
 		9CF3BAB41D353A0B00D83B1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF3BAB21D353A0B00D83B1B /* LaunchScreen.storyboard */; };
-		9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF3BABC1D353A2600D83B1B /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		2EC251CE1D37282B00910B20 /* OMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextField.swift; sourceTree = "<group>"; };
 		2EC251D01D372E9000910B20 /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 		2EC251D21D37333900910B20 /* NovoAdmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoAdmViewController.swift; sourceTree = "<group>"; };
+		2EDE7DDF1D42C1A10043CB2A /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		2EDEB39D1D383D0900AC93B4 /* HistoricoPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB39F1D383D1A00AC93B4 /* DadosPacienteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosPacienteTableView.swift; sourceTree = "<group>"; };
 		2EDEB3A41D395A4100AC93B4 /* OMStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStatus.swift; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF3BABD1D353A2600D83B1B /* CloudKit.framework in Frameworks */,
+				2EDE7DDA1D42BA4C0043CB2A /* CloudKit.framework in Frameworks */,
 				404478641D416D22003CF0C9 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +194,7 @@
 				2E5A36601D41198A008AAD3A /* NovoMedicoViewController.swift */,
 				2E5A36621D411998008AAD3A /* NovoExameViewController.swift */,
 				2E5A36671D414C17008AAD3A /* TabBarControl.swift */,
+				2EDE7DDF1D42C1A10043CB2A /* EditEventViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC251CD1D3717D700910B20 /* ListaPacienteCell.swift in Sources */,
+				2EDE7DE01D42C1A10043CB2A /* EditEventViewController.swift in Sources */,
 				2EC251C71D36C7E300910B20 /* LoginViewController.swift in Sources */,
 				2E5A36611D41198A008AAD3A /* NovoMedicoViewController.swift in Sources */,
 				2E5A36681D414C17008AAD3A /* TabBarControl.swift in Sources */,

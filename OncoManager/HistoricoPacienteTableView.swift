@@ -15,6 +15,8 @@ class HistoricoPacienteCell: UITableViewCell {
     var subtitle = UILabel()
     var details = UILabel()
     var status: OMStatus!
+    var editar = UIButton()
+   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,12 +39,16 @@ class HistoricoPacienteCell: UITableViewCell {
         status = OMStatus(frame: statusFrame)
         status.backgroundColor = UIColor.clearColor()
         
+        
+        editar.setTitle("Editar", forState: .Normal)
+        editar.frame = CGRectMake(0,0,30,20)
+        editar.setTitleColor(UIColor.greenOM(), forState: .Normal)
+        editar.titleLabel?.font = UIFont(descriptor: editar.titleLabel!.font.fontDescriptor(), size: 15)
+        
         status.translatesAutoresizingMaskIntoConstraints = false
         addSubview(status)
-//
-//        subtitle.text = "subtitle"
-//        subtitle.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(subtitle)
+        editar.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(editar)
         
         setupLabel(title, title: "Título", font: 17)
         setupLabel(subtitle, title: "Subtítulo", font: 15)
@@ -56,9 +62,10 @@ class HistoricoPacienteCell: UITableViewCell {
     func setupConstraints(){
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[v1(12)]-[v0]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1": status]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-26-[v0]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : subtitle]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-26-[v0]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : details]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-26-[v0]-8-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : details, "v1" : editar]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-15-[v0(12)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : status]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[v0]-3-[v1]-3-[v2]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : title, "v1" : subtitle, "v2" : details]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : editar]))
         
     }
     
@@ -75,6 +82,8 @@ class HistoricoPacienteCell: UITableViewCell {
 
 class HistoricoPacienteTableView: UITableViewController {
 
+    var parent:PacienteViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -121,12 +130,15 @@ class HistoricoPacienteTableView: UITableViewController {
         stringFinal = (examesDoPaciente[indexPath.row].dataRealizado).convertNsDateToString()
         cell.subtitle.text = stringFinal
         cell.details.text = examesDoPaciente[indexPath.row].local
+        cell.editar.tag = indexPath.row
+            cell.editar.addTarget(parent, action: #selector(parent!.goToEditEvent(_:)), forControlEvents: .TouchUpInside)
         }
         
          //Configure the cell...
 
         return cell
     }
+    
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
     }

@@ -23,8 +23,9 @@ class PacienteViewController: UIViewController {
     var dadosTableView: DadosPacienteTableView!
     var historicoTableView: HistoricoPacienteTableView!
     var selectedBut = 0
+    var buttonTag = 0
     
-    var pacienteName = "Paciente"
+    var pacienteName = pacienteSelecionado.nome
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,13 @@ class PacienteViewController: UIViewController {
         timeView.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
         
         dadosTableView = DadosPacienteTableView()
+        
     
         dadosTableView.view.frame = contentView.frame
         contentView.addSubview(dadosTableView.tableView)
         
         historicoTableView = HistoricoPacienteTableView()
+        historicoTableView.parent = self
         
         historicoTableView.view.frame = contentView.frame
         contentView.addSubview(historicoTableView.tableView)
@@ -114,6 +117,11 @@ class PacienteViewController: UIViewController {
         
     }
     
+    func goToEditEvent (sender: UIButton) {
+        buttonTag = sender.tag
+        performSegueWithIdentifier("goToEditEvent", sender: self)
+    }
+    
     func goToEditPaciente() {
         performSegueWithIdentifier("goToEditPaciente", sender: self)
     }
@@ -129,14 +137,17 @@ class PacienteViewController: UIViewController {
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToEditEvent" {
+            let destinationVC = segue.destinationViewController as! EditEventViewController
+            destinationVC.index = buttonTag
+        }
     }
-    */
+ 
 
 }
