@@ -296,7 +296,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
             }
             else{
-                var maiorValor:Int = 0
+             /*   var maiorValor:Int = 0
                 for valor in exames
                 {
                     if Int(valor.codigo) > maiorValor
@@ -306,8 +306,9 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 }
                 maiorValor+=1
                 print(maiorValor)
+ */
                 print("Chamou o cloud")
-                instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf, codigo:maiorValor,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
+                instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
                 DaoCloudKit().addExame(instanciaExame)
             }
         }

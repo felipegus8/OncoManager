@@ -14,7 +14,6 @@ public class Exame
 {
     var tipoProcedimento:String!
     var cpf:Double!
-    var codigo:Int!
     var nome:String!
     var medico:String!
     var local:String!
@@ -23,11 +22,10 @@ public class Exame
     var realizado:Int!
     
 
-    init(tipoProcedimento:String,cpf:Double,codigo:Int,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,realizado:Int)
+    init(tipoProcedimento:String,cpf:Double,nome:String,medico:String,local:String,dataMarcado:NSDate,dataRealizado:NSDate,realizado:Int)
     {
         self.tipoProcedimento = tipoProcedimento
         self.cpf = cpf
-        self.codigo = codigo
         self.nome = nome
         self.medico = medico
         self.local = local

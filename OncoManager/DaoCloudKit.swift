@@ -62,7 +62,7 @@ public class DaoCloudKit
     }
     func addExame(exame:Exame)
     {
-        let recordId = CKRecordID(recordName:String(exame.codigo))
+        let recordId = CKRecordID(recordName:(String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
         let record = CKRecord(recordType: "Exame", recordID: recordId)
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
@@ -72,8 +72,7 @@ public class DaoCloudKit
             if error == nil {
                 
                 print("Já existe esse exame")
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroExame", object: nil)
-                
+            NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroExame", object: nil)
             }
                 
             else {
@@ -83,13 +82,13 @@ public class DaoCloudKit
                     print("primeira vez que ta criando o exame")
                     record.setObject(exame.tipoProcedimento, forKey: "tipo")
                     record.setObject(exame.cpf, forKey: "cpf")
-                    record.setObject(exame.codigo, forKey: "codigo")
                     record.setObject(exame.dataRealizado, forKey: "dataRealizado")
                     record.setObject(exame.dataMarcado, forKey: "dataMarcado")
                     record.setObject(exame.nome, forKey: "nome")
                     record.setObject(exame.local, forKey: "local")
                     record.setObject(exame.medico, forKey: "medico")
                     record.setObject(exame.realizado, forKey: "realizado")
+                    
                     publicDatabase.saveRecord(record, completionHandler: { (record, error) -> Void in
                         if (error != nil) {
                             print(error)
@@ -195,7 +194,8 @@ public class DaoCloudKit
             if error == nil {
                 
                 print("Já existe esse paciente")
-                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroPaciente", object: nil)
+                
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorCadastroPaciente", object: nil)
                 
             }
                 
@@ -489,7 +489,6 @@ public class DaoCloudKit
                 exames.removeAll()
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "dd/MM/yyyy - HH:mm"
-                // formatter.locale =  NSLocale(localeIdentifier: "pt_BR")
                 formatter.timeZone = NSTimeZone(forSecondsFromGMT: 10800)
                 for result in results! {
                     let dataRealString = ((result.valueForKey("dataRealizado") as! NSDate)).consertaHorarioDeVerao()
@@ -497,7 +496,7 @@ public class DaoCloudKit
                     let dataMarcadoString = ((result.valueForKey("dataMarcado") as! NSDate)).consertaHorarioDeVerao()
                     let dataMarcadoCerto = formatter.dateFromString(dataMarcadoString)
                     print(dataRealizadoCerto)
-                    let novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double, codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:dataMarcadoCerto!, dataRealizado: dataRealizadoCerto!, realizado: result.valueForKey("realizado") as! Int)
+                    let novoExame = Exame(tipoProcedimento: result.valueForKey("tipo") as! String,cpf: result.valueForKey("cpf") as! Double,nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String,dataMarcado:dataMarcadoCerto!, dataRealizado: dataRealizadoCerto!, realizado: result.valueForKey("realizado") as! Int)
                     exames.append(novoExame)
                     
                 }
@@ -560,7 +559,7 @@ public class DaoCloudKit
     //MARK: Edit Functions
     func editExame(exame:Exame)
     {
-        let recordId = CKRecordID(recordName: String(exame.codigo))
+        let recordId = CKRecordID(recordName: (String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         
@@ -571,7 +570,6 @@ public class DaoCloudKit
                 print("Já existe esse paciente")
                 fetchedRecord!.setObject(exame.tipoProcedimento, forKey: "tipo")
                  fetchedRecord!.setObject(exame.cpf, forKey: "cpf")
-                 fetchedRecord!.setObject(exame.codigo, forKey: "codigo")
                  fetchedRecord!.setObject(exame.dataRealizado, forKey: "dataRealizado")
                  fetchedRecord!.setObject(exame.dataMarcado, forKey: "dataMarcado")
                  fetchedRecord!.setObject(exame.nome, forKey: "nome")
@@ -688,13 +686,13 @@ public class DaoCloudKit
     }
     func deleteExame(exame:Exame)
     {
-        let recordId = CKRecordID(recordName: String(exame.codigo))
+        let recordId = CKRecordID(recordName: (String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
         for valor in exames
         {
-            if valor.codigo == exame.codigo
+            if valor.nome == exame.nome && valor.cpf == exame.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exame.dataRealizado.convertNsDateToStringWithoutHour()
             {
                 exames.removeAtIndex(i)
                 break
