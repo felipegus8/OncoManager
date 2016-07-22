@@ -42,11 +42,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Vetor com os dados do GRAFICO 1 do aplicativo
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         
-        //Dados para teste
-        setChart(vLabelEixoX[0], values: vValueEixoX[0])
+        //Gera o GRÁFICO 1 SEM usar iCloud
+        //setChart(vLabelEixoX[0], values: vValueEixoX[0])
         
-        //Gera o GRÁFICO 1
-        //setChart(vLabelEixoX[0], values: contDias)
+        //Gera o GRÁFICO 1 usando iCloud
+        setChart(vLabelEixoX[0], values: contDias)
         graphTitleLabel.text = listGraphcs[0]
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
@@ -117,10 +117,10 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         //Colocar as informações do eixo x na parte abaixo do gráfico
         chartView.xAxis.labelPosition = .Bottom
-        chartView.xAxis.labelRotationAngle = 80
+        chartView.xAxis.labelRotationAngle = -50
         
         //Mostrar todas as variáveis do eixo X
-        //chartView.xAxis.setLabelsToSkip(0)
+        chartView.xAxis.setLabelsToSkip(0)
         
         //Valor mínimo de um gráfico
         chartView.leftAxis.axisMinValue = 0.0
