@@ -133,11 +133,11 @@ class PacienteViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        switch segue.identifier{
+      /*  switch segue.identifier{
         case "goToEditPaciente"?:
             
             let destinationVC = segue.destinationViewController as! EditarPacienteViewController
-            destinationVC.altura.text = String(pacienteSelecionado.altura)
+       /*     destinationVC.altura.text = String(pacienteSelecionado.altura)
             destinationVC.bairro.text = pacienteSelecionado.bairro
             destinationVC.cel.text = String(pacienteSelecionado.celular)
             destinationVC.convenio.text = pacienteSelecionado.convenio
@@ -156,11 +156,12 @@ class PacienteViewController: UIViewController {
             destinationVC.marcapasso.on = Bool(pacienteSelecionado.marcapasso)
             destinationVC.operado.on = Bool(pacienteSelecionado.operado)
             destinationVC.tipoOperacao.text = pacienteSelecionado.tipoOperacao
-            
+        */
         default:
             break
             
         }
+ */
         
     }
     

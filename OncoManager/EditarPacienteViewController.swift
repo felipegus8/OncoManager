@@ -50,6 +50,8 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         setupPickers()
         linkDelegate()
         setKeyboards()
+        setTextFields()
+        setSwitches()
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
     }
     
@@ -58,7 +60,32 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         convenioData = ["Allianz", "Amil", "Bradesco", "CarePlus", "Furnas", "Golden Cross", "Medial", "Mediservice", "Petrobrás", "Sul América", "Unimed", "Vale"]
     }
     
-    
+    func setTextFields()
+    {
+        nome.text = pacienteSelecionado.nome
+        cpf.text = String(pacienteSelecionado.cpf)
+        nascimento.text = pacienteSelecionado.dataNasc
+         email.text = pacienteSelecionado.email
+         bairro.text = pacienteSelecionado.bairro
+        telFixo.text = String(pacienteSelecionado.telefoneFixo)
+        cel.text = String(pacienteSelecionado.celular)
+         convenio.text = pacienteSelecionado.convenio
+        tipoPlano.text = pacienteSelecionado.tipoPlano
+         matricula.text = pacienteSelecionado.matriculaPlano
+         peso.text = String(pacienteSelecionado.peso)
+         altura.text = String(pacienteSelecionado.altura)
+         tipoOperacao.text = pacienteSelecionado.tipoOperacao
+    }
+    func setSwitches()
+    {
+        (pacienteSelecionado.clipesCirurgico == 1) ? clipesCirurgico.on : !clipesCirurgico.on
+        (pacienteSelecionado.marcapasso == 1) ? marcapasso.on : !marcapasso.on
+        (pacienteSelecionado.hipertenso == 1) ? hipertenso.on : !hipertenso.on
+        (pacienteSelecionado.diabetico == 1) ? diabetico.on : !diabetico.on
+        (pacienteSelecionado.cadeirante == 1) ? cadeirante.on : !cadeirante.on
+        (pacienteSelecionado.claustrofobico == 1) ? claustrofobico.on : !claustrofobico.on
+        (pacienteSelecionado.operado == 1) ? operado.on : !operado.on
+    }
     func setupPickers(){
         
         let loc = NSLocale(localeIdentifier: "pt_BR")
@@ -163,19 +190,18 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     
     @IBAction func alterarPressed(sender: UIButton) {
-//        let intMarcapasso = (marcapasso.on == true) ? 1 : 0
-//        let intClipes = (clipesCirurgico.on == true) ? 1 : 0
-//        let intHipertenso = (hipertenso.on == true) ? 1 : 0
-//        let intDiabetico = (diabetico.on == true) ? 1 : 0
-//        let intCadeirante = (cadeirante.on == true) ? 1 : 0
-//        let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
-//        let intOperado = (operado.on == true) ? 1 : 0
-//        
-//        // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
-//        pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
-//        
-//        DaoCloudKit().addPaciente(paciente)
-//        pacientes.append(paciente)
+        let intMarcapasso = (marcapasso.on == true) ? 1 : 0
+     let intClipes = (clipesCirurgico.on == true) ? 1 : 0
+     let intHipertenso = (hipertenso.on == true) ? 1 : 0
+       let intDiabetico = (diabetico.on == true) ? 1 : 0
+       let intCadeirante = (cadeirante.on == true) ? 1 : 0
+     let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
+      let intOperado = (operado.on == true) ? 1 : 0
+        
+       // Tem que colocar o BairroPrefere,a DataNasc como DatePicker e o switch de alergia
+       pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:"Tem que ver" , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: 1, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
+     
+     DaoCloudKit().editPaciente(pacienteSelecionado)
     }
     
     func actOnNotificationSuccessSavePaciente()
