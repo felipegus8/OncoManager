@@ -562,12 +562,21 @@ public class DaoCloudKit
         let recordId = CKRecordID(recordName: (String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
-        
+        var i = 0
         publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
             
             if error == nil {
                 
                 print("Já existe esse paciente")
+                for valor in exames
+                {
+                    if valor.nome == exame.nome && valor.cpf == exame.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exame.dataRealizado.convertNsDateToStringWithoutHour()
+                    {
+                        exames[i] = exame
+                        break
+                    }
+                    i += 1
+                }
                 fetchedRecord!.setObject(exame.tipoProcedimento, forKey: "tipo")
                  fetchedRecord!.setObject(exame.cpf, forKey: "cpf")
                  fetchedRecord!.setObject(exame.dataRealizado, forKey: "dataRealizado")
@@ -603,12 +612,21 @@ public class DaoCloudKit
         let recordId = CKRecordID(recordName: String(paciente.cpf))
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
-        
+        var i = 0
         publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
             
             if error == nil {
                 
                 print("Já existe esse paciente")
+                for valor in pacientes
+                {
+                    if valor.cpf == paciente.cpf
+                    {
+                        pacientes[i] = paciente
+                        break
+                    }
+                    i+=1
+                }
                 fetchedRecord!.setObject(paciente.cpf, forKey: "cpf")
                 fetchedRecord!.setObject(paciente.nome, forKey: "nome")
                 fetchedRecord!.setObject(paciente.email, forKey: "email")
