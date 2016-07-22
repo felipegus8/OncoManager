@@ -107,9 +107,7 @@ class PacienteViewController: UIViewController {
             historicoTableView.view.hidden = false
             dadosTableView.view.hidden = true
             print("selectedBut: \(selectedBut)")
-        
-        default:
-            break
+
         }
         
         
@@ -130,40 +128,6 @@ class PacienteViewController: UIViewController {
             performSegueWithIdentifier("goToAddEvent", sender: self)
     }
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-      /*  switch segue.identifier{
-        case "goToEditPaciente"?:
-            
-            let destinationVC = segue.destinationViewController as! EditarPacienteViewController
-       /*     destinationVC.altura.text = String(pacienteSelecionado.altura)
-            destinationVC.bairro.text = pacienteSelecionado.bairro
-            destinationVC.cel.text = String(pacienteSelecionado.celular)
-            destinationVC.convenio.text = pacienteSelecionado.convenio
-            destinationVC.cpf.text = String(pacienteSelecionado.cpf)
-            destinationVC.email.text = pacienteSelecionado.email
-            destinationVC.matricula.text = pacienteSelecionado.matriculaPlano
-            destinationVC.nascimento.text = pacienteSelecionado.dataNasc
-            destinationVC.nome.text = pacienteSelecionado.nome
-            destinationVC.peso.text = String(pacienteSelecionado.peso)
-            destinationVC.telFixo.text = String(pacienteSelecionado.telefoneFixo)
-            destinationVC.cadeirante.on = Bool(pacienteSelecionado.cadeirante)
-            destinationVC.claustrofobico.on = Bool(pacienteSelecionado.claustrofobico)
-            destinationVC.clipesCirurgico.on = Bool(pacienteSelecionado.clipesCirurgico)
-            destinationVC.diabetico.on = Bool(pacienteSelecionado.diabetico)
-            destinationVC.hipertenso.on = Bool(pacienteSelecionado.hipertenso)
-            destinationVC.marcapasso.on = Bool(pacienteSelecionado.marcapasso)
-            destinationVC.operado.on = Bool(pacienteSelecionado.operado)
-            destinationVC.tipoOperacao.text = pacienteSelecionado.tipoOperacao
-        */
-        default:
-            break
-            
-        }
- */
-        
-    }
     
     /*
     // MARK: - Navigation

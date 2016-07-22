@@ -22,6 +22,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBOutlet weak var nascimento: OMTextField!
     @IBOutlet weak var email: OMTextField!
     @IBOutlet weak var bairro: OMTextField!
+    @IBOutlet weak var bairroPreferencia: OMTextField!
     @IBOutlet weak var telFixo: OMTextField!
     @IBOutlet weak var cel: OMTextField!
     @IBOutlet weak var convenio: OMTextField!
@@ -31,6 +32,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBOutlet weak var altura: OMTextField!
     @IBOutlet weak var tipoOperacao: OMTextField!
     
+    @IBOutlet weak var alergia: UISwitch!
     @IBOutlet weak var clipesCirurgico: UISwitch!
     @IBOutlet weak var marcapasso: UISwitch!
     @IBOutlet weak var hipertenso: UISwitch!
