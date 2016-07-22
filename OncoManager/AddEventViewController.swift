@@ -47,7 +47,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var eventoPlArray: [Int:EventoPlaceholder]!
     
-    var index = 0
+   // var index = 0
     var date1:NSDate!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +79,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
 
     @IBAction func closeEvent(sender: AnyObject) {
+        index = 0
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -319,6 +320,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     {
         exames.append(instanciaExame)
         examesDoPaciente.append(instanciaExame)
+        index = 0
          dispatch_async(dispatch_get_main_queue(),{
             self.dismissViewControllerAnimated(true, completion: nil)
         })

@@ -62,11 +62,13 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     
     //fecha tela no 'x'
     @IBAction func closeModalPressed(sender: UIButton) {
+        index = 2
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
+        index = 2
         medicoTeste = Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!))
         DaoCloudKit().addMedico(medicoTeste)
     }

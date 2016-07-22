@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var index = 1
 class TabBarControl: UITabBarController {
 
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class TabBarControl: UITabBarController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.selectedIndex = 1
+        self.selectedIndex = index
     }
 
     /*

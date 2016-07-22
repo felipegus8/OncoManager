@@ -43,11 +43,13 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
 
     //fecha tela no 'x'
     @IBAction func closeModalPressed(sender: UIButton) {
+        index = 2
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
+        index = 2
         nomeExameNovo = NomeExame(nome: nomeExame.text!)
         DaoCloudKit().addNomeExame(nomeExameNovo)
        
