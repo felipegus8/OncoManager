@@ -127,7 +127,21 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
             tableView.reloadData()
             }
         }
-    }
+        else
+        {
+            if editingStyle == .Delete {
+            for nome in pacientes
+            {
+                if nome.nome == filtered[indexPath.row]
+                {
+                    DaoCloudKit().deletePaciente(nome)
+                    break
+                }
+            }
+            tableView.reloadData()
+            }
+        }
+}
     @IBAction func novoPacientePressed(sender: AnyObject) {
         self.performSegueWithIdentifier("goToNovoPaciente", sender: sender)
     }
