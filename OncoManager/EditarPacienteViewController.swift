@@ -13,6 +13,8 @@ import UIKit
 // convenio.tag = 14
 //tipoPlano.tag = ?
 
+public  var convenioData1: [String] = ["Allianz", "Amil", "Bradesco", "CarePlus", "Furnas", "Golden Cross", "Medial", "Mediservice", "Petrobrás", "Sul América", "Unimed", "Vale"]
+
 class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!

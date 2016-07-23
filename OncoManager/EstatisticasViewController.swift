@@ -226,14 +226,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             //indice do vetor acumulador
             var index = listaDePlanos.indexOf(paciente.convenio)
-            
-            qtdPacientesxPlano[index!] = qtdPacientesxPlano[index!] + 1
+            if index != nil {
+                qtdPacientesxPlano[index!] = qtdPacientesxPlano[index!] + 1
+            }
             
         }
         
         return qtdPacientesxPlano
     }
-        
 }
  
  
