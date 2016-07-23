@@ -16,7 +16,7 @@ class EditEventViewController: UIViewController /*, UIPickerViewDelegate, UIPick
     @IBOutlet weak var medico: OMTextField!
     @IBOutlet weak var dataMarcado: OMTextField!
     
-    var index = 0
+    var index1 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,11 @@ class EditEventViewController: UIViewController /*, UIPickerViewDelegate, UIPick
     
     func fillTextFields() {
         
-        titulo.text = examesDoPaciente[index].nome
-        local.text = examesDoPaciente[index].local
-        dataHoraRealizado.text = (examesDoPaciente[index].dataRealizado).convertNsDateToString()
-        medico.text = examesDoPaciente[index].medico
-        dataMarcado.text = (examesDoPaciente[index].dataMarcado).convertNsDateToStringWithoutHour()
+        titulo.text = examesDoPaciente[index1].nome
+        local.text = examesDoPaciente[index1].local
+        dataHoraRealizado.text = (examesDoPaciente[index1].dataRealizado).convertNsDateToString()
+        medico.text = examesDoPaciente[index1].medico
+        dataMarcado.text = (examesDoPaciente[index1].dataMarcado).convertNsDateToStringWithoutHour()
     }
 
     /*
