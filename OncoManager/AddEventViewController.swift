@@ -154,6 +154,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let dateFinal = date1?.convertNsDateToString()
         dataHoraRealizado.text = dateFinal
     }
+
     
     //MARK: PickerView dataSource
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -181,8 +182,24 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
     }
     
+    func linkTargetsToTextField() {
+        titulo.addTarget(titulo, action: #selector(self.reloadPicker), forControlEvents: .AllTouchEvents)
+        medico.addTarget(medico, action: #selector(self.reloadPicker), forControlEvents: .AllTouchEvents)
+    }
+    
+    func reloadPicker(sender: UITextField){
+        if sender.placeholder == "Tipo de exame"{
+        pickerData = exameData
+        sender.inputView = pickerView
+        } else if sender.tag == 13{
+            pickerData = medicoData
+            sender.inputView = pickerView
+        }
+    }
+    
     //MARK: delegate do text field -> aciona o pickerView
     func textFieldDidBeginEditing(textField: UITextField) {
+        
         tag = textField.tag
         
         switch textField.tag{
@@ -192,6 +209,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             textField.inputView = datePickerHour
         case 11:
             textField.inputView = datePicker
+           
         case 12:
             if (textField.placeholder == "Tipo de exame"){
                 if pickerData != nil{
@@ -199,6 +217,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 }
             pickerData = exameData
             textField.inputView = pickerView
+            } else {
+                textField.inputView = nil
             }
         case 13:
             if pickerData != nil
@@ -212,6 +232,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             break
         }
     }
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
     {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditEventViewController: UIViewController {
+class EditEventViewController: UIViewController /*, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate */{
 
     @IBOutlet weak var titulo: OMTextField!
     @IBOutlet weak var local: OMTextField!
