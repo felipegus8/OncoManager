@@ -216,6 +216,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             pickerData.removeAll()
                 }
             pickerData = exameData
+            pickerView.dataSource = self
             textField.inputView = pickerView
             } else {
                 textField.inputView = nil
@@ -226,6 +227,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
             pickerData.removeAll()
             }
             pickerData = medicoData
+            pickerView.dataSource = self
             textField.inputView = pickerView
             
         default:
