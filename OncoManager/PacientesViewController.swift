@@ -39,6 +39,10 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Dispose of any resources that can be recreated.
     }
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
     //MARK:Search Bar Delegate
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         print("Entrou aqui")
