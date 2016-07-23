@@ -20,7 +20,8 @@ class EditEventViewController: UIViewController /*, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditEventViewController.actOnNotificationSuccessEditExame), name: "notificationSuccessEditExame", object: nil)
+
         fillTextFields()
         // Do any additional setup after loading the view.
     }
@@ -49,9 +50,17 @@ class EditEventViewController: UIViewController /*, UIPickerViewDelegate, UIPick
     }
     */
     @IBAction func atualizarEventoPressed(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+      /*  let exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: <#T##NSDate#>, dataRealizado: <#T##NSDate#>, realizado: 1)
+         DaoCloudKit().editExame(exameEditado)
+ */
     }
+    func actOnNotificationSuccessEditExame()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+        self.dismissViewControllerAnimated(true, completion: nil)
+        })
 
+    }
     @IBAction func closeModal(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
