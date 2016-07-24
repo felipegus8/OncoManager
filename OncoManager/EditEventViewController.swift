@@ -25,7 +25,6 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var exameData: [String] = []
     var pickerData: [String]!
     
-    var index = 0
     var tag = 0
     var date1:NSDate!
     var index1 = 0
