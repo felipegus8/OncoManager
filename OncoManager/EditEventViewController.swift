@@ -32,7 +32,9 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditEventViewController.actOnNotificationSuccessEditExame), name: "notificationSuccessEditExame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditEventViewController.actOnNotificationErrorEditExame), name: "notificationErrorEditExame", object: nil)
 
+        datePickerHour.date = examesDoPaciente[index1].dataRealizado
         fillTextFields()
         linkDelegate()
         setupPickers()
@@ -213,9 +215,10 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func atualizarEventoPressed(sender: UIButton) {
-      /*  let exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: <#T##NSDate#>, dataRealizado: <#T##NSDate#>, realizado: 1)
+        let exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: datePickerHour.date, realizado: 1)
+        
          DaoCloudKit().editExame(exameEditado)
- */
+ 
     }
     func actOnNotificationSuccessEditExame()
     {
@@ -223,6 +226,15 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.dismissViewControllerAnimated(true, completion: nil)
         })
 
+    }
+    
+   func  actOnNotificationErrorEditExame()
+   {
+    let alert=UIAlertController(title:"Erro", message: "Não foi possivel editar o exame", preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+    dispatch_async(dispatch_get_main_queue(),{
+    self.presentViewController(alert,animated: true, completion: nil)
+    })
     }
     @IBAction func closeModal(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)

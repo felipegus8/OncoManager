@@ -560,6 +560,7 @@ public class DaoCloudKit
     func editExame(exame:Exame)
     {
         let recordId = CKRecordID(recordName: (String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
+        print(recordId.recordName)
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
@@ -599,6 +600,7 @@ public class DaoCloudKit
             else {
                 
                 if(fetchedRecord == nil) {
+                    print(error)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditExame", object: nil)
                     

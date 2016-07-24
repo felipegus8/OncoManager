@@ -220,7 +220,11 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     func actOnNotificationErrorEditPaciente()
     {
-        DaoCloudKit().editPaciente(pacienteSelecionado)
+        let alert=UIAlertController(title:"Erro", message: "Não foi possível editar o paciente", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
+        })
     }
     
     @IBAction func closePressed(sender: UIButton) {
