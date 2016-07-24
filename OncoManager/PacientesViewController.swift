@@ -180,6 +180,11 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     /*
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         self.arraybusca.removeAll(keepCapacity: false)
