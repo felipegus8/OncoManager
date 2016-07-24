@@ -4280,6 +4280,9 @@
                                         <include reference="tHX-Kt-78u"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="P4d-dQ-3I6" appends="YES" id="xwe-rK-bTy"/>
+                                </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-Ce-rss" userLabel="close">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -4365,13 +4368,14 @@
                         <outlet property="dataMarcado" destination="Qey-r3-jQ4" id="HI4-7l-rWT"/>
                         <outlet property="local" destination="j3L-bk-n15" id="a8z-KJ-XQs"/>
                         <outlet property="medico" destination="HD0-Dc-D18" id="Ayv-k0-Cm2"/>
+                        <outlet property="scrollView" destination="5it-Ng-KXb" id="MB9-nN-5bx"/>
                         <outlet property="titulo" destination="yRy-Mq-l0o" id="yXJ-r2-5U1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hx1-AJ-Ua3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="P4d-dQ-3I6">
                     <connections>
-                        <action selector="stopEditing:" destination="v74-X2-IGQ" id="kd2-Hw-Tc7"/>
+                        <action selector="stopEditing:" destination="v74-X2-IGQ" id="KDC-1l-Ewy"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

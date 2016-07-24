@@ -37,6 +37,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var eventoArray = ["Exame","Consulta","Cirurgia"]
     var currentEvent: String!
     var i = 0
+    
     struct EventoPlaceholder {
         var titulo: String!
         var local: String!
