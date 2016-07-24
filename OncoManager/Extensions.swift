@@ -67,6 +67,10 @@ extension UIColor {
     class func greenOM() -> UIColor{
         return UIColor(red:0.00, green:0.47, blue:0.24, alpha:1.0)
     }
+    
+    class func greenOM1() -> UIColor{
+        return UIColor(red:0.6, green:0.78, blue:0.7, alpha:1.0)
+    }
 
 }
 

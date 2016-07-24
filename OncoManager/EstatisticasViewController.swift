@@ -46,6 +46,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         setChart(vLabelEixoX[0], values: vValue[0])
         
+        
+        for num in nomeDosExames {
+            print("===> NOME DOS EXAMES \(num)")
+        }
+        for num in contDias {
+            print("===> VETOR CONT DIAS \(num)")
+        }
+        
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -65,15 +73,15 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         
         //Nome e tamanho da fonte do número em cima da barra
-        //chartData.setValueFont(UIFont(name: "Avenir", size: 9))
+        chartData.setValueFont(UIFont(name: "Avenir", size: 10))
         
         chartView.data = chartData
         
         //Colocar cores nos gráficos: .liberty(), .joyful(), .pastel(), .coloful(), .vordiplom()
         //chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
         //chartDataSet.colors = ChartColorTemplates.liberty()
-        chartDataSet.colors = [.redColor(), .yellowColor(), .greenColor()]
-        chartDataSet.colors = ChartColorTemplates.joyful()
+        chartDataSet.colors = [.greenOM(), .greenOM1()]
+        //chartDataSet.colors = ChartColorTemplates.joyful()
         
         //Desabilita a leganda do Gráfico
         chartView.legend.enabled = false
@@ -102,7 +110,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.leftAxis.axisMinValue = 0.0
         
         //Colocar cor no plano de fundo do gráfico:
-        chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        //chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
         
         //Colocar animação no gráfico.
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
