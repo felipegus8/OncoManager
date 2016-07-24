@@ -15,28 +15,13 @@ var nomeDosExames: [String] = []
 var vLabelEixoX: [[String]] = [nomeDosExames, convenioData1]
 var vValue: [[Double]] = [contDias, qtdPacientes]
 
-
-// ********** DADOS QUE VIRÃO DO ICLOUD *********** //
-
-var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Exame5", "Exame6", "Raio X"]
-var eixoX_PacientexPlano = ["Plano1","Plano2","Plano3","Plano4" ]
-var eixoX_TempoxCirurgia = ["Cirurgia1","Cirurgi2","Cirurgia3"]
-
-var valueX_TempoxExame = [20.0, 14.0,3.0,5.0,3.0,6.0,9.0]
-var valueX_PacientexPlano = [3.0, 4.0,3.0,0.0]
-var valueX_TempoxCirurgia = [10.0, 14.0,3.0]
-
-         // ********** FIM *********** //
-
 class EstatisticasViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     
+    // Vetor com os títulos do Gráfico
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
-    let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano]
-    //let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
-
     var i = 0
 
     override func viewDidLoad() {
@@ -61,12 +46,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         setChart(vLabelEixoX[0], values: vValue[0])
         
-        // ***** TESTES ***** //
-/*
-        for aux in vLabelEixoX[0]{
-            print("NOME DOS EXAMES: \(aux)")
-        }
- */
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -130,8 +109,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Mais opções em - SÓ QUE ESSA TA DANDO PROBLEMA:http://www.appcoda.com/ios-charts-api-tutorial/
         //barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInOutElastic)
         
-        
-        
         //Adicionar uma LINHA LIMITE no gráfico
         //let ll = ChartLimitLine(limit: 10.0, label: "Target")
         //chartView.rightAxis.addLimitLine(ll)
@@ -141,7 +118,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBAction func nextGraphFunction(sender: AnyObject) {
         
         if i < listGraphcs.count - 1{
-            
             
             if i < listGraphcs.count - 1 && i >= 0 {
                 i = i + 1
@@ -155,10 +131,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
             setChart(vLabelEixoX[i], values: qtdPacientes)
-            for npaciente in qtdPacientes{
-                print(">>> NUMERO DO VETOR DE PACIENTE X PLANO\(npaciente)")
-            }
-        
         }
 
     }
@@ -202,7 +174,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: exame.dataMarcado, toDate: exame.dataRealizado, options: NSCalendarOptions.init(rawValue: 0))
                 
                 totDias = Double(diffDateComponents.day)
-                
                 contTempo[index!] = totDias + contTempo[index!]
                 contVezes[index!] = contVezes[index!] + 1
             }
@@ -218,7 +189,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 contTempo[i] = contTempo[i]/contVezes[i]
             }
         }
-        
         return contTempo
     }
 
@@ -229,7 +199,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         for i in 0..<listaDePlanos.count{
             qtdPacientesxPlano.append(0)
         }
-        
         for paciente in listaDeTodosOsPacientes {
             
             //indice do vetor acumulador
@@ -237,12 +206,23 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             if index != nil {
                 qtdPacientesxPlano[index!] = qtdPacientesxPlano[index!] + 1
             }
-            
         }
-        
         return qtdPacientesxPlano
     }
 }
  
+// ********** DADOS PARA TESTE DO GRÁFICO *********** //
+/*
+ var eixoX_TempoxExame = ["Exame1", "Exame2", "Exame3", "Exame4", "Exame5", "Exame6", "Raio X"]
+ var eixoX_PacientexPlano = ["Plano1","Plano2","Plano3","Plano4" ]
+ var eixoX_TempoxCirurgia = ["Cirurgia1","Cirurgi2","Cirurgia3"]
  
+ var valueX_TempoxExame = [20.0, 14.0,3.0,5.0,3.0,6.0,9.0]
+ var valueX_PacientexPlano = [3.0, 4.0,3.0,0.0]
+ var valueX_TempoxCirurgia = [10.0, 14.0,3.0]
+ 
+ let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano]
+ let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
+ */
+// ********** FIM *********** //
  
