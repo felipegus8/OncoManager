@@ -145,7 +145,7 @@ class PacienteViewController: UIViewController {
         
         if segue.identifier == "goToEditEvent" {
             let destinationVC = segue.destinationViewController as! EditEventViewController
-            destinationVC.index = buttonTag
+            destinationVC.index1 = buttonTag
         }
     }
  

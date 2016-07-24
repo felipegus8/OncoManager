@@ -28,10 +28,12 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var index = 0
     var tag = 0
     var date1:NSDate!
-    
+    var index1 = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditEventViewController.actOnNotificationSuccessEditExame), name: "notificationSuccessEditExame", object: nil)
+
         fillTextFields()
         linkDelegate()
         setupPickers()
@@ -61,11 +63,11 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func fillTextFields() {
         
-        titulo.text = examesDoPaciente[index].nome
-        local.text = examesDoPaciente[index].local
-        dataHoraRealizado.text = (examesDoPaciente[index].dataRealizado).convertNsDateToString()
-        medico.text = examesDoPaciente[index].medico
-        dataMarcado.text = (examesDoPaciente[index].dataMarcado).convertNsDateToStringWithoutHour()
+        titulo.text = examesDoPaciente[index1].nome
+        local.text = examesDoPaciente[index1].local
+        dataHoraRealizado.text = (examesDoPaciente[index1].dataRealizado).convertNsDateToString()
+        medico.text = examesDoPaciente[index1].medico
+        dataMarcado.text = (examesDoPaciente[index1].dataMarcado).convertNsDateToStringWithoutHour()
     }
     
     func setupPickers(){
@@ -212,9 +214,17 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func atualizarEventoPressed(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+      /*  let exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: <#T##NSDate#>, dataRealizado: <#T##NSDate#>, realizado: 1)
+         DaoCloudKit().editExame(exameEditado)
+ */
     }
+    func actOnNotificationSuccessEditExame()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+        self.dismissViewControllerAnimated(true, completion: nil)
+        })
 
+    }
     @IBAction func closeModal(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }

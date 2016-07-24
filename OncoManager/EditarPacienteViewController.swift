@@ -50,6 +50,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSuccessEditPaciente", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarPacienteViewController.actOnNotificationErrorEditPaciente), name: "notificationErrorEditPaciente", object: nil)
         
         setupPickers()
         linkDelegate()
@@ -216,6 +217,10 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         dispatch_async(dispatch_get_main_queue(),{
         self.dismissViewControllerAnimated(true, completion: nil)
         })
+    }
+    func actOnNotificationErrorEditPaciente()
+    {
+        DaoCloudKit().editPaciente(pacienteSelecionado)
     }
     
     @IBAction func closePressed(sender: UIButton) {

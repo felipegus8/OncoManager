@@ -9,8 +9,12 @@
 import UIKit
 import Charts
 
+var contDias:[Double] = []
+var qtdPacientes: [Double] = []
 var nomeDosExames: [String] = []
-let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano]
+var vLabelEixoX: [[String]] = [nomeDosExames, convenioData1]
+var vValue: [[Double]] = [contDias, qtdPacientes]
+
 
 // ********** DADOS QUE VIRÃO DO ICLOUD *********** //
 
@@ -32,7 +36,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
     let vValueEixoX: [[Double]] = [ valueX_TempoxExame, valueX_PacientexPlano]
     //let vLabelEixoX: [[String]] = [nomeDosExames, eixoX_PacientexPlano, eixoX_TempoxCirurgia ]
-    var contDias:[Double] = []
+
     var i = 0
 
     override func viewDidLoad() {
@@ -55,7 +59,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         //Gera o GRÁFICO 1 usando iCloud
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
-        setChart(vLabelEixoX[0], values: contDias)
+        setChart(vLabelEixoX[0], values: vValue[0])
         
         // ***** TESTES ***** //
 /*
@@ -149,7 +153,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
-            setChart(vLabelEixoX[i], values: contDias)
+            qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
+            setChart(vLabelEixoX[i], values: qtdPacientes)
+            for npaciente in qtdPacientes{
+                print(">>> NUMERO DO VETOR DE PACIENTE X PLANO\(npaciente)")
+            }
         
         }
 
@@ -167,7 +175,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
-            setChart(vLabelEixoX[i], values: contDias)
+            setChart(vLabelEixoX[i], values: vValue[i])
         }
     }
     
