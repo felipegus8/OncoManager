@@ -24,8 +24,8 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
     var i = 0
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        
         chartView.delegate = self
         
         //Título do gráfico
@@ -45,14 +45,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Gera o GRÁFICO 1 usando iCloud
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         setChart(vLabelEixoX[0], values: vValue[0])
-        
-        
-        for num in nomeDosExames {
-            print("===> NOME DOS EXAMES \(num)")
-        }
-        for num in contDias {
-            print("===> VETOR CONT DIAS \(num)")
-        }
+       
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     
@@ -111,7 +108,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.leftAxis.axisMinValue = 0.0
         
         chartDataSet.highlightEnabled = false
-        chartDataSet.drawValuesEnabled = false
+        chartDataSet.drawValuesEnabled = true
         
         //Colocar cor no plano de fundo do gráfico:
         chartView.backgroundColor = UIColor.clearColor()
