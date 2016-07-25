@@ -16,7 +16,6 @@ class HistoricoPacienteCell: UITableViewCell {
     var details = UILabel()
     var status: OMStatus!
     var editar = UIButton()
-   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,7 +82,7 @@ class HistoricoPacienteCell: UITableViewCell {
 class HistoricoPacienteTableView: UITableViewController {
 
     var parent:PacienteViewController?
-    
+    var indexDoDelete:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -162,11 +161,13 @@ class HistoricoPacienteTableView: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             DaoCloudKit().deleteExame(examesDoPaciente[indexPath.row])
-            examesDoPaciente.removeAtIndex(indexPath.row)
-        }
+            indexDoDelete = indexPath.row
+            }
     }
+    
     func actOnNotificationSuccessDeleteExame()
     {
+        examesDoPaciente.removeAtIndex(indexDoDelete)
         dispatch_async(dispatch_get_main_queue(),{
         self.tableView.reloadData()
         })
