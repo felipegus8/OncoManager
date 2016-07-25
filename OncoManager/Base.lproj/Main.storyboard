@@ -602,6 +602,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ei-Hs-yox">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="szc-KT-LVL" customClass="ListaPacienteCell" customModule="OncoManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -643,6 +644,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4ei-Hs-yox" firstAttribute="leading" secondItem="YVg-lp-Edh" secondAttribute="leading" id="0fE-Rc-gaz"/>
                             <constraint firstItem="DF3-lV-QQI" firstAttribute="top" secondItem="ZNz-Aw-0M9" secondAttribute="bottom" constant="10" id="1np-kj-iPS"/>
