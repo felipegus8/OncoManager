@@ -35,6 +35,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.descriptionText = ""
         
         //Cria vetor com o nome dos exames
+        nomeDosExames.removeAll()
         for exame in nomeExames {
             nomeDosExames.append(exame.nome)
         }
@@ -45,6 +46,10 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         //Gera o GRÁFICO 1 usando iCloud
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
         setChart(vLabelEixoX[0], values: vValue[0])
+        
+        for exame in nomeDosExames{
+            print("ENTROU EM ESTATÍSTICAS\(exame)")
+        }
        
     }
     
@@ -54,7 +59,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
-        
+        print("Entrou aqui")
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
