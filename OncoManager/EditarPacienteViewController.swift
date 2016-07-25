@@ -46,7 +46,7 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
     var convenioData: [String]!
-    
+    var pacienteEditado:Paciente!
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSuccessEditPaciente", object: nil)
@@ -205,15 +205,22 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
      let intClaustrofobico = (claustrofobico.on == true) ? 1 : 0
       let intOperado = (operado.on == true) ? 1 : 0
         let intAlergia = (alergia.on == true) ? 1 : 0
-
-       pacienteSelecionado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:bairroPreferencia.text! , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: intAlergia, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
-     
-        DaoCloudKit().editPaciente(pacienteSelecionado)
+        pacienteEditado = Paciente(cpf: Double(cpf.text!)!, nome: nome.text!, bairro: bairro.text!, bairroPrefere:bairroPreferencia.text! , dataNasc: nascimento.text!, email: email.text!, telefoneFixo: Double(telFixo.text!)!, celular: Double(cel.text!)!, peso: Double(peso.text!)!, altura: Double(altura.text!)!, alergia: intAlergia, marcapasso: intMarcapasso, clipesCirurgico: intClipes, operado: intOperado, tipoOperacao: tipoOperacao.text, cadeirante: intCadeirante, diabetico: intDiabetico, hipertenso: intHipertenso, convenio: convenio.text!, tipoPlano: tipoPlano.text!, matriculaPlano: matricula.text!, claustrofobico: intClaustrofobico)
+         index = 0
+        DaoCloudKit().editPaciente(pacienteSelecionado,pacienteNew: pacienteEditado)
     }
     
     func actOnNotificationSuccessSavePaciente()
     {
-        index = 0
+        var j = 0
+        for j  in 0...pacientes.count - 1
+        {
+            if pacientes[j].cpf == pacienteSelecionado.cpf
+            {
+                pacientes[j] = pacienteEditado
+            }
+        }
+        pacienteSelecionado = pacienteEditado
         dispatch_async(dispatch_get_main_queue(),{
         self.dismissViewControllerAnimated(true, completion: nil)
         })

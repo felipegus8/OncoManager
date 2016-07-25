@@ -29,7 +29,7 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var tag = 0
     var date1:NSDate!
     var index1 = 0
-
+    var exameEditado:Exame!
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditEventViewController.actOnNotificationSuccessEditExame), name: "notificationSuccessEditExame", object: nil)
@@ -216,13 +216,22 @@ class EditEventViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     @IBAction func atualizarEventoPressed(sender: UIButton) {
-        let exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: datePickerHour.date, realizado: 1)
-        
-         DaoCloudKit().editExame(exameEditado)
+         exameEditado = Exame(tipoProcedimento: examesDoPaciente[index1].tipoProcedimento, cpf: examesDoPaciente[index1].cpf, nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: datePickerHour.date, realizado: 1)
+        index = 0
+        DaoCloudKit().editExame(examesDoPaciente[index1],exameNew:exameEditado)
  
     }
     func actOnNotificationSuccessEditExame()
     {
+        var j = 0
+        for j  in 0...exames.count - 1
+        {
+            if exames[j].nome == examesDoPaciente[index1].nome && exames[j].cpf == examesDoPaciente[index1].cpf && exames[j].dataRealizado.convertNsDateToStringWithoutHour() == examesDoPaciente[index1].dataRealizado.convertNsDateToStringWithoutHour()
+            {
+                exames[j] = exameEditado
+            }
+        }
+        examesDoPaciente[index1] = exameEditado
         dispatch_async(dispatch_get_main_queue(),{
         self.dismissViewControllerAnimated(true, completion: nil)
         })

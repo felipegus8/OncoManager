@@ -557,9 +557,9 @@ public class DaoCloudKit
     }
     
     //MARK: Edit Functions
-    func editExame(exame:Exame)
+    func editExame(exameOld:Exame,exameNew:Exame)
     {
-        let recordId = CKRecordID(recordName: (String(exame.nome) + String(exame.cpf) + (exame.dataRealizado.convertNsDateToStringWithoutHour())))
+        let recordId = CKRecordID(recordName: (String(exameOld.nome) + String(exameOld.cpf) + (exameOld.dataRealizado.convertNsDateToStringWithoutHour())))
         print(recordId.recordName)
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
@@ -571,21 +571,21 @@ public class DaoCloudKit
                 print("Já existe esse paciente")
                 for valor in exames
                 {
-                    if valor.nome == exame.nome && valor.cpf == exame.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exame.dataRealizado.convertNsDateToStringWithoutHour()
+                    if valor.nome == exameOld.nome && valor.cpf == exameOld.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exameOld.dataRealizado.convertNsDateToStringWithoutHour()
                     {
-                        exames[i] = exame
+                        exames[i] = exameOld
                         break
                     }
                     i += 1
                 }
-                fetchedRecord!.setObject(exame.tipoProcedimento, forKey: "tipo")
-                 fetchedRecord!.setObject(exame.cpf, forKey: "cpf")
-                 fetchedRecord!.setObject(exame.dataRealizado, forKey: "dataRealizado")
-                 fetchedRecord!.setObject(exame.dataMarcado, forKey: "dataMarcado")
-                 fetchedRecord!.setObject(exame.nome, forKey: "nome")
-                 fetchedRecord!.setObject(exame.local, forKey: "local")
-                 fetchedRecord!.setObject(exame.medico, forKey: "medico")
-                 fetchedRecord!.setObject(exame.realizado, forKey: "realizado")
+                fetchedRecord!.setObject(exameNew.tipoProcedimento, forKey: "tipo")
+                 fetchedRecord!.setObject(exameNew.cpf, forKey: "cpf")
+                 fetchedRecord!.setObject(exameNew.dataRealizado, forKey: "dataRealizado")
+                 fetchedRecord!.setObject(exameNew.dataMarcado, forKey: "dataMarcado")
+                 fetchedRecord!.setObject(exameNew.nome, forKey: "nome")
+                 fetchedRecord!.setObject(exameNew.local, forKey: "local")
+                 fetchedRecord!.setObject(exameNew.medico, forKey: "medico")
+                 fetchedRecord!.setObject(exameNew.realizado, forKey: "realizado")
                 
                 publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
                     if (error != nil) {
@@ -609,9 +609,9 @@ public class DaoCloudKit
         }
 
     }
-    func editPaciente(paciente:Paciente)
+    func editPaciente(pacienteOld:Paciente,pacienteNew:Paciente)
     {
-        let recordId = CKRecordID(recordName: String(paciente.cpf))
+        let recordId = CKRecordID(recordName: String(pacienteOld.cpf))
        // print(String(Int(paciente.cpf)))
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
@@ -623,36 +623,36 @@ public class DaoCloudKit
                 print("Já existe esse paciente")
                 for valor in pacientes
                 {
-                    if valor.cpf == paciente.cpf
+                    if valor.cpf == pacienteOld.cpf
                     {
-                        pacientes[i] = paciente
+                        pacientes[i] = pacienteOld
                         break
                     }
                     i+=1
                 }
-                fetchedRecord!.setObject(paciente.cpf, forKey: "cpf")
-                fetchedRecord!.setObject(paciente.nome, forKey: "nome")
-                fetchedRecord!.setObject(paciente.email, forKey: "email")
-                fetchedRecord!.setObject(paciente.alergia, forKey: "alergia")
-                fetchedRecord!.setObject(paciente.altura, forKey: "altura")
-                fetchedRecord!.setObject(paciente.peso, forKey: "peso")
-                fetchedRecord!.setObject(paciente.bairro, forKey: "bairro")
-                fetchedRecord!.setObject(paciente.bairroPrefere, forKey: "bairroPrefere")
-                fetchedRecord!.setObject(paciente.cadeirante, forKey: "cadeirante")
-                fetchedRecord!.setObject(paciente.celular, forKey: "celular")
-                fetchedRecord!.setObject(paciente.claustrofobico, forKey: "claustrofobico")
-                fetchedRecord!.setObject(paciente.clipesCirurgico, forKey: "clipesCirurgico")
-                fetchedRecord!.setObject(paciente.convenio, forKey: "convenio")
-                fetchedRecord!.setObject(paciente.dataNasc, forKey: "dataNasc")
-                fetchedRecord!.setObject(paciente.diabetico, forKey: "diabetico")
-                fetchedRecord!.setObject(paciente.hipertenso, forKey: "hipertenso")
-                fetchedRecord!.setObject(paciente.marcapasso, forKey: "marcapasso")
-                fetchedRecord!.setObject(paciente.matriculaPlano, forKey: "matriculaPlano")
-                fetchedRecord!.setObject(paciente.operado, forKey: "operado")
-                fetchedRecord!.setObject(paciente.tipoOperacao, forKey: "tipoOperacao")
-                fetchedRecord!.setObject(paciente.tipoPlano, forKey: "tipoPlano")
-                fetchedRecord!.setObject(paciente.telefoneFixo, forKey: "telefoneFixo")
-                fetchedRecord!.setObject(paciente.matriculaPlano, forKey: "matriculaPlano")
+                fetchedRecord!.setObject(pacienteNew.cpf, forKey: "cpf")
+                fetchedRecord!.setObject(pacienteNew.nome, forKey: "nome")
+                fetchedRecord!.setObject(pacienteNew.email, forKey: "email")
+                fetchedRecord!.setObject(pacienteNew.alergia, forKey: "alergia")
+                fetchedRecord!.setObject(pacienteNew.altura, forKey: "altura")
+                fetchedRecord!.setObject(pacienteNew.peso, forKey: "peso")
+                fetchedRecord!.setObject(pacienteNew.bairro, forKey: "bairro")
+                fetchedRecord!.setObject(pacienteNew.bairroPrefere, forKey: "bairroPrefere")
+                fetchedRecord!.setObject(pacienteNew.cadeirante, forKey: "cadeirante")
+                fetchedRecord!.setObject(pacienteNew.celular, forKey: "celular")
+                fetchedRecord!.setObject(pacienteNew.claustrofobico, forKey: "claustrofobico")
+                fetchedRecord!.setObject(pacienteNew.clipesCirurgico, forKey: "clipesCirurgico")
+                fetchedRecord!.setObject(pacienteNew.convenio, forKey: "convenio")
+                fetchedRecord!.setObject(pacienteNew.dataNasc, forKey: "dataNasc")
+                fetchedRecord!.setObject(pacienteNew.diabetico, forKey: "diabetico")
+                fetchedRecord!.setObject(pacienteNew.hipertenso, forKey: "hipertenso")
+                fetchedRecord!.setObject(pacienteNew.marcapasso, forKey: "marcapasso")
+                fetchedRecord!.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
+                fetchedRecord!.setObject(pacienteNew.operado, forKey: "operado")
+                fetchedRecord!.setObject(pacienteNew.tipoOperacao, forKey: "tipoOperacao")
+                fetchedRecord!.setObject(pacienteNew.tipoPlano, forKey: "tipoPlano")
+                fetchedRecord!.setObject(pacienteNew.telefoneFixo, forKey: "telefoneFixo")
+                fetchedRecord!.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
                 
 
                 
