@@ -60,6 +60,20 @@ extension NSDate
         stringFinal = fullNameArr[2] + "/" + fullNameArr[1] + "/" + fullNameArr[0]
         return stringFinal
     }
+    
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isGreater = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+            isGreater = true
+        }
+        
+        //Return Result
+        return isGreater
+    }
+
 }
 
 extension UIColor {
@@ -70,6 +84,14 @@ extension UIColor {
     
     class func greenOM1() -> UIColor{
         return UIColor(red:0.6, green:0.78, blue:0.7, alpha:1.0)
+    }
+    
+    class func yellowStatus() -> UIColor{
+        return UIColor(red:0.94, green:0.84, blue:0.00, alpha:1.0)
+    }
+    
+    class func greenStatus() -> UIColor{
+        return UIColor(red:0.00, green:0.73, blue:0.38, alpha:1.0)
     }
 
 }

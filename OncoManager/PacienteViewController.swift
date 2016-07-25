@@ -85,6 +85,27 @@ class PacienteViewController: UIViewController {
         }
 
     }
+
+    // altera cor da bolinha: chamada na cellForRow da historicoTableView
+    func returnStatusColor (i: Int) -> UIColor {
+        let dataAtual = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let date1 = calendar.startOfDayForDate(examesDoPaciente[i].dataRealizado)
+        let date2 = calendar.startOfDayForDate(dataAtual)
+        
+        print("data de HOJE: \(date2)")
+        print ("data do dia MARCADO: \(date1)")
+        
+        if date1.isGreaterThanDate(date2) {
+            return UIColor.yellowStatus()
+        }
+        else {
+            return UIColor.greenStatus()
+        }
+
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

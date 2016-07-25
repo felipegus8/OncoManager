@@ -134,7 +134,9 @@ class HistoricoPacienteTableView: UITableViewController {
         cell.subtitle.text = stringFinal
         cell.details.text = examesDoPaciente[indexPath.row].local
         cell.editar.tag = indexPath.row
-            cell.editar.addTarget(parent, action: #selector(parent!.goToEditEvent(_:)), forControlEvents: .TouchUpInside)
+        cell.editar.addTarget(parent, action: #selector(parent!.goToEditEvent(_:)), forControlEvents: .TouchUpInside)
+        
+        cell.status.colorStatus = parent!.returnStatusColor(indexPath.row)
         }
         
          //Configure the cell...
