@@ -37,6 +37,9 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var eventoArray = ["Exame","Consulta","Cirurgia"]
     var currentEvent: String!
     var i = 0
+    var parent: PacienteViewController?
+    var saveTheDate = NSDate()
+    
     
     struct EventoPlaceholder {
         var titulo: String!
@@ -86,7 +89,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     //Configura o nome dos placeholders para cada tipo de evento
     func setupPlaceholderData(){
-        let exame = EventoPlaceholder(titulo: "Tipo de exame", local: "Local", dataHoraRealizado: "Data do exame", medico: "Médico solicitante", dataMarcado: "Data de agendamento")
+        let exame = EventoPlaceholder(titulo: "Tipo de exame", local: "Local", dataHoraRealizado: "Data do exame", medico: "Médico requerente", dataMarcado: "Data de agendamento")
         let consulta = EventoPlaceholder(titulo: "Tipo de consulta", local: "Local", dataHoraRealizado: "Data da consulta", medico: "Médico", dataMarcado: "Data de agendamento")
         let cirurgia = EventoPlaceholder(titulo: "Tipo de cirurgia", local: "Local", dataHoraRealizado: "Data da cirurgia", medico: "Médico responsável", dataMarcado: "Data de agendamento")
         
@@ -137,6 +140,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func changedTxtFieldDate() {
         let date: String?
         print(datePicker.date)
+        saveTheDate = datePicker.date
         date = datePicker.date.convertNsDateToStringWithoutHour()
         dataMarcado.text = date
     }
@@ -322,17 +326,6 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
             }
             else{
-             /*   var maiorValor:Int = 0
-                for valor in exames
-                {
-                    if Int(valor.codigo) > maiorValor
-                    {
-                        maiorValor = valor.codigo
-                    }
-                }
-                maiorValor+=1
-                print(maiorValor)
- */
                 print("Chamou o cloud")
                 instanciaExame = Exame(tipoProcedimento: tituloLabel.text!, cpf: pacienteSelecionado.cpf,nome: titulo.text!, medico: medico.text!, local: local.text!, dataMarcado: datePicker.date, dataRealizado: date1, realizado: 0)
                 DaoCloudKit().addExame(instanciaExame)
@@ -346,7 +339,8 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         examesDoPaciente.append(instanciaExame)
         index = 0
          dispatch_async(dispatch_get_main_queue(),{
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.performSegueWithIdentifier("unwindToPaciente", sender: self)
+            //self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
      func actOnNotificationErrorAddEvento()
@@ -365,6 +359,30 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         dataHoraRealizado.text = ""
         medico.text = ""
         dataMarcado.text = ""
+    }
+    
+   @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        if unwindSegue.identifier == "unwindToPaciente" {
+            let sourceVC = unwindSegue.sourceViewController as? PacienteViewController
+            
+            print("UNWIND")
+            if examesDoPaciente.count == 1
+            {
+                
+                print("IF UNWIND")
+                print("QTD DE EXAMES: " + "\(examesDoPaciente.count)")
+                let dataAtual = NSDate()
+                let calendar = NSCalendar.currentCalendar()
+                print(dataAtual)
+                let date1 = calendar.startOfDayForDate(saveTheDate)
+                let date2 = calendar.startOfDayForDate(dataAtual)
+                
+                let flags = NSCalendarUnit.Day
+                let components = calendar.components(flags, fromDate: date1, toDate: date2, options: [])
+                
+                sourceVC?.diasTratamento.text = String(components.day) + " " + "dias"
+            }
+        }
     }
 
 }

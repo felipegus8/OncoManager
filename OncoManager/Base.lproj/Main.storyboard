@@ -307,7 +307,20 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9by-3M-h14" customClass="OMButton" customModule="OncoManager" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sBY-Mv-DuK"/>
+                                </constraints>
                                 <state key="normal" title="Cadastrar"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="sBY-Mv-DuK"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="sBY-Mv-DuK"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="cadastro:" destination="LBn-s8-Pfj" eventType="touchUpInside" id="ZNG-qa-mdF"/>
                                 </connections>
@@ -320,7 +333,7 @@
                             <constraint firstItem="dqC-XJ-Qhb" firstAttribute="top" secondItem="b9p-PV-S5u" secondAttribute="bottom" constant="115" id="7DR-Qu-1G9"/>
                             <constraint firstAttribute="trailing" secondItem="dqC-XJ-Qhb" secondAttribute="trailing" constant="44" id="D5e-GJ-jrN"/>
                             <constraint firstItem="AJw-Ke-m2h" firstAttribute="top" secondItem="dqC-XJ-Qhb" secondAttribute="bottom" constant="20" id="Gxt-ig-PrU"/>
-                            <constraint firstItem="50e-xE-iva" firstAttribute="top" secondItem="9by-3M-h14" secondAttribute="bottom" constant="100" id="JaK-vJ-JSD"/>
+                            <constraint firstItem="50e-xE-iva" firstAttribute="top" secondItem="9by-3M-h14" secondAttribute="bottom" constant="90" id="JaK-vJ-JSD"/>
                             <constraint firstItem="9by-3M-h14" firstAttribute="leading" secondItem="s4P-fF-ngo" secondAttribute="leading" constant="63" id="TNH-YG-85t"/>
                             <constraint firstItem="ytM-Er-Ipm" firstAttribute="top" secondItem="7cc-oC-gAU" secondAttribute="bottom" constant="8" id="VdW-B2-lRa"/>
                             <constraint firstItem="dqC-XJ-Qhb" firstAttribute="leading" secondItem="s4P-fF-ngo" secondAttribute="leading" constant="43" id="YkN-vJ-OjP"/>
@@ -781,7 +794,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?? dias" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qS-It-2wj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 dias" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qS-It-2wj">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.46666666670000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -830,10 +843,9 @@
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HRG-TL-BIs" secondAttribute="trailing" id="7sd-eq-BJn"/>
-                            <constraint firstItem="egg-Tz-wwH" firstAttribute="leading" secondItem="8zf-tN-C19" secondAttribute="leading" constant="47" id="AtU-vv-Fw7"/>
                             <constraint firstItem="HRG-TL-BIs" firstAttribute="leading" secondItem="8zf-tN-C19" secondAttribute="leading" id="HVj-Ix-EWg"/>
                             <constraint firstItem="NbZ-RJ-KXn" firstAttribute="top" secondItem="HRG-TL-BIs" secondAttribute="bottom" constant="8" id="OwY-My-Wmu"/>
-                            <constraint firstAttribute="trailing" secondItem="egg-Tz-wwH" secondAttribute="trailing" constant="48" id="Y2T-ws-DIu"/>
+                            <constraint firstItem="egg-Tz-wwH" firstAttribute="centerX" secondItem="8zf-tN-C19" secondAttribute="centerX" id="axI-k0-gwd"/>
                             <constraint firstItem="egg-Tz-wwH" firstAttribute="top" secondItem="BhV-wo-MbV" secondAttribute="bottom" constant="23" id="cGR-Ka-YRC"/>
                             <constraint firstItem="uRj-vU-r0c" firstAttribute="top" secondItem="NbZ-RJ-KXn" secondAttribute="bottom" id="eu6-9h-Roh"/>
                             <constraint firstAttribute="trailing" secondItem="NbZ-RJ-KXn" secondAttribute="trailing" id="fBF-Eo-2XZ"/>
@@ -847,9 +859,7 @@
                                 <exclude reference="HRG-TL-BIs"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="eu6-9h-Roh"/>
-                                <exclude reference="AtU-vv-Fw7"/>
-                                <exclude reference="Y2T-ws-DIu"/>
+                                <exclude reference="axI-k0-gwd"/>
                                 <exclude reference="cGR-Ka-YRC"/>
                                 <exclude reference="7sd-eq-BJn"/>
                                 <exclude reference="HVj-Ix-EWg"/>
@@ -857,6 +867,7 @@
                                 <exclude reference="OwY-My-Wmu"/>
                                 <exclude reference="fBF-Eo-2XZ"/>
                                 <exclude reference="fNG-T3-xrX"/>
+                                <exclude reference="eu6-9h-Roh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -866,9 +877,7 @@
                                 <include reference="HRG-TL-BIs"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="eu6-9h-Roh"/>
-                                <include reference="AtU-vv-Fw7"/>
-                                <include reference="Y2T-ws-DIu"/>
+                                <include reference="axI-k0-gwd"/>
                                 <include reference="cGR-Ka-YRC"/>
                                 <include reference="7sd-eq-BJn"/>
                                 <include reference="HVj-Ix-EWg"/>
@@ -876,6 +885,7 @@
                                 <include reference="OwY-My-Wmu"/>
                                 <include reference="fBF-Eo-2XZ"/>
                                 <include reference="fNG-T3-xrX"/>
+                                <include reference="eu6-9h-Roh"/>
                             </mask>
                         </variation>
                     </view>
@@ -1018,7 +1028,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Médico" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Cw-WjP" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Médico requerente" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Cw-WjP" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1307,9 +1317,11 @@
                         <outlet property="scrollView" destination="uRi-XQ-InE" id="fgN-l1-JrP"/>
                         <outlet property="titulo" destination="Qlf-GV-uO2" id="OZi-MZ-9Eg"/>
                         <outlet property="tituloLabel" destination="vse-34-A4y" id="HN0-uL-vBh"/>
+                        <segue destination="05W-gs-h3Z" kind="unwind" identifier="unwindToPaciente" unwindAction="unwindForSegue:towardsViewController:" id="laa-Qd-K4B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAh-i1-jsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="05W-gs-h3Z" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="MD8-D3-2nK">
                     <connections>
                         <action selector="stopEditing:" destination="Z5x-ZA-i9x" id="QHv-uD-0oC"/>
@@ -2441,16 +2453,19 @@
                                                 <rect key="frame" x="40" y="1312" width="248" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="248" id="ILb-HO-YGN"/>
+                                                    <constraint firstAttribute="height" constant="40" id="rw3-lp-rDw"/>
                                                 </constraints>
                                                 <state key="normal" title="Atualizar"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="ILb-HO-YGN"/>
+                                                        <exclude reference="rw3-lp-rDw"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="ILb-HO-YGN"/>
+                                                        <include reference="rw3-lp-rDw"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -3468,16 +3483,19 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kw-Cb-JIS" customClass="OMButton" customModule="OncoManager" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="1312" width="248" height="40"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Jvl-Mn-fRP"/>
                                                     <constraint firstAttribute="width" constant="248" id="Nbr-1P-hyv"/>
                                                 </constraints>
                                                 <state key="normal" title="Cadastrar"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="Jvl-Mn-fRP"/>
                                                         <exclude reference="Nbr-1P-hyv"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="widthClass=compact">
                                                     <mask key="constraints">
+                                                        <include reference="Jvl-Mn-fRP"/>
                                                         <include reference="Nbr-1P-hyv"/>
                                                     </mask>
                                                 </variation>

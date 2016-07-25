@@ -134,8 +134,6 @@ class PacienteViewController: UIViewController {
 
         }
         
-        
-        
     }
     
     func goToEditEvent (sender: UIButton) {
