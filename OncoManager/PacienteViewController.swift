@@ -158,7 +158,7 @@ class PacienteViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+     //   self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // MARK: - Navigation
