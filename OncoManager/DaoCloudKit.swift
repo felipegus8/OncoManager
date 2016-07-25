@@ -573,7 +573,7 @@ public class DaoCloudKit
                 {
                     if valor.nome == exameOld.nome && valor.cpf == exameOld.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exameOld.dataRealizado.convertNsDateToStringWithoutHour()
                     {
-                        exames[i] = exameOld
+                        exames[i] = exameNew
                         break
                     }
                     i += 1
