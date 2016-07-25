@@ -12,11 +12,12 @@ import Charts
 var contDias:[Double] = []
 var qtdPacientes: [Double] = []
 var nomeDosExames: [String] = []
-var vLabelEixoX: [[String]] = [nomeDosExames, convenioData1]
-var vValue: [[Double]] = [contDias, qtdPacientes]
+//var vLabelEixoX: [[String]] = [nomeDosExames, convenioData1]
+
 
 class EstatisticasViewController: UIViewController, ChartViewDelegate {
-
+    var vValue: [[Double]] = [[]]
+    var vLabelEixoX: [[String]] = [[]]
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     
@@ -27,7 +28,8 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     override func viewWillAppear(animated: Bool) {
         
         chartView.delegate = self
-        
+        vValue.removeAll()
+        vLabelEixoX.removeAll()
         //Título do gráfico
         graphTitleLabel.text = listGraphcs[0]
         
@@ -39,16 +41,23 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         for exame in nomeExames {
             nomeDosExames.append(exame.nome)
         }
-        
+        vLabelEixoX.append(nomeDosExames)
+        vLabelEixoX.append(convenioData1)
         //Gera o GRÁFICO 1 SEM usar iCloud
         //setChart(vLabelEixoX[0], values: vValueEixoX[0])
         
         //Gera o GRÁFICO 1 usando iCloud
         contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[0], listaDeTodosOsExames: exames )
+        vValue.append(contDias)
+        //vValue.append(qtdPacientes)
+        print(vValue)
         setChart(vLabelEixoX[0], values: vValue[0])
         
         for exame in nomeDosExames{
-            print("ENTROU EM ESTATÍSTICAS\(exame)")
+            print("ENTROU EM ESTATÍSTICAS \(exame)")
+        }
+        for dia in contDias{
+            print("N DE DIAS \(dia)")
         }
        
     }
@@ -146,6 +155,12 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
             setChart(vLabelEixoX[i], values: qtdPacientes)
         }
+        for exame in nomeDosExames{
+            print("ENTROU EM ESTATÍSTICAS \(exame)")
+        }
+        for dia in contDias{
+            print("N DE DIAS \(dia)")
+        }
 
     }
     
@@ -162,6 +177,12 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             setChart(vLabelEixoX[i], values: vValue[i])
+        }
+        for exame in nomeDosExames{
+            print("ENTROU EM ESTATÍSTICAS \(exame)")
+        }
+        for dia in contDias{
+            print("N DE DIAS \(dia)")
         }
     }
     
