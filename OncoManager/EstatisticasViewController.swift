@@ -108,7 +108,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartView.leftAxis.axisMinValue = 0.0
         
         chartDataSet.highlightEnabled = false
-        chartDataSet.drawValuesEnabled = true
+        chartDataSet.drawValuesEnabled = false
         
         //Colocar cor no plano de fundo do gráfico:
         chartView.backgroundColor = UIColor.clearColor()
