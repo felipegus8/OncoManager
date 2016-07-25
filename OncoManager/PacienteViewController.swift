@@ -52,6 +52,8 @@ class PacienteViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         print("Entrou na view Will Appear do paciente unico")
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         if examesDoPaciente.count > 0
         {
             menorData = examesDoPaciente[0].dataMarcado
@@ -155,7 +157,9 @@ class PacienteViewController: UIViewController {
             performSegueWithIdentifier("goToAddEvent", sender: self)
     }
     
-    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     // MARK: - Navigation
 
@@ -167,6 +171,5 @@ class PacienteViewController: UIViewController {
             destinationVC.index1 = buttonTag
         }
     }
- 
 
 }

@@ -176,10 +176,10 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
         examesDoPaciente.removeAll()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        super.viewWillDisappear(animated)
-    }
+//    override func viewWillDisappear(animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        super.viewWillDisappear(animated)
+//    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)

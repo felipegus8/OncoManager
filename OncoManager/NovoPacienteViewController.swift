@@ -201,6 +201,13 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     
+    override func viewWillDisappear(animated: Bool) {
+        index = 0
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillDisappear(animated)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

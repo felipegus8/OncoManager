@@ -83,13 +83,13 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         chartDataSet.colors = [.greenOM(), .greenOM1()]
         //chartDataSet.colors = ChartColorTemplates.joyful()
         
-        //Desabilita a leganda do Gráfico
+        //Desabilita a legenda do Gráfico
         chartView.legend.enabled = false
         
         //Desabilita o Zoom
-        chartView.scaleYEnabled = false
-        chartView.scaleXEnabled = false
-        chartView.pinchZoomEnabled = false
+        chartView.scaleYEnabled = true
+        chartView.scaleXEnabled = true
+        chartView.pinchZoomEnabled = true
         chartView.doubleTapToZoomEnabled = false
         
         // Desabilita o Highlighter na seleção de uma barra do gráfico
@@ -97,20 +97,24 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         //Reduz o número de informações no eixo Y do gráfico
         chartView.rightAxis.enabled = false
-        chartView.xAxis.drawGridLinesEnabled = false
+        //chartView.xAxis.drawGridLinesEnabled = false
         
         //Colocar as informações do eixo x na parte abaixo do gráfico
-        chartView.xAxis.labelPosition = .Bottom
-        chartView.xAxis.labelRotationAngle = -50
+        chartView.xAxis.labelPosition = .BottomInside
+        chartView.xAxis.labelRotationAngle = -90
         
         //Mostrar todas as variáveis do eixo X
         chartView.xAxis.setLabelsToSkip(0)
         
+        //chartView.xAxis.labelRotatedHeight = CGFloat(20.0)
         //Valor mínimo de um gráfico
         chartView.leftAxis.axisMinValue = 0.0
         
+        chartDataSet.highlightEnabled = false
+        chartDataSet.drawValuesEnabled = false
+        
         //Colocar cor no plano de fundo do gráfico:
-        //chartView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
+        chartView.backgroundColor = UIColor.clearColor()
         
         //Colocar animação no gráfico.
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
