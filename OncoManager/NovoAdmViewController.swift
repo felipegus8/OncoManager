@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NovoAdmViewController: UIViewController {
+class NovoAdmViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var nome: OMTextField!
     @IBOutlet weak var email: OMTextField!
@@ -17,6 +17,9 @@ class NovoAdmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         senha.secureTextEntry = true
+        nome.delegate = self
+        email.delegate = self
+        senha.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationSuccessCadastroAdmin), name: "notificationSuccessCadastroAdmin", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoAdmViewController.actOnNotificationErrorCadastroAdmin), name: "notificationErrorCadastroAdmin", object: nil)
         
@@ -32,7 +35,13 @@ class NovoAdmViewController: UIViewController {
     @IBAction func closeModalPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        self.view.endEditing(true)
+        print(textField.placeholder)
+        return false
+    }
+
     @IBAction func cadastro(sender: OMButton) {
         if ((nome.text?.isEmpty == true) || (email.text?.isEmpty == true) || (senha.text?.isEmpty == true))
         {

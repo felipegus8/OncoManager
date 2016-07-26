@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var signIn: OMButton!
     @IBOutlet weak var emailTxtField: OMTextField!
@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
  */
         senhaTxtField.secureTextEntry = true
         addObservers()
+        emailTxtField.delegate = self
+        senhaTxtField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -56,6 +58,13 @@ class LoginViewController: UIViewController {
 
 
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        self.view.endEditing(true)
+        print(textField.placeholder)
+        return false
+    }
+
     override func viewWillAppear(animated: Bool) {
         i=0
     }

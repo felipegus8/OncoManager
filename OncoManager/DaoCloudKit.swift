@@ -678,7 +678,49 @@ public class DaoCloudKit
         }
 
     }
-    
+    func editNomeExame(nameOld:NomeExame,nameNew:NomeExame)
+    {
+        let recordId = CKRecordID(recordName: nameOld.nome)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        var i = 0
+        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            if error == nil {
+                
+                print("Já existe esse paciente")
+                for valor in nomeExames
+                {
+                    if valor.nome == nameOld.nome
+                    {
+                        nomeExames[i] = nameNew
+                        break
+                    }
+                    i += 1
+                }
+                fetchedRecord!.setObject(nameNew.nome, forKey: "nome")
+                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    }
+                    else{
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditNomeExame", object: nil)
+                    }
+                    
+                })
+            }
+            else {
+                
+                if(fetchedRecord == nil) {
+                    print(error)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditNomeExame", object: nil)
+                    
+                }
+            }
+        }
+
+    }
     //MARK:Delete Functions
     
     func deletePaciente(paciente:Paciente)
