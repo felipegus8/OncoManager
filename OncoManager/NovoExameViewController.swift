@@ -9,9 +9,16 @@
 import UIKit
 
 class NovoExameViewController: UIViewController, UITextFieldDelegate {
+    
+    var edit = false
+    var i = 0
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nomeExame: OMTextField!
+    @IBOutlet weak var cadastrarButton: OMButton!
     var nomeExameNovo:NomeExame!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +26,17 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
           NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationSuccessAddExame), name: "notificationSuccessCadastroNovoExame", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationErrorAddExame), name: "notificationErrorCadastroNovoExame", object: nil)
         
+        configEditVC()
+        print(titleLabel.text)
         // Do any additional setup after loading the view.
+    }
+    
+    func configEditVC() {
+        if edit {
+            titleLabel.text = "EDITAR EXAME"
+            nomeExame.text = nomeExames[i].nome
+            cadastrarButton.setTitle("Alterar", forState: .Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

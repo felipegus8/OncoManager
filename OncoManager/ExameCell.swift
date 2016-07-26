@@ -10,6 +10,7 @@ import UIKit
 class ExameCell: UITableViewCell {
 
     @IBOutlet weak var nome: UILabel!
+    @IBOutlet weak var editar: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

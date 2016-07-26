@@ -9,11 +9,15 @@
 import UIKit
 
 class ExamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    var i = -1
+    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
@@ -34,6 +38,8 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = self.tableView.dequeueReusableCellWithIdentifier("exameCell", forIndexPath: indexPath) as! ExameCell
         
         cell.nome.text = nomeExames[indexPath.row].nome
+        cell.editar.addTarget(self, action: #selector(self.editarExamePressed(_:)), forControlEvents: .TouchUpInside)
+        cell.editar.tag = indexPath.row + 1
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.stopEditing(_:)))
         cell.contentView.addGestureRecognizer(tap)
         
@@ -52,8 +58,23 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
             self.tableView.reloadData()
         })
     }
+    
     @IBAction func addExamePressed(sender: UIBarButtonItem) {
         performSegueWithIdentifier("goToAddExame", sender: self)
+    }
+    
+    func editarExamePressed(sender: UIButton){
+        i = sender.tag - 1
+        print("sender tag ===== \(i)")
+        performSegueWithIdentifier("goToAddExame", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToAddExame" && i >= 0 {
+            let destinationVC = segue.destinationViewController as! NovoExameViewController
+            destinationVC.edit = true
+            destinationVC.i = i
+        }
     }
     
     func stopEditing(sender: UITapGestureRecognizer) {

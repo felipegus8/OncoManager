@@ -9,7 +9,10 @@
 import UIKit
 
 class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    var edit = false
+    var i = -1
+    
     @IBOutlet weak var medTableView: UITableView!
     
     override func viewDidLoad() {
@@ -38,6 +41,8 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.email.text = medicos[indexPath.row].email
         cell.especialidade.text = medicos[indexPath.row].especialidade
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.stopEditing(_:)))
+        cell.editar.tag = indexPath.row + 1
+        cell.editar.addTarget(self, action: #selector(self.editarMedicoPressed(_:)), forControlEvents: .TouchUpInside)
         cell.contentView.addGestureRecognizer(tap)
         
         return cell
@@ -55,10 +60,24 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
 
     }
+    
     func stopEditing(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
+    func editarMedicoPressed(sender: UIButton){
+        i = sender.tag - 1
+        print("sender tag ===== \(i)")
+        performSegueWithIdentifier("goToAddMedico", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToAddMedico" && i >= 0 {
+            let destinationVC = segue.destinationViewController as! NovoMedicoViewController
+            destinationVC.edit = true
+            destinationVC.i = i
+        }
+    }
     
     @IBAction func addMedicoPressed(sender: UIBarButtonItem) {
         performSegueWithIdentifier("goToAddMedico", sender: self)

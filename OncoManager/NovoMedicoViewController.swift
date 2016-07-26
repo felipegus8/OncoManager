@@ -9,12 +9,18 @@
 import UIKit
 
 class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
+    
+    var edit = false
+    var i = 0
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var cadastrar: OMButton!
     @IBOutlet weak var nome: OMTextField!
     @IBOutlet weak var email: OMTextField!
     @IBOutlet weak var telefone: OMTextField!
     @IBOutlet weak var especialidade: OMTextField!
     @IBOutlet weak var crm: OMTextField!
+    
     var medicoTeste:Medico!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -22,6 +28,7 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         linkDelegate()
+        configEditVC()
         crm.keyboardType = .NumberPad
         telefone.keyboardType = .NumberPad
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessAddMedico), name: "notificationSuccessCadastroMedico", object: nil)
@@ -33,6 +40,19 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func configEditVC() {
+        if edit {
+            nome.text = medicos[i].nome
+            email.text = medicos[i].email
+            telefone.text = String(medicos[i].telefone)
+            especialidade.text = medicos[i].especialidade
+            crm.text = String(medicos[i].crm)
+            titleLabel.text = "EDITAR MÉDICO"
+            cadastrar.setTitle("Alterar", forState: .Normal)
+    
+        }
     }
     
     func linkDelegate(){

@@ -13,6 +13,7 @@ class MedicoCell: UITableViewCell {
     @IBOutlet weak var nomeMedico: UILabel!
     @IBOutlet weak var especialidade: UILabel!
     @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var editar: UIButton!
     
     
     
@@ -26,8 +27,6 @@ class MedicoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func editarPressed(sender: UIButton) {
-        
-    }
+
 
 }
