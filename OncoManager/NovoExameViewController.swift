@@ -17,6 +17,7 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
 
         nomeExame.delegate = self
           NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationSuccessAddExame), name: "notificationSuccessCadastroNovoExame", object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationErrorAddExame), name: "notificationErrorCadastroNovoExame", object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -59,6 +60,14 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
         nomeExames.append(nomeExameNovo)
         dispatch_async(dispatch_get_main_queue(),{
          self.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
+    func actOnNotificationErrorAddExame()
+    {
+        let alert=UIAlertController(title:"Erro", message: "Exame", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
         })
     }
 }

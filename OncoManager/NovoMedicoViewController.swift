@@ -25,6 +25,8 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         crm.keyboardType = .NumberPad
         telefone.keyboardType = .NumberPad
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessAddMedico), name: "notificationSuccessCadastroMedico", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationErrorAddMedico), name: "notificationErrorCadastroMedico", object: nil)
+
         // Do any additional setup after loading the view.
     }
 
@@ -78,6 +80,14 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         medicos.append(medicoTeste)
          dispatch_async(dispatch_get_main_queue(),{
         self.dismissViewControllerAnimated(true, completion: nil)
+        })
+    }
+    func actOnNotificationErrorAddMedico()
+    {
+        let alert=UIAlertController(title:"Acabou", message: "Fim da edição", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
         })
     }
 }
