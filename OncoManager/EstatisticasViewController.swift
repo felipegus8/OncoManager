@@ -20,7 +20,9 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     var vLabelEixoX: [[String]] = [[]]
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
+    @IBOutlet weak var back: UIButton!
     
+    @IBOutlet weak var next: UIButton!
     // Vetor com os títulos do Gráfico
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
     var i = 0
@@ -153,8 +155,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
+            next.hidden = false
             setChart(vLabelEixoX[i], values: qtdPacientes)
         }
+      /*  else
+        {
+            next.hidden = true
+       }
+ */
         for exame in nomeDosExames{
             print("ENTROU EM ESTATÍSTICAS \(exame)")
         }
@@ -176,8 +184,14 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            back.hidden = false
             setChart(vLabelEixoX[i], values: vValue[i])
         }
+      /*  else
+        {
+            back.hidden = true
+        }
+ */
         for exame in nomeDosExames{
             print("ENTROU EM ESTATÍSTICAS \(exame)")
         }

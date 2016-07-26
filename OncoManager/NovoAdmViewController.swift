@@ -13,6 +13,7 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var nome: OMTextField!
     @IBOutlet weak var email: OMTextField!
     @IBOutlet weak var senha: OMTextField!
+    @IBOutlet weak var confirmaSenha: OMTextField!
     var i = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
             let alert=UIAlertController(title:"Erro", message: "Todos os campos são obrigatórios", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alert,animated: true, completion: nil)
+            i = 0
 
         }
         else{
@@ -55,14 +57,25 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
                 let alert=UIAlertController(title:"Erro", message: "Email Inválido", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alert,animated: true, completion: nil)
+                i = 0
             }
             else{
-        if i == 0
-        {
-        DaoCloudKit().addAdmin(Admin(email: email.text!, senha: senha.text!, nome: nome.text!))
-            i+=1
+                if senha.text != confirmaSenha.text
+                {
+                    i = 0
+                    let alert=UIAlertController(title:"Erro", message: "As senhas são diferentes", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alert,animated: true, completion: nil)
+                }
+                else{
+                    
+                    if i == 0
+                    {
+                        DaoCloudKit().addAdmin(Admin(email: email.text!, senha: senha.text!, nome: nome.text!))
+                        i+=1
+                    }
+                }
         }
-            }
         }
     }
     override func viewWillAppear(animated: Bool) {

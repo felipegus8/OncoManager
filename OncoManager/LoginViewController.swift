@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var signIn: OMButton!
     @IBOutlet weak var emailTxtField: OMTextField!
     @IBOutlet weak var senhaTxtField: OMTextField!
@@ -69,6 +70,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         i=0
     }
     @IBAction func signInPressed(sender: AnyObject) {
+        activity.startAnimating()
         if DaoCloudKit().cloudAvailable() == true
         {
             if ((emailTxtField.text?.isEmpty == true) || (senhaTxtField.text?.isEmpty == true))
@@ -123,6 +125,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     func actOnNotificationSuccessMedicos()
     {
+        activity.stopAnimating()
         dispatch_async(dispatch_get_main_queue(),{
             self.performSegueWithIdentifier("goToHome", sender: self)
         })

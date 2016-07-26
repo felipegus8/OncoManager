@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -113,6 +113,14 @@
                                     <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ATS-gB-uTQ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-4E-Ge4">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                <color key="color" red="0.32946007787312254" green="0.60352585078534027" blue="0.20548376128441148" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="169" y="235" width="37" height="37"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -141,6 +149,7 @@
                                 <exclude reference="rpE-Xh-9bj"/>
                                 <exclude reference="RGl-h6-pBH"/>
                                 <exclude reference="vTz-0M-D75"/>
+                                <exclude reference="DPK-4E-Ge4"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="vfi-7Q-136"/>
@@ -169,6 +178,7 @@
                                 <include reference="rpE-Xh-9bj"/>
                                 <include reference="RGl-h6-pBH"/>
                                 <include reference="vTz-0M-D75"/>
+                                <include reference="DPK-4E-Ge4"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="vfi-7Q-136"/>
@@ -192,6 +202,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="activity" destination="DPK-4E-Ge4" id="bky-DN-yw5"/>
                         <outlet property="emailTxtField" destination="Ocx-oW-qyZ" id="6UM-Qu-LYz"/>
                         <outlet property="novaConta" destination="RGl-h6-pBH" id="vV0-Eb-Dpk"/>
                         <outlet property="senhaTxtField" destination="Ale-LW-Rjp" id="Lco-Zl-JIH"/>
@@ -325,6 +336,27 @@
                                     <action selector="cadastro:" destination="LBn-s8-Pfj" eventType="touchUpInside" id="ZNG-qa-mdF"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirmar senha" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hy3-8Y-uwe" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="lPZ-iS-zDZ"/>
+                                </constraints>
+                                <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lPZ-iS-zDZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="43" y="393" width="288" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="lPZ-iS-zDZ"/>
+                                    </mask>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -354,6 +386,7 @@
                                 <exclude reference="Aml-m4-wXX"/>
                                 <exclude reference="AJw-Ke-m2h"/>
                                 <exclude reference="9by-3M-h14"/>
+                                <exclude reference="Hy3-8Y-uwe"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="JaK-vJ-JSD"/>
@@ -383,6 +416,7 @@
                                 <include reference="Aml-m4-wXX"/>
                                 <include reference="AJw-Ke-m2h"/>
                                 <include reference="9by-3M-h14"/>
+                                <include reference="Hy3-8Y-uwe"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="JaK-vJ-JSD"/>
@@ -407,6 +441,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="confirmaSenha" destination="Hy3-8Y-uwe" id="Ndz-oE-8ca"/>
                         <outlet property="email" destination="AJw-Ke-m2h" id="5zK-4Y-GP2"/>
                         <outlet property="nome" destination="dqC-XJ-Qhb" id="1bc-ba-MAX"/>
                         <outlet property="senha" destination="Aml-m4-wXX" id="mJm-df-xKy"/>
@@ -556,8 +591,10 @@
                     <tabBarItem key="tabBarItem" title="Estatísticas" image="estatisticas" selectedImage="estatisticas" id="HVu-pN-Vx8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="back" destination="MZZ-ej-wv3" id="lBh-tg-t1f"/>
                         <outlet property="chartView" destination="Htd-72-O6L" id="AJa-nW-r5N"/>
                         <outlet property="graphTitleLabel" destination="B0v-8x-9r5" id="yZP-T7-ydK"/>
+                        <outlet property="next" destination="e38-61-zCN" id="XbG-Rz-1yt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnh-rN-TJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -860,6 +897,7 @@
                                 <exclude reference="HRG-TL-BIs"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="eu6-9h-Roh"/>
                                 <exclude reference="axI-k0-gwd"/>
                                 <exclude reference="cGR-Ka-YRC"/>
                                 <exclude reference="7sd-eq-BJn"/>
@@ -868,7 +906,6 @@
                                 <exclude reference="OwY-My-Wmu"/>
                                 <exclude reference="fBF-Eo-2XZ"/>
                                 <exclude reference="fNG-T3-xrX"/>
-                                <exclude reference="eu6-9h-Roh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -878,6 +915,7 @@
                                 <include reference="HRG-TL-BIs"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="eu6-9h-Roh"/>
                                 <include reference="axI-k0-gwd"/>
                                 <include reference="cGR-Ka-YRC"/>
                                 <include reference="7sd-eq-BJn"/>
@@ -886,7 +924,6 @@
                                 <include reference="OwY-My-Wmu"/>
                                 <include reference="fBF-Eo-2XZ"/>
                                 <include reference="fNG-T3-xrX"/>
-                                <include reference="eu6-9h-Roh"/>
                             </mask>
                         </variation>
                     </view>
@@ -4407,7 +4444,7 @@
         <image name="adicionar" width="23" height="24"/>
         <image name="estatisticas" width="23" height="26"/>
         <image name="exitModal" width="26" height="26"/>
-        <image name="logo" width="471" height="132"/>
+        <image name="logo" width="157" height="44"/>
         <image name="pacientes" width="25" height="25"/>
     </resources>
 </document>
