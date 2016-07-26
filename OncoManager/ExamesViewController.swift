@@ -17,6 +17,7 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ExamesViewController.actOnNotificationSuccessDeleteNomeExame), name: "notificationSucessDeleteNomeExame", object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -39,7 +40,18 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            DaoCloudKit().deleteNomeExame(nomeExames[indexPath.row])
+        }
+    }
+    func actOnNotificationSuccessDeleteNomeExame()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.tableView.reloadData()
+        })
+    }
     @IBAction func addExamePressed(sender: UIBarButtonItem) {
         performSegueWithIdentifier("goToAddExame", sender: self)
     }

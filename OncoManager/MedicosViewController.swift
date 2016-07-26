@@ -18,6 +18,7 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         medTableView.delegate = self
         medTableView.dataSource = self
         medTableView.allowsSelection = false
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MedicosViewController.actOnNotificationSuccessDeleteMedico), name: "notificationSucessDeleteMedico", object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -41,7 +42,19 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            DaoCloudKit().deleteMedico(medicos[indexPath.row])
+        }
+    }
+    func actOnNotificationSuccessDeleteMedico()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.medTableView.reloadData()
+        })
+
+    }
     func stopEditing(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
