@@ -69,7 +69,7 @@ public class ChartXAxisRenderer: ChartAxisRendererBase
             return
         }
         
-        let yOffset = xAxis.yOffset
+        let yOffset = xAxis.yOffset + CGFloat(70.0)
         
         if (xAxis.labelPosition == .Top)
         {
