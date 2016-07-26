@@ -23,11 +23,11 @@ class NovoDadoViewController: UIViewController {
     
 
     @IBAction func novoExamePressed(sender: UIButton) {
-        performSegueWithIdentifier("goToNovoExame", sender: self)
+        performSegueWithIdentifier("goToExames", sender: self)
     }
 
     @IBAction func novoMedicoPressed(sender: UIButton) {
-        performSegueWithIdentifier("goToNovoMedico", sender: self)
+        performSegueWithIdentifier("goToMedicos", sender: self)
     }
     /*
     // MARK: - Navigation
