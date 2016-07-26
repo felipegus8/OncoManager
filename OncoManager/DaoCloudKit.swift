@@ -242,67 +242,6 @@ public class DaoCloudKit
             }
         }
     }
- /*
-    func addExameToPaciente(exame:Exame,paciente:Paciente)
-    {
-            let container = CKContainer.defaultContainer()
-            let publicDatabase = container.publicCloudDatabase
-            
-            let record = CKRecord(recordType: "Exame")
-            let recordId = CKRecordID(recordName: String(paciente.cpf))
-            
-            //record.setObject(exame.codigo, forKey: "codigo")
-            record.setObject(exame.data, forKey: "data")
-            record.setObject(exame.nome, forKey: "nome")
-            record.setObject(exame.hora, forKey: "hora")
-            record.setObject(exame.local, forKey: "local")
-            record.setObject(exame.medico, forKey: "medico")
-            record.setObject(exame.aprovado, forKey: "aprovado")
-            record.setObject(exame.realizado, forKey: "realizado")
-            
-            let exameReference = CKReference(recordID: record.recordID, action: .None)
-            
-            print("---------------------- Referencia do exame: ", exameReference)
-            paciente.arrayExames.append(exameReference)
-            
-            
-            publicDatabase.saveRecord(record, completionHandler:
-                ({returnRecord, error in
-                    if error != nil {
-                        print(error)
-                        dispatch_async(dispatch_get_main_queue()) {
-                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSaveError", object: nil)
-                        }
-                        
-                    } else {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSaveSuccess", object: nil)
-                        }
-                        
-                    }
-                }))
-            
-            
-            container.publicCloudDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-                
-                print(fetchedRecord)
-                
-                if error == nil {
-                    
-                    print("Already exists user!!")
-                    
-                    print("---------------------- Referencia dos exames: ", paciente.arrayExames)
-                    fetchedRecord!.setObject(paciente.arrayExames, forKey: "exames")
-                    
-                    container.publicCloudDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
-                        if (error != nil) {
-                            print(error)
-                        }
-                    })
-                }
-        }
-    }
-    */
     //MARK:Fetch Functions
     
     func fetchAdminByEmail(email: String!,senha: String!) {
@@ -344,86 +283,6 @@ public class DaoCloudKit
             }
         }
     }
-    /*
-    func fetchExamesFromPaciente(paciente:Paciente)
-    {
-        let recordId = CKRecordID(recordName: String(paciente.cpf))
-        let container = CKContainer.defaultContainer()
-        let publicDatabase = container.publicCloudDatabase
-        
-        
-        var examesRecordIds = [CKRecordID]()
-        
-        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-            
-            // print(fetchedRecord)
-            
-            if error == nil {
-                
-                if let teste = fetchedRecord!.objectForKey("exames") {
-                    print("quantidade de exames registrados: ", (teste as! [CKRecordValue]).count)
-                    
-                    
-                    for exameReference in fetchedRecord!.objectForKey("exames") as! [CKReference] {
-                        examesRecordIds.append(exameReference.recordID)
-                    }
-                    
-                    let fetchOperation = CKFetchRecordsOperation(recordIDs: examesRecordIds)
-                    fetchOperation.fetchRecordsCompletionBlock = {
-                        records, error in
-                        if error != nil {
-                            print(error)
-                            NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
-                            
-                        } else {
-                            
-                            paciente.exames.removeAll()
-                            paciente.arrayExames.removeAll()
-                            
-                            for (_, result) in records! {
-                                print("Preenchendo os vetores")
-                                if  let order = menorData
-                                {
-                                    if order.compare((result.creationDate)!) ==  NSComparisonResult.OrderedDescending
-                                    {
-                                    menorData = result.creationDate
-                                    }
-                                }
-                                else{
-                                    menorData = result.creationDate
-                                }
-                                paciente.arrayExames.append(CKReference(recordID: result.recordID, action: .None))
-                                paciente.exames.append(Exame(codigo: result.valueForKey("codigo") as! Int, nome: result.valueForKey("nome") as! String, medico: result.valueForKey("medico") as! String, local: result.valueForKey("local") as! String, data: result.valueForKey("data") as! String, hora: result.valueForKey("hora") as! String, aprovado: result.valueForKey("aprovado") as! Int, realizado:result.valueForKey("realizado") as! Int))
-                            }
-                            
-                            NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadExamesFromPaciente", object: nil)
-                            
-                            
-                        }
-                    }
-                    
-                    CKContainer.defaultContainer().publicCloudDatabase.addOperation(fetchOperation)
-                }
-                    
-                else {
-                    
-                    if paciente.exames.count == 0
-                    {
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessLoadExamesFromPaciente", object: nil)
-                    }
-                    else{
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorLoadPaciente", object: nil)
-                        
-                    }
-                    
-                }
-            }
-            else {
-                print(error)
-            }
-        }
-        }
-    */
     func fetchPacientes()
     {
         let container = CKContainer.defaultContainer()
@@ -721,6 +580,53 @@ public class DaoCloudKit
         }
 
     }
+    func editMedico(medicoOld:Medico,medicoNew:Medico)
+    {
+        let recordId = CKRecordID(recordName: medicoOld.email)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        var i = 0
+        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
+            
+            if error == nil {
+                
+                print("Já existe esse paciente")
+                for valor in medicos
+                {
+                    if valor.email == medicoOld.email
+                    {
+                        medicos[i] = medicoNew
+                        break
+                    }
+                    i += 1
+                }
+                fetchedRecord!.setObject(medicoNew.nome, forKey: "nome")
+                 fetchedRecord!.setObject(medicoNew.crm, forKey: "crm")
+                 fetchedRecord!.setObject(medicoNew.especialidade, forKey: "especialidade")
+                 fetchedRecord!.setObject(medicoNew.telefone, forKey: "telefone")
+                 fetchedRecord!.setObject(medicoNew.email, forKey: "email")
+                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    }
+                    else{
+                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditMedico", object: nil)
+                    }
+                    
+                })
+            }
+            else {
+                
+                if(fetchedRecord == nil) {
+                    print(error)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditMedico", object: nil)
+                    
+                }
+            }
+        }
+
+    }
     //MARK:Delete Functions
     
     func deletePaciente(paciente:Paciente)
@@ -773,5 +679,56 @@ public class DaoCloudKit
                 
             }
         }
+    }
+    func deleteNomeExame(nome:NomeExame)
+    {
+        let recordId = CKRecordID(recordName:nome.nome)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        var i = 0
+        for valor in nomeExames
+        {
+            if valor.nome == nome.nome
+            {
+                nomeExames.removeAtIndex(i)
+                break
+            }
+            i += 1
+        }
+        publicDatabase.deleteRecordWithID(recordId) { (fetchedRecord,error) in
+            if error == nil{
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessDeleteNomeExame", object: nil)
+            }
+            else{
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorDeleteNomeExame", object: nil)
+                
+            }
+        }
+    }
+    func deleteMedico(medico:Medico)
+    {
+        let recordId = CKRecordID(recordName: medico.email)
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.publicCloudDatabase
+        var i = 0
+        for valor in medicos
+        {
+            if valor.email == medico.email
+            {
+                medicos.removeAtIndex(i)
+                break
+            }
+            i += 1
+        }
+        publicDatabase.deleteRecordWithID(recordId) { (fetchedRecord,error) in
+            if error == nil{
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationSucessDeleteMedico", object: nil)
+            }
+            else{
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorDeleteMedico", object: nil)
+                
+            }
+        }
+
     }
 }
