@@ -21,7 +21,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var graphTitleLabel: UILabel!
     @IBOutlet weak var back: UIButton!
-    
     @IBOutlet weak var next: UIButton!
     // Vetor com os títulos do Gráfico
     let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
@@ -34,6 +33,8 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         vLabelEixoX.removeAll()
         //Título do gráfico
         graphTitleLabel.text = listGraphcs[0]
+        back.alpha = 0.25
+        back.enabled = false
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
@@ -144,25 +145,30 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         if i < listGraphcs.count - 1{
             
-            if i < listGraphcs.count - 1 && i >= 0 {
-                i = i + 1
-            }
-            graphTitleLabel.text = listGraphcs[i]
+//            if i < listGraphcs.count - 1 && i >= 0 {
+//                i = i + 1
+//            }
             
-            //Dados para teste
-            //setChart(vLabelEixoX[i], values: vValueEixoX[i])
+            i += 1
+            graphTitleLabel.text = listGraphcs[i]
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
             next.hidden = false
             setChart(vLabelEixoX[i], values: qtdPacientes)
+            
+            if back.alpha == 0.25 {
+                back.alpha = 1
+                back.enabled = true
+            }
+            if i == listGraphcs.count - 1 {
+                next.alpha = 0.25
+                next.enabled = false
+            }
+
         }
-      /*  else
-        {
-            next.hidden = true
-       }
- */
+        
         for exame in nomeDosExames{
             print("ENTROU EM ESTATÍSTICAS \(exame)")
         }
@@ -176,22 +182,23 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         if i > 0 {
             
-            i = i - 1
+            i -= 1
             graphTitleLabel.text = listGraphcs[i]
-            
-            //Dados para teste
-            //setChart(vLabelEixoX[i], values: vValueEixoX[i])
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
-            back.hidden = false
+//            back.hidden = false
             setChart(vLabelEixoX[i], values: vValue[i])
+            if next.alpha == 0.25 {
+                next.alpha = 1
+                next.enabled = true
+            }
+            if i == 0 {
+                back.alpha = 0.25
+                back.enabled = false
+            }
         }
-      /*  else
-        {
-            back.hidden = true
-        }
- */
+        
         for exame in nomeDosExames{
             print("ENTROU EM ESTATÍSTICAS \(exame)")
         }
