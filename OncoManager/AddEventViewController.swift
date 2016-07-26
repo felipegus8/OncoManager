@@ -138,7 +138,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     func partition(inout dataList: [String], low: Int, high: Int) -> Int {
         var pivotPos = low
-        var pivot = dataList[low]
+        let pivot = dataList[low]
         
         for var i = low + 1; i <= high; i += 1 {
             if dataList[i] < pivot && ++pivotPos != i {
@@ -151,7 +151,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func quickSort(inout dataList: [String], left: Int, right: Int) {
         if left < right {
-            var pivotPos = partition(&dataList, low: left, high: right)
+            let pivotPos = partition(&dataList, low: left, high: right)
             quickSort(&dataList, left: left, right: pivotPos - 1)
             quickSort(&dataList, left: pivotPos + 1, right: right)
         }
