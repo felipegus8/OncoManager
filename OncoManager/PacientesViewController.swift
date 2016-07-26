@@ -20,7 +20,10 @@ class PacientesViewController: UIViewController, UITableViewDataSource, UITableV
     //var selectedName = "" // nome do paciente selecionado
     
     override func viewDidLoad() {
+    
         super.viewDidLoad()
+        
+        //listaPacientes.allowsSelection = false
         searchBar.delegate = self
         for nome in pacientes
         {

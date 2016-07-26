@@ -1562,11 +1562,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z8J-IA-axt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z8J-IA-axt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="exameCell" rowHeight="56" id="o6A-J4-JW8" customClass="ExameCell" customModule="OncoManager" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="exameCell" rowHeight="50" id="o6A-J4-JW8" customClass="ExameCell" customModule="OncoManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6A-J4-JW8" id="V3h-RM-HLF">
@@ -1574,13 +1574,27 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do Exame" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kj3-Nl-gII">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="305" id="txu-yB-Gmu"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="txu-yB-Gmu"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="txu-yB-Gmu"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9s-Mi-w9O">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="1Hi-r4-ILj"/>
                                                         <constraint firstAttribute="width" constant="60" id="CkI-MC-dvc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1589,11 +1603,13 @@
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="1Hi-r4-ILj"/>
                                                             <exclude reference="CkI-MC-dvc"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
                                                         <mask key="constraints">
+                                                            <include reference="1Hi-r4-ILj"/>
                                                             <include reference="CkI-MC-dvc"/>
                                                         </mask>
                                                     </variation>
@@ -1602,9 +1618,9 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="kj3-Nl-gII" firstAttribute="leading" secondItem="V3h-RM-HLF" secondAttribute="leading" constant="8" id="6dd-Av-lWM"/>
-                                                <constraint firstAttribute="trailing" secondItem="kj3-Nl-gII" secondAttribute="trailing" constant="8" id="FvO-aY-j6f"/>
                                                 <constraint firstItem="kj3-Nl-gII" firstAttribute="top" secondItem="V3h-RM-HLF" secondAttribute="top" constant="10" id="GNA-oC-laa"/>
                                                 <constraint firstAttribute="bottom" secondItem="r9s-Mi-w9O" secondAttribute="bottom" id="bUo-uK-Vrw"/>
                                                 <constraint firstAttribute="trailing" secondItem="r9s-Mi-w9O" secondAttribute="trailing" constant="8" id="onP-XL-rZa"/>
@@ -1616,7 +1632,6 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="6dd-Av-lWM"/>
-                                                    <exclude reference="FvO-aY-j6f"/>
                                                     <exclude reference="GNA-oC-laa"/>
                                                     <exclude reference="bUo-uK-Vrw"/>
                                                     <exclude reference="onP-XL-rZa"/>
@@ -1629,7 +1644,6 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="6dd-Av-lWM"/>
-                                                    <include reference="FvO-aY-j6f"/>
                                                     <include reference="GNA-oC-laa"/>
                                                     <include reference="bUo-uK-Vrw"/>
                                                     <include reference="onP-XL-rZa"/>
@@ -1738,6 +1752,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gNI-4Z-hkS" id="RHJ-Gw-Qaa">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do Médico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgT-bv-orp">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                                    </variation>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Especialidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h10-gQ-82Q">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1782,16 +1805,8 @@
                                                         <action selector="editarPressed:" destination="gNI-4Z-hkS" eventType="touchUpInside" id="Pt7-RL-h1K"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do Médico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgT-bv-orp">
-                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                                    </variation>
-                                                </label>
                                             </subviews>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="h10-gQ-82Q" firstAttribute="top" secondItem="lgT-bv-orp" secondAttribute="bottom" constant="5" id="50T-Sc-yrv"/>
                                                 <constraint firstItem="lgT-bv-orp" firstAttribute="top" secondItem="RHJ-Gw-Qaa" secondAttribute="topMargin" id="IIz-of-rjc"/>
@@ -1804,10 +1819,10 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
+                                                    <exclude reference="lgT-bv-orp"/>
                                                     <exclude reference="h10-gQ-82Q"/>
                                                     <exclude reference="7vI-xB-6tU"/>
                                                     <exclude reference="Xyz-OW-ii1"/>
-                                                    <exclude reference="lgT-bv-orp"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="IIz-of-rjc"/>
@@ -1822,10 +1837,10 @@
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
+                                                    <include reference="lgT-bv-orp"/>
                                                     <include reference="h10-gQ-82Q"/>
                                                     <include reference="7vI-xB-6tU"/>
                                                     <include reference="Xyz-OW-ii1"/>
-                                                    <include reference="lgT-bv-orp"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="IIz-of-rjc"/>
@@ -1838,6 +1853,9 @@
                                                     <include reference="tuo-zb-CQz"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="n8J-EF-dKm" appends="YES" id="ooW-RT-nBJ"/>
+                                            </connections>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="email" destination="7vI-xB-6tU" id="HCG-lG-ehP"/>
@@ -1906,6 +1924,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMv-M6-o4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="n8J-EF-dKm"/>
             </objects>
             <point key="canvasLocation" x="1377.75" y="1583.5"/>
         </scene>

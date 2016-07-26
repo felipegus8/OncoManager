@@ -17,6 +17,7 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         medTableView.delegate = self
         medTableView.dataSource = self
+        medTableView.allowsSelection = false
         // Do any additional setup after loading the view.
     }
 
@@ -35,8 +36,14 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.nomeMedico.text = medicos[indexPath.row].nome
         cell.email.text = medicos[indexPath.row].email
         cell.especialidade.text = medicos[indexPath.row].especialidade
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.stopEditing(_:)))
+        cell.contentView.addGestureRecognizer(tap)
         
         return cell
+    }
+    
+    func stopEditing(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     
@@ -44,14 +51,8 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegueWithIdentifier("goToAddMedico", sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    */
 
 }

@@ -86,6 +86,7 @@ class HistoricoPacienteTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.allowsSelection = false
         tableView.registerClass(HistoricoPacienteCell.self, forCellReuseIdentifier: "HistCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44

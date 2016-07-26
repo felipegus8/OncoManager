@@ -5,7 +5,6 @@
 //  Created by Gabrielle Brandenburg dos Anjos on 7/26/16.
 //  Copyright © 2016 Felipe Viberti. All rights reserved.
 //
-
 import UIKit
 
 class ExameCell: UITableViewCell {
@@ -24,6 +23,6 @@ class ExameCell: UITableViewCell {
     }
 
     @IBAction func editarPresed(sender: UIButton) {
-        
+        print("editar exame")
     }
 }

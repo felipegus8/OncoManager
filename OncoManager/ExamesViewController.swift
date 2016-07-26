@@ -16,6 +16,7 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +33,9 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = self.tableView.dequeueReusableCellWithIdentifier("exameCell", forIndexPath: indexPath) as! ExameCell
         
         cell.nome.text = nomeExames[indexPath.row].nome
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.stopEditing(_:)))
+        cell.contentView.addGestureRecognizer(tap)
+        
         
         return cell
     }
@@ -39,14 +43,12 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func addExamePressed(sender: UIBarButtonItem) {
         performSegueWithIdentifier("goToAddExame", sender: self)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func stopEditing(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
-    */
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
 }

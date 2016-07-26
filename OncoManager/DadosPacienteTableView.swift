@@ -57,6 +57,7 @@ class DadosPacienteTableView: UITableViewController {
         super.viewDidLoad()
 
         tableView.registerClass(DadosPacienteCell.self, forCellReuseIdentifier: "DadoCell")
+        tableView.allowsSelection = false
         
         
         // Uncomment the following line to preserve selection between presentations
