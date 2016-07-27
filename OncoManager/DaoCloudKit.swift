@@ -418,55 +418,58 @@ public class DaoCloudKit
     //MARK: Edit Functions
     func editExame(exameOld:Exame,exameNew:Exame)
     {
-        let recordId = CKRecordID(recordName: (String(exameOld.nome) + String(exameOld.cpf) + (exameOld.dataRealizado.convertNsDateToStringWithoutHour())))
-        print(recordId.recordName)
+        var recordEdit : CKRecord!
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
-        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-            
-            if error == nil {
-                
-                print("Já existe esse paciente")
-                for valor in exames
-                {
-                    if valor.nome == exameOld.nome && valor.cpf == exameOld.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exameOld.dataRealizado.convertNsDateToStringWithoutHour()
-                    {
-                        exames[i] = exameNew
-                        break
-                    }
-                    i += 1
-                }
-                fetchedRecord!.setObject(exameNew.tipoProcedimento, forKey: "tipo")
-                 fetchedRecord!.setObject(exameNew.cpf, forKey: "cpf")
-                 fetchedRecord!.setObject(exameNew.dataRealizado, forKey: "dataRealizado")
-                 fetchedRecord!.setObject(exameNew.dataMarcado, forKey: "dataMarcado")
-                 fetchedRecord!.setObject(exameNew.nome, forKey: "nome")
-                 fetchedRecord!.setObject(exameNew.local, forKey: "local")
-                 fetchedRecord!.setObject(exameNew.medico, forKey: "medico")
-                 fetchedRecord!.setObject(exameNew.realizado, forKey: "realizado")
-                
-                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
-                    if (error != nil) {
-                        print(error)
-                    }
-                    else{
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditExame", object: nil)
-                    }
-
-            })
+        let predicate = NSPredicate(value:true)
+        
+        let query = CKQuery(recordType: "Exame", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
             }
             else {
-                
-                if(fetchedRecord == nil) {
-                    print(error)
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditExame", object: nil)
-                    
+                for result in results! {
+                    if result.valueForKey("nome") as! String == exameOld.nome && (result.valueForKey("dataRealizado") as! NSDate).convertNsDateToStringWithoutHour() == exameOld.dataRealizado.convertNsDateToStringWithoutHour() && result.valueForKey("cpf") as! Double == exameOld.cpf
+                    {
+                        print("Achou")
+                        result.setObject(exameNew.tipoProcedimento, forKey: "tipo")
+                        result.setObject(exameNew.nome, forKey: "nome")
+                        result.setObject(exameNew.cpf, forKey: "cpf")
+                        result.setObject(exameNew.dataMarcado, forKey: "dataMarcado")
+                        result.setObject(exameNew.dataRealizado, forKey: "dataRealizado")
+                        result.setObject(exameNew.local, forKey: "local")
+                        result.setObject(exameNew.medico, forKey: "medico")
+                        result.setObject(exameNew.realizado, forKey: "realizado")
+                        recordEdit = result
+                    }
+                    i+=1
+                }
             }
+            i = 0
+            for valor in exames
+            {
+                if valor.nome == exameOld.nome && valor.cpf == exameOld.cpf && valor.dataRealizado.convertNsDateToStringWithoutHour() == exameOld.dataRealizado.convertNsDateToStringWithoutHour()
+                {
+                    exames[i] = exameNew
+                    break
+                }
+                i += 1
             }
-        }
 
+            publicDatabase.saveRecord(recordEdit!, completionHandler: { (record, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                }
+                else{
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditExame", object: nil)
+                }
+                
+            })
+        }   
     }
     func editPaciente(pacienteOld:Paciente,pacienteNew:Paciente)
     {
@@ -539,26 +542,41 @@ public class DaoCloudKit
     }
     func editNomeExame(nameOld:NomeExame,nameNew:NomeExame)
     {
-        let recordId = CKRecordID(recordName: nameOld.nome)
+        var recordEdit : CKRecord!
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
-        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-            
-            if error == nil {
-                
-                print("Já existe esse paciente")
+        let predicate = NSPredicate(value:true)
+        
+        let query = CKQuery(recordType: "NomeExame", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
+            }
+            else {
+                for result in results! {
+                    if result.valueForKey("nome") as! String == nameOld.nome
+                    {
+                    result.setObject(nameNew.nome, forKey: "nome")
+                    recordEdit = result
+                    i+=1
+                    }
+                }
+                    i = 0
                 for valor in nomeExames
                 {
                     if valor.nome == nameOld.nome
-                    {
-                        nomeExames[i] = nameNew
-                        break
-                    }
-                    i += 1
+                        {
+                            nomeExames[i] = nameNew
+                            break
+                        }
+                        i+=1
                 }
-                fetchedRecord!.setObject(nameNew.nome, forKey: "nome")
-                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
+            }
+
+                publicDatabase.saveRecord(recordEdit!, completionHandler: { (record, error) -> Void in
                     if (error != nil) {
                         print(error)
                     }
@@ -567,17 +585,7 @@ public class DaoCloudKit
                     }
                     
                 })
-            }
-            else {
-                
-                if(fetchedRecord == nil) {
-                    print(error)
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditNomeExame", object: nil)
-                    
-                }
-            }
-        }
+    }
 
     }
     func editMedico(medicoOld:Medico,medicoNew:Medico)
@@ -590,7 +598,7 @@ public class DaoCloudKit
             
             if error == nil {
                 
-                print("Já existe esse paciente")
+                print("Já existe esse Médico")
                 for valor in medicos
                 {
                     if valor.email == medicoOld.email

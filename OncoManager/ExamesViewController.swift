@@ -82,6 +82,7 @@ class ExamesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.tableView.reloadData()
     }
 
 }

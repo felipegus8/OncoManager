@@ -33,7 +33,8 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         telefone.keyboardType = .NumberPad
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessAddMedico), name: "notificationSuccessCadastroMedico", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationErrorAddMedico), name: "notificationErrorCadastroMedico", object: nil)
-
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessEditMedico), name: "notificationSuccessEditMedico", object: nil)
+ 
         // Do any additional setup after loading the view.
     }
 
@@ -109,5 +110,9 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         dispatch_async(dispatch_get_main_queue(),{
         self.presentViewController(alert,animated: true, completion: nil)
         })
+    }
+    func actOnNotificationSuccessEditMedico()
+    {
+        
     }
 }

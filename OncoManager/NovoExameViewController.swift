@@ -17,7 +17,7 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nomeExame: OMTextField!
     @IBOutlet weak var cadastrarButton: OMButton!
     var nomeExameNovo:NomeExame!
-    
+    var exameEditado:NomeExame!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
         nomeExame.delegate = self
           NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationSuccessAddExame), name: "notificationSuccessCadastroNovoExame", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationErrorAddExame), name: "notificationErrorCadastroNovoExame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoExameViewController.actOnNotificationSuccessEditExame), name: "notificationSuccessEditNomeExame", object: nil)
         
         configEditVC()
         print(titleLabel.text)
@@ -68,8 +69,17 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
         index = 2
+        if !edit
+        {
         nomeExameNovo = NomeExame(nome: nomeExame.text!)
         DaoCloudKit().addNomeExame(nomeExameNovo)
+        }
+        else{
+        exameEditado = NomeExame(nome:nomeExame.text!)
+            print(exameEditado.nome)
+            print(nomeExames[i].nome)
+        DaoCloudKit().editNomeExame(nomeExames[i], nameNew: exameEditado)
+        }
        
     }
     func actOnNotificationSuccessAddExame()
@@ -86,5 +96,12 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
         dispatch_async(dispatch_get_main_queue(),{
         self.presentViewController(alert,animated: true, completion: nil)
         })
+    }
+    func actOnNotificationSuccessEditExame()
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+        self.dismissViewControllerAnimated(true, completion: nil)
+        })
+
     }
 }
