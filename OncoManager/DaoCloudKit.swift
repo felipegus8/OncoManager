@@ -473,72 +473,74 @@ public class DaoCloudKit
     }
     func editPaciente(pacienteOld:Paciente,pacienteNew:Paciente)
     {
-        let recordId = CKRecordID(recordName: String(pacienteOld.cpf))
-       // print(String(Int(paciente.cpf)))
+        var recordEdit : CKRecord!
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
-        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-            
-            if error == nil {
-                
-                print("Já existe esse paciente")
-                for valor in pacientes
-                {
-                    if valor.cpf == pacienteOld.cpf
+        let predicate = NSPredicate(value:true)
+        
+        let query = CKQuery(recordType: "Paciente", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
+            }
+            else {
+                for result in results! {
+                    if result.valueForKey("cpf") as! Double == pacienteOld.cpf
                     {
-                        pacientes[i] = pacienteOld
-                        break
+                        print("Achou")
+                        result.setObject(pacienteNew.cpf, forKey: "cpf")
+                        result.setObject(pacienteNew.nome, forKey: "nome")
+                        result.setObject(pacienteNew.email, forKey: "email")
+                        result.setObject(pacienteNew.alergia, forKey: "alergia")
+                        result.setObject(pacienteNew.altura, forKey: "altura")
+                        result.setObject(pacienteNew.peso, forKey: "peso")
+                        result.setObject(pacienteNew.bairro, forKey: "bairro")
+                        result.setObject(pacienteNew.bairroPrefere, forKey: "bairroPrefere")
+                        result.setObject(pacienteNew.cadeirante, forKey: "cadeirante")
+                        result.setObject(pacienteNew.celular, forKey: "celular")
+                        result.setObject(pacienteNew.claustrofobico, forKey: "claustrofobico")
+                        result.setObject(pacienteNew.clipesCirurgico, forKey: "clipesCirurgico")
+                        result.setObject(pacienteNew.convenio, forKey: "convenio")
+                        result.setObject(pacienteNew.dataNasc, forKey: "dataNasc")
+                        result.setObject(pacienteNew.diabetico, forKey: "diabetico")
+                        result.setObject(pacienteNew.hipertenso, forKey: "hipertenso")
+                        result.setObject(pacienteNew.marcapasso, forKey: "marcapasso")
+                        result.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
+                        result.setObject(pacienteNew.operado, forKey: "operado")
+                        result.setObject(pacienteNew.tipoOperacao, forKey: "tipoOperacao")
+                        result.setObject(pacienteNew.tipoPlano, forKey: "tipoPlano")
+                        result.setObject(pacienteNew.telefoneFixo, forKey: "telefoneFixo")
+                        result.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
+                        recordEdit = result
                     }
                     i+=1
                 }
-                fetchedRecord!.setObject(pacienteNew.cpf, forKey: "cpf")
-                fetchedRecord!.setObject(pacienteNew.nome, forKey: "nome")
-                fetchedRecord!.setObject(pacienteNew.email, forKey: "email")
-                fetchedRecord!.setObject(pacienteNew.alergia, forKey: "alergia")
-                fetchedRecord!.setObject(pacienteNew.altura, forKey: "altura")
-                fetchedRecord!.setObject(pacienteNew.peso, forKey: "peso")
-                fetchedRecord!.setObject(pacienteNew.bairro, forKey: "bairro")
-                fetchedRecord!.setObject(pacienteNew.bairroPrefere, forKey: "bairroPrefere")
-                fetchedRecord!.setObject(pacienteNew.cadeirante, forKey: "cadeirante")
-                fetchedRecord!.setObject(pacienteNew.celular, forKey: "celular")
-                fetchedRecord!.setObject(pacienteNew.claustrofobico, forKey: "claustrofobico")
-                fetchedRecord!.setObject(pacienteNew.clipesCirurgico, forKey: "clipesCirurgico")
-                fetchedRecord!.setObject(pacienteNew.convenio, forKey: "convenio")
-                fetchedRecord!.setObject(pacienteNew.dataNasc, forKey: "dataNasc")
-                fetchedRecord!.setObject(pacienteNew.diabetico, forKey: "diabetico")
-                fetchedRecord!.setObject(pacienteNew.hipertenso, forKey: "hipertenso")
-                fetchedRecord!.setObject(pacienteNew.marcapasso, forKey: "marcapasso")
-                fetchedRecord!.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
-                fetchedRecord!.setObject(pacienteNew.operado, forKey: "operado")
-                fetchedRecord!.setObject(pacienteNew.tipoOperacao, forKey: "tipoOperacao")
-                fetchedRecord!.setObject(pacienteNew.tipoPlano, forKey: "tipoPlano")
-                fetchedRecord!.setObject(pacienteNew.telefoneFixo, forKey: "telefoneFixo")
-                fetchedRecord!.setObject(pacienteNew.matriculaPlano, forKey: "matriculaPlano")
-                
-
-                
-                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
-                    if (error != nil) {
-                        print(error)
-                    }
-                    else{
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditPaciente", object: nil)
-                    }
-                    
-                })
             }
-            else {
-                
-                if(fetchedRecord == nil) {
-                    print(error)
-                    
-            NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditPaciente", object: nil)
-                    
+            i = 0
+            for valor in pacientes
+            {
+                if valor.cpf == pacienteOld.cpf
+                {
+                    pacientes[i] = pacienteNew
+                    break
                 }
+                i += 1
             }
+            
+            publicDatabase.saveRecord(recordEdit!, completionHandler: { (record, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                }
+                else{
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditPaciente", object: nil)
+                }
+                
+            })
         }
-
+        
     }
     func editNomeExame(nameOld:NomeExame,nameNew:NomeExame)
     {
@@ -574,7 +576,6 @@ public class DaoCloudKit
                         }
                         i+=1
                 }
-            }
 
                 publicDatabase.saveRecord(recordEdit!, completionHandler: { (record, error) -> Void in
                     if (error != nil) {
@@ -585,55 +586,61 @@ public class DaoCloudKit
                     }
                     
                 })
+            }
     }
 
     }
     func editMedico(medicoOld:Medico,medicoNew:Medico)
     {
-        let recordId = CKRecordID(recordName: medicoOld.email)
+        var recordEdit : CKRecord!
         let container = CKContainer.defaultContainer()
         let publicDatabase = container.publicCloudDatabase
         var i = 0
-        publicDatabase.fetchRecordWithID(recordId) { (fetchedRecord,error) in
-            
-            if error == nil {
-                
-                print("Já existe esse Médico")
-                for valor in medicos
-                {
-                    if valor.email == medicoOld.email
-                    {
-                        medicos[i] = medicoNew
-                        break
-                    }
-                    i += 1
-                }
-                fetchedRecord!.setObject(medicoNew.nome, forKey: "nome")
-                 fetchedRecord!.setObject(medicoNew.crm, forKey: "crm")
-                 fetchedRecord!.setObject(medicoNew.especialidade, forKey: "especialidade")
-                 fetchedRecord!.setObject(medicoNew.telefone, forKey: "telefone")
-                 fetchedRecord!.setObject(medicoNew.email, forKey: "email")
-                publicDatabase.saveRecord(fetchedRecord!, completionHandler: { (record, error) -> Void in
-                    if (error != nil) {
-                        print(error)
-                    }
-                    else{
-                        NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditMedico", object: nil)
-                    }
-                    
-                })
+        let predicate = NSPredicate(value:true)
+        
+        let query = CKQuery(recordType: "Medico", predicate: predicate)
+        
+        publicDatabase.performQuery(query, inZoneWithID: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error)
+                NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorInternet", object: nil)
             }
             else {
-                
-                if(fetchedRecord == nil) {
-                    print(error)
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName("notificationErrorEditMedico", object: nil)
-                    
+                for result in results! {
+                    if result.valueForKey("email") as! String == medicoOld.email
+                    {
+                        print("Achou")
+                        result.setObject(medicoNew.nome, forKey: "nome")
+                        result.setObject(medicoNew.crm, forKey: "crm")
+                        result.setObject(medicoNew.especialidade, forKey: "especialidade")
+                        result.setObject(medicoNew.telefone, forKey: "telefone")
+                        result.setObject(medicoNew.email, forKey: "email")
+                        recordEdit = result
+                    }
+                    i+=1
                 }
+            i = 0
+            for valor in medicos
+            {
+                if valor.email == medicoOld.email
+                {
+                    medicos[i] = medicoNew
+                    break
+                }
+                i += 1
             }
+            publicDatabase.saveRecord(recordEdit!, completionHandler: { (record, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                }
+                else{
+                    NSNotificationCenter.defaultCenter().postNotificationName("notificationSuccessEditMedico", object: nil)
+                }
+                
+            })
         }
-
+        }
+        
     }
     //MARK:Delete Functions
     

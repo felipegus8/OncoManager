@@ -85,6 +85,10 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        print("Entrou na appear")
+        dispatch_async(dispatch_get_main_queue(),{
+        self.medTableView.reloadData()
+        })
     }
 
 }

@@ -22,6 +22,7 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var crm: OMTextField!
     
     var medicoTeste:Medico!
+    var medicoEditado:Medico!
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
@@ -92,8 +93,14 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     //MARK: armazenar dados no iCloud
     @IBAction func cadastrarPressed(sender: UIButton) {
         index = 2
+        if !edit{
         medicoTeste = Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!))
         DaoCloudKit().addMedico(medicoTeste)
+        }
+        else{
+            medicoEditado = Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!))
+            DaoCloudKit().editMedico(medicos[i], medicoNew: medicoEditado)
+        }
     }
     
     func actOnNotificationSuccessAddMedico()
@@ -113,6 +120,9 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     }
     func actOnNotificationSuccessEditMedico()
     {
-        
+        dispatch_async(dispatch_get_main_queue(),{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+
     }
 }
