@@ -67,17 +67,17 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     func setTextFields()
     {
         nome.text = pacienteSelecionado.nome
-        cpf.text = String(pacienteSelecionado.cpf)
+        cpf.text = String(Int(pacienteSelecionado.cpf))
         nascimento.text = pacienteSelecionado.dataNasc
          email.text = pacienteSelecionado.email
          bairro.text = pacienteSelecionado.bairro
-        telFixo.text = String(pacienteSelecionado.telefoneFixo)
-        cel.text = String(pacienteSelecionado.celular)
+        telFixo.text = String(Int(pacienteSelecionado.telefoneFixo))
+        cel.text = String(Int(pacienteSelecionado.celular))
          convenio.text = pacienteSelecionado.convenio
         tipoPlano.text = pacienteSelecionado.tipoPlano
          matricula.text = pacienteSelecionado.matriculaPlano
-         peso.text = String(pacienteSelecionado.peso)
-         altura.text = String(pacienteSelecionado.altura)
+         peso.text = String(Int(pacienteSelecionado.peso))
+         altura.text = String(Int(pacienteSelecionado.altura))
          tipoOperacao.text = pacienteSelecionado.tipoOperacao
         bairroPreferencia.text = pacienteSelecionado.bairroPrefere
     }

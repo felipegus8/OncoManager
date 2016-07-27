@@ -103,3 +103,37 @@ extension Double {
         return round(self * divisor) / divisor
     }
 }
+
+extension UIView {
+    func currentFirstResponder() -> UIView? {
+        if self.isFirstResponder() {
+            return self
+        }
+        
+        for view in self.subviews {
+            if view.currentFirstResponder() != nil {
+                return view
+            }
+        }
+        
+        return nil
+    }
+        
+        func convertRectCorrectly(rect: CGRect, toView view: UIView) -> CGRect {
+            if UIScreen.mainScreen().scale == 1 {
+                return self.convertRect(rect, toView: view)
+            }
+            else if self == view {
+                return rect
+            }
+            else {
+                var rectInParent = self.convertRect(rect, toView: self.superview)
+                rectInParent.origin.x /= UIScreen.mainScreen().scale
+                rectInParent.origin.y /= UIScreen.mainScreen().scale
+                let superViewRect = self.superview!.convertRectCorrectly(self.superview!.frame, toView: view)
+                rectInParent.origin.x += superViewRect.origin.x
+                rectInParent.origin.y += superViewRect.origin.y
+                return rectInParent
+            }
+        }
+}

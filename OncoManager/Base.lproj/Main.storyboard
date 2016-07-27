@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1785,7 +1785,8 @@
                                                             <exclude reference="kBt-PH-hJT"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="172" y="34" width="60" height="39"/>
                                                         <mask key="constraints">
                                                             <include reference="Uaf-ON-Gh5"/>
                                                             <include reference="kBt-PH-hJT"/>
@@ -2077,7 +2078,9 @@
                                             <constraint firstItem="cmb-NG-iYJ" firstAttribute="trailing" secondItem="nDr-Es-262" secondAttribute="trailing" id="RTz-Fz-apb"/>
                                             <constraint firstItem="B1o-bv-Kze" firstAttribute="top" secondItem="G0D-rH-dlg" secondAttribute="bottom" constant="20" id="RfW-Hr-vLT"/>
                                             <constraint firstItem="G0D-rH-dlg" firstAttribute="trailing" secondItem="nDr-Es-262" secondAttribute="trailing" id="UMs-Uw-lgb"/>
-                                            <constraint firstAttribute="height" constant="350" id="hVp-Rf-u6j"/>
+                                            <constraint firstAttribute="height" constant="350" id="hVp-Rf-u6j">
+                                                <variation key="widthClass=compact" constant="280"/>
+                                            </constraint>
                                             <constraint firstItem="nDr-Es-262" firstAttribute="top" secondItem="hZf-fo-D33" secondAttribute="top" id="jwB-3d-6s6"/>
                                             <constraint firstItem="HWV-et-siH" firstAttribute="top" secondItem="cmb-NG-iYJ" secondAttribute="bottom" constant="20" id="ts5-JT-Ejd"/>
                                             <constraint firstItem="HWV-et-siH" firstAttribute="leading" secondItem="nDr-Es-262" secondAttribute="leading" id="vqR-lK-YMk"/>
@@ -4430,7 +4433,7 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="1400"/>
+                    <size key="freeformSize" width="400" height="667"/>
                     <connections>
                         <outlet property="alergia" destination="qTE-FT-No2" id="sXO-oV-h0p"/>
                         <outlet property="altura" destination="Pqc-j7-Vhf" id="GeA-4D-MqG"/>
@@ -4458,26 +4461,6 @@
                         <segue destination="Ves-CW-IEk" kind="show" identifier="goToNext" id="HpL-Vg-3b2"/>
                     </connections>
                 </viewController>
-                <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Bairro" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9ew-VA-ra5" customClass="OMTextField" customModule="OncoManager" customModuleProvider="target">
-                    <rect key="frame" x="20" y="20" width="288" height="40"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="a3b-sZ-c0r"/>
-                    </constraints>
-                    <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="a3b-sZ-c0r"/>
-                        </mask>
-                    </variation>
-                    <variation key="widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="a3b-sZ-c0r"/>
-                        </mask>
-                    </variation>
-                </textField>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0e4-wq-RDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="pkb-uK-P2b">
                     <connections>

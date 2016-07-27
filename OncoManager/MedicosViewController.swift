@@ -72,14 +72,20 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "goToAddMedico" && i >= 0 {
+        if segue.identifier == "goToAddMedico" {
             let destinationVC = segue.destinationViewController as! NovoMedicoViewController
+            if i >= 0 {
             destinationVC.edit = true
             destinationVC.i = i
+            } else {
+                print("adicionar novo medico")
+                destinationVC.edit = false
+            }
         }
     }
     
     @IBAction func addMedicoPressed(sender: UIBarButtonItem) {
+        i = -1
         performSegueWithIdentifier("goToAddMedico", sender: self)
     }
     
