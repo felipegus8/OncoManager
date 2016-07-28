@@ -23,7 +23,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var next: UIButton!
     // Vetor com os títulos do Gráfico
-    let listGraphcs:[String] = ["Tempo x Exame", "Paciente x Plano"]
+    let listGraphcs:[String] = ["Tempo(dias) x Exame", "Pacientes x Plano"]
     var i = 0
 
     override func viewWillAppear(animated: Bool) {
@@ -108,6 +108,8 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         
         // Desabilita o Highlighter na seleção de uma barra do gráfico
         //chartView.highlighter = nil
+        
+        
         
         //Reduz o número de informações no eixo Y do gráfico
         chartView.rightAxis.enabled = false
