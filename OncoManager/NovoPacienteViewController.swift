@@ -44,6 +44,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
     var convenioData: [String]!
+    var lastScrollViewOffset = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +55,38 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
         setKeyboards()
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
         
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
     }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        lastScrollViewOffset = scrollView.contentOffset
+        
+        let userInfo: NSDictionary = notification.userInfo!
+        let keyboardSize = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue.size
+        let keyboardFrame = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue
+        let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        let viewRect = keyboardFrame
+        
+        let textField = self.view.currentFirstResponder()
+        
+        //viewRect.size.height -= keyboardSize.height
+        if CGRectContainsPoint(viewRect, textField!.frame.origin) {
+            let scrollPoint = CGPointMake(0, textField!.frame.origin.y - keyboardSize.height)
+            scrollView.setContentOffset(scrollPoint, animated: true)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = lastScrollViewOffset
+        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
+
     
     func loadPickerData(){
         

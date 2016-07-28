@@ -47,6 +47,9 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
     let pickerView = UIPickerView()
     var convenioData: [String]!
     var pacienteEditado:Paciente!
+    
+    var lastScrollViewOffset = CGPoint()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarPacienteViewController.actOnNotificationSuccessSavePaciente), name: "notificationSuccessEditPaciente", object: nil)
@@ -58,26 +61,57 @@ class EditarPacienteViewController: UIViewController, UITextFieldDelegate, UIPic
         setTextFields()
         setSwitches()
         datePicker.addTarget(self, action: #selector(NovoPacienteViewController.changedTxtFieldDate), forControlEvents: UIControlEvents.ValueChanged)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
+
     }
     func loadPickerData(){
         
         convenioData = ["Allianz", "Amil", "Bradesco", "CarePlus", "Furnas", "Golden Cross", "Medial", "Mediservice", "Petrobrás", "Sul América", "Unimed", "Vale"]
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        lastScrollViewOffset = scrollView.contentOffset
+        
+        let userInfo: NSDictionary = notification.userInfo!
+        let keyboardSize = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue.size
+        let keyboardFrame = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue
+        let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        let viewRect = keyboardFrame
+        
+        let textField = self.view.currentFirstResponder()
+        
+        //viewRect.size.height -= keyboardSize.height
+        if CGRectContainsPoint(viewRect, textField!.frame.origin) {
+            let scrollPoint = CGPointMake(0, textField!.frame.origin.y - keyboardSize.height)
+            scrollView.setContentOffset(scrollPoint, animated: true)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = lastScrollViewOffset
+        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
     func setTextFields()
     {
         nome.text = pacienteSelecionado.nome
-        cpf.text = String(pacienteSelecionado.cpf)
+        cpf.text = String(Int(pacienteSelecionado.cpf))
         nascimento.text = pacienteSelecionado.dataNasc
          email.text = pacienteSelecionado.email
          bairro.text = pacienteSelecionado.bairro
-        telFixo.text = String(pacienteSelecionado.telefoneFixo)
-        cel.text = String(pacienteSelecionado.celular)
+        telFixo.text = String(Int(pacienteSelecionado.telefoneFixo))
+        cel.text = String(Int(pacienteSelecionado.celular))
          convenio.text = pacienteSelecionado.convenio
         tipoPlano.text = pacienteSelecionado.tipoPlano
          matricula.text = pacienteSelecionado.matriculaPlano
-         peso.text = String(pacienteSelecionado.peso)
-         altura.text = String(pacienteSelecionado.altura)
+         peso.text = String(Int(pacienteSelecionado.peso))
+         altura.text = String(Int(pacienteSelecionado.altura))
          tipoOperacao.text = pacienteSelecionado.tipoOperacao
         bairroPreferencia.text = pacienteSelecionado.bairroPrefere
     }

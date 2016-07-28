@@ -25,9 +25,12 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     var medicoEditado:Medico!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var lastScrollViewOffset = CGPoint()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("did load")
         linkDelegate()
         configEditVC()
         crm.keyboardType = .NumberPad
@@ -35,6 +38,9 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessAddMedico), name: "notificationSuccessCadastroMedico", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationErrorAddMedico), name: "notificationErrorCadastroMedico", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessEditMedico), name: "notificationSuccessEditMedico", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
  
         // Do any additional setup after loading the view.
     }
@@ -44,16 +50,52 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        lastScrollViewOffset = scrollView.contentOffset
+        
+        let userInfo: NSDictionary = notification.userInfo!
+        let keyboardSize = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue.size
+        let keyboardFrame = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)!.CGRectValue
+        let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        let viewRect = keyboardFrame
+        
+        let textField = self.view.currentFirstResponder()
+        let responderRect = textField?.convertRectCorrectly(textField!.frame, toView: self.view)
+        
+        //viewRect.size.height -= keyboardSize.height
+        
+        if CGRectContainsPoint(viewRect, responderRect!.origin) {
+            print(responderRect!.origin.y)
+            print(keyboardSize.height)
+            let scrollPoint = CGPointMake(0, responderRect!.origin.y - keyboardSize.height)
+            scrollView.setContentOffset(scrollPoint, animated: true)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentOffset = lastScrollViewOffset
+        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+    }
+    
     func configEditVC() {
         if edit {
-            nome.text = medicos[i].nome
-            email.text = medicos[i].email
-            telefone.text = String(medicos[i].telefone)
-            especialidade.text = medicos[i].especialidade
-            crm.text = String(medicos[i].crm)
             titleLabel.text = "EDITAR MÉDICO"
             cadastrar.setTitle("Alterar", forState: .Normal)
-    
+            
+            nome.text = medicos[i].nome
+            email.text = medicos[i].email
+            especialidade.text = medicos[i].especialidade
+            crm.text = String(Int(medicos[i].crm))
+            
+            if let tel = medicos[i].telefone {
+            telefone.text = String(Int(tel))
+            } else {
+            telefone.text = ""
+            }
         }
     }
     
@@ -124,5 +166,10 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
             self.dismissViewControllerAnimated(true, completion: nil)
         })
 
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        edit = false
+        print(edit)
     }
 }
