@@ -12,6 +12,7 @@ import Charts
 var contDias:[Double] = []
 var qtdPacientes: [Double] = []
 var nomeDosExames: [String] = []
+var qtdPacientesXExames: [Double] = []
 //var vLabelEixoX: [[String]] = [nomeDosExames, convenioData1]
 
 
@@ -23,7 +24,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var next: UIButton!
     // Vetor com os títulos do Gráfico
-    let listGraphcs:[String] = ["Tempo(dias) x Exame", "Pacientes x Plano"]
+    let listGraphcs:[String] = ["Tempo(dias) x Exame", "Pacientes x Plano", "Pacientes x Exame"]
     var i = 0
 
     override func viewWillAppear(animated: Bool) {
@@ -46,6 +47,7 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         }
         vLabelEixoX.append(nomeDosExames)
         vLabelEixoX.append(convenioData1)
+        vLabelEixoX.append(nomeDosExames)
         //Gera o GRÁFICO 1 SEM usar iCloud
         //setChart(vLabelEixoX[0], values: vValueEixoX[0])
         
@@ -157,8 +159,10 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
+            qtdPacientesXExames = calculaNumerodePacientesXExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            var vetorValue = [contDias, qtdPacientes, qtdPacientesXExames]
             next.hidden = false
-            setChart(vLabelEixoX[i], values: qtdPacientes)
+            setChart(vLabelEixoX[i], values: vetorValue[i])
             
             if back.alpha == 0.25 {
                 back.alpha = 1
@@ -169,13 +173,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 next.enabled = false
             }
 
-        }
-        
-        for exame in nomeDosExames{
-            print("ENTROU EM ESTATÍSTICAS \(exame)")
-        }
-        for dia in contDias{
-            print("N DE DIAS \(dia)")
         }
 
     }
@@ -189,8 +186,11 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             
             //Dados do iCloud
             contDias = calculaTempoMedioDeTodosOsExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
+            qtdPacientesXExames = calculaNumerodePacientesXExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
+            var vetorValue = [contDias, qtdPacientes, qtdPacientesXExames]
 //            back.hidden = false
-            setChart(vLabelEixoX[i], values: vValue[i])
+            setChart(vLabelEixoX[i], values: vetorValue[i])
             if next.alpha == 0.25 {
                 next.alpha = 1
                 next.enabled = true
@@ -199,13 +199,6 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
                 back.alpha = 0.25
                 back.enabled = false
             }
-        }
-        
-        for exame in nomeDosExames{
-            print("ENTROU EM ESTATÍSTICAS \(exame)")
-        }
-        for dia in contDias{
-            print("N DE DIAS \(dia)")
         }
     }
     
@@ -267,6 +260,30 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         }
         return qtdPacientesxPlano
     }
+    
+    func calculaNumerodePacientesXExames(listaDeExames: [String], listaDeTodosOsExames: [Exame] ) -> [Double] {
+        var totPacientesXExame: [Double] = []
+        
+        //Inicializa os vetores contadormédiodedias e qtddevezesdeummesmoexame
+        for i in 0..<listaDeExames.count{
+            totPacientesXExame.append(0)
+        }
+        
+        for exame in listaDeTodosOsExames {
+            
+            //indice do vetor acumulador
+            var index = listaDeExames.indexOf(exame.nome)
+            if index != nil {
+                if exame.tipoProcedimento == "Exame" {
+                    
+                    totPacientesXExame[index!] = totPacientesXExame[index!] + 1
+                }
+            }
+            
+        }
+        return totPacientesXExame
+    }
+
 }
  
 // ********** DADOS PARA TESTE DO GRÁFICO *********** //
