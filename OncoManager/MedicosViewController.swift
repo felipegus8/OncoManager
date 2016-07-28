@@ -8,16 +8,18 @@
 
 import UIKit
 
-class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     var edit = false
     var i = -1
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var medTableView: UITableView!
-    
+    var searchActive : Bool = false
+    var filtered:[String] = []
+     var nomeMedicos:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         medTableView.delegate = self
         medTableView.dataSource = self
         medTableView.allowsSelection = false
@@ -29,9 +31,47 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //MARK:Search Bar Delegate
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        print("Entrou aqui")
+        searchActive = false;
+    }
     
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Entrou aqui")
+        filtered = nomeMedicos.filter({ (text) -> Bool in
+            let tmp: NSString = text
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        print(filtered)
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        print("Reload Data")
+        self.medTableView.reloadData()
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return medicos.count
+        if(searchActive) {
+            return filtered.count
+        }
+        return medicos.count;
+
     }
     
     
@@ -86,6 +126,11 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("Entrou na appear")
+        nomeMedicos.removeAll()
+        for nome in medicos
+        {
+            nomeMedicos.append(nome.nome)
+        }
         dispatch_async(dispatch_get_main_queue(),{
         self.medTableView.reloadData()
         })

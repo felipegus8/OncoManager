@@ -18,7 +18,8 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cadastrarButton: OMButton!
     var nomeExameNovo:NomeExame!
     var exameEditado:NomeExame!
-    
+    var ArrayFiltrado:[String]?
+    var exameFiltrado:NomeExame!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +36,13 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
     func configEditVC() {
         if edit {
             titleLabel.text = "EDITAR EXAME"
+            if ArrayFiltrado == nil
+            {
             nomeExame.text = nomeExames[i].nome
+            }
+            else{
+                nomeExame.text = ArrayFiltrado![i]
+            }
             cadastrarButton.setTitle("Alterar", forState: .Normal)
         }
     }
@@ -77,8 +84,22 @@ class NovoExameViewController: UIViewController, UITextFieldDelegate {
         else{
         exameEditado = NomeExame(nome:nomeExame.text!)
             print(exameEditado.nome)
-            print(nomeExames[i].nome)
+        if ArrayFiltrado != nil
+        {
+            for valor in nomeExames
+            {
+                if valor.nome == ArrayFiltrado![i]
+                {
+                    exameFiltrado = valor
+                    break
+                }
+            }
+            DaoCloudKit().editNomeExame(exameFiltrado, nameNew: exameEditado)
+        }
+        else
+        {
         DaoCloudKit().editNomeExame(nomeExames[i], nameNew: exameEditado)
+        }
         }
        
     }
