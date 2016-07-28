@@ -23,6 +23,8 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
     
     var medicoTeste:Medico!
     var medicoEditado:Medico!
+   // var filtrado:[String]?
+   // var medicosFiltrados:[Medico] = []
     @IBOutlet weak var scrollView: UIScrollView!
     
     var lastScrollViewOffset = CGPoint()
@@ -85,12 +87,10 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         if edit {
             titleLabel.text = "EDITAR MÉDICO"
             cadastrar.setTitle("Alterar", forState: .Normal)
-            
             nome.text = medicos[i].nome
             email.text = medicos[i].email
             especialidade.text = medicos[i].especialidade
             crm.text = String(Int(medicos[i].crm))
-            
             if let tel = medicos[i].telefone {
             telefone.text = String(Int(tel))
             } else {
@@ -140,7 +140,7 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         DaoCloudKit().addMedico(medicoTeste)
         }
         else{
-            medicoEditado = Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!))
+             medicoEditado = Medico(nome: nome.text!, email: email.text!, crm: Double(crm.text!)!, especialidade: especialidade.text!, telefone: Double(telefone.text!))
             DaoCloudKit().editMedico(medicos[i], medicoNew: medicoEditado)
         }
     }

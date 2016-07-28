@@ -8,18 +8,20 @@
 
 import UIKit
 
-class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
+class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var edit = false
     var i = -1
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var medTableView: UITableView!
-    var searchActive : Bool = false
-    var filtered:[String] = []
-     var nomeMedicos:[String] = []
+  //  var searchActive : Bool = false
+    //var filtered:[String]?
+    // var nomeMedicos:[String] = []
+   // var medicosFiltrados:[Medico] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        searchBar.hidden = true
+     //   searchBar.delegate = self
         medTableView.delegate = self
         medTableView.dataSource = self
         medTableView.allowsSelection = false
@@ -32,7 +34,8 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     //MARK:Search Bar Delegate
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    
+/*func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         print("Entrou aqui")
         searchActive = false;
     }
@@ -57,21 +60,35 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
             return range.location != NSNotFound
         })
         print(filtered)
-        if(filtered.count == 0){
+        if(filtered!.count == 0){
             searchActive = false;
         } else {
             searchActive = true;
         }
+        if filtered != nil
+        {
+            medicosFiltrados.removeAll()
+            for nome in medicos
+            {
+                for valor in filtered!
+                {
+                    if valor == nome.nome
+                    {
+                        print(nome)
+                        medicosFiltrados.append(nome)
+                    }
+                }
+            }
+        }
+        print(medicosFiltrados)
         print("Reload Data")
+        
         self.medTableView.reloadData()
     }
-
+*/
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive) {
-            return filtered.count
-        }
-        return medicos.count;
-
+        print(medicos)
+        return medicos.count
     }
     
     
@@ -87,11 +104,12 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            DaoCloudKit().deleteMedico(medicos[indexPath.row])
-        }
+            if editingStyle == .Delete {
+                // Delete the row from the data source
+                DaoCloudKit().deleteMedico(medicos[indexPath.row])
+            }
     }
     func actOnNotificationSuccessDeleteMedico()
     {
@@ -122,21 +140,18 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
                 destinationVC.edit = false
             }
         }
+
     }
-    
+
     @IBAction func addMedicoPressed(sender: UIBarButtonItem) {
         i = -1
         performSegueWithIdentifier("goToAddMedico", sender: self)
     }
     
     override func viewWillAppear(animated: Bool) {
+        searchBar.hidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("Entrou na appear")
-        nomeMedicos.removeAll()
-        for nome in medicos
-        {
-            nomeMedicos.append(nome.nome)
-        }
         dispatch_async(dispatch_get_main_queue(),{
         self.medTableView.reloadData()
         })

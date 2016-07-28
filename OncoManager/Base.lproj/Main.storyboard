@@ -1607,7 +1607,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="172" y="4.5" width="60" height="45"/>
+                                                        <rect key="frame" x="172" y="4" width="60" height="45"/>
                                                         <mask key="constraints">
                                                             <include reference="1Hi-r4-ILj"/>
                                                             <include reference="CkI-MC-dvc"/>
@@ -1738,10 +1738,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="s3F-MJ-zSx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDz-nh-af5">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1856,6 +1852,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="s3F-MJ-zSx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1870,8 +1870,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="s3F-MJ-zSx"/>
                                 <exclude reference="IDz-nh-af5"/>
+                                <exclude reference="s3F-MJ-zSx"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="jQg-Y3-khD"/>
@@ -1886,8 +1886,8 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="s3F-MJ-zSx"/>
                                 <include reference="IDz-nh-af5"/>
+                                <include reference="s3F-MJ-zSx"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="jQg-Y3-khD"/>
@@ -1911,7 +1911,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="medTableView" destination="IDz-nh-af5" id="oAm-5C-vD2"/>
-                        <outlet property="searchBar" destination="s3F-MJ-zSx" id="uJh-hO-AVH"/>
+                        <outlet property="searchBar" destination="s3F-MJ-zSx" id="ccR-7X-i93"/>
                         <segue destination="LEE-2s-zEZ" kind="presentation" identifier="goToAddMedico" id="WsX-Pe-274"/>
                     </connections>
                 </viewController>

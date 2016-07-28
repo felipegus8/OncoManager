@@ -136,26 +136,7 @@ class AddEventViewController: UIViewController, UIPickerViewDataSource, UIPicker
         quickSort(&medicoData, left: 0, right: medicoData.count - 1)
         quickSort(&exameData, left: 0, right: exameData.count - 1)
     }
-    func partition(inout dataList: [String], low: Int, high: Int) -> Int {
-        var pivotPos = low
-        let pivot = dataList[low]
-        
-        for var i = low + 1; i <= high; i += 1 {
-            if dataList[i] < pivot && ++pivotPos != i {
-                (dataList[pivotPos], dataList[i]) = (dataList[i], dataList[pivotPos])
-            }
-        }
-        (dataList[low], dataList[pivotPos]) = (dataList[pivotPos], dataList[low])
-        return pivotPos
-    }
-    
-    func quickSort(inout dataList: [String], left: Int, right: Int) {
-        if left < right {
-            let pivotPos = partition(&dataList, low: left, high: right)
-            quickSort(&dataList, left: left, right: pivotPos - 1)
-            quickSort(&dataList, left: pivotPos + 1, right: right)
-        }
-    }    //MARK: converte a Data para String e altera o texto do textfield
+    //MARK: converte a Data para String e altera o texto do textfield
     func changedTxtFieldDate() {
         let date: String?
         print(datePicker.date)

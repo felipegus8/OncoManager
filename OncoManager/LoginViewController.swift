@@ -56,6 +56,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessNomeExames), name: "notificationSuccessNomeExames", object: nil)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationSuccessMedicos), name: "notificationSuccessMedicos", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.actOnNotificationErrorInternet), name:
+            "notificationErrorInternet", object: nil)
+        
 
 
     }
@@ -156,6 +160,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    func actOnNotificationErrorInternet()
+    {
+        activity.stopAnimating()
+        let alert=UIAlertController(title:"Erro", message: "Você não está conectado à internet", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+        dispatch_async(dispatch_get_main_queue(),{
+        self.presentViewController(alert,animated: true, completion: nil)
+        })
+    }
     /*
     // MARK: - Navigation
 
