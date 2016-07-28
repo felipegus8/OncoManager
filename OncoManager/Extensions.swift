@@ -137,6 +137,16 @@ extension UIView {
             }
         }
 }
+extension String {
+    var isValidPassword: Bool {
+        if characters.count < 8 { return false }
+        return true
+    }
+    var isValidName:Bool{
+        if characters.count < 4 { return false }
+        return true
+    }
+}
 func partition(inout dataList: [String], low: Int, high: Int) -> Int {
     var pivotPos = low
     let pivot = dataList[low]

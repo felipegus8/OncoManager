@@ -53,6 +53,15 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
 
         }
         else{
+            if nome.text?.isValidName == false
+            {
+                i=0
+                let alert=UIAlertController(title:"Erro", message: "O nome tem que ter pelo menos 4 caracteres", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alert,animated: true, completion: nil)
+            }
+            else
+            {
             if isValidEmail(email.text!) == false{
                 let alert=UIAlertController(title:"Erro", message: "Email Inválido", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
@@ -60,6 +69,15 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
                 i = 0
             }
             else{
+                if senha.text!.isValidPassword == false
+                {
+                    i = 0
+                    let alert=UIAlertController(title:"Erro", message: "A senha tem que ter no mínimo 8 caracteres", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alert,animated: true, completion: nil)
+                }
+                else
+                {
                 if senha.text != confirmaSenha.text
                 {
                     i = 0
@@ -75,6 +93,8 @@ class NovoAdmViewController: UIViewController,UITextFieldDelegate {
                         i+=1
                     }
                 }
+                }
+        }
         }
         }
     }
