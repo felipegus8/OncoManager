@@ -40,7 +40,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     @IBOutlet weak var cadeirante: UISwitch!
     @IBOutlet weak var claustrofobico: UISwitch!
     @IBOutlet weak var operado: UISwitch!
-    
+   // let activity = UIActivityIndicatorView()
     let datePicker = UIDatePicker()
     let pickerView = UIPickerView()
     var convenioData: [String]!
@@ -198,6 +198,12 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     @IBAction func cadastrarPressed(sender: UIButton) {
+        /*
+        activity.hidesWhenStopped = true
+        activity.activityIndicatorViewStyle = .WhiteLarge
+        activity.color = UIColor.greenOM()
+        activity.startAnimating()
+ */
         let intMarcapasso = (marcapasso.on == true) ? 1 : 0
         let intClipes = (clipesCirurgico.on == true) ? 1 : 0
         let intHipertenso = (hipertenso.on == true) ? 1 : 0
@@ -215,6 +221,7 @@ class NovoPacienteViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     func actOnNotificationSuccessSavePaciente()
     {
+       // activity.stopAnimating()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
