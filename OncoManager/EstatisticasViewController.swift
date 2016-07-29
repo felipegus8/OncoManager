@@ -34,8 +34,29 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
         vLabelEixoX.removeAll()
         //Título do gráfico
         graphTitleLabel.text = listGraphcs[0]
-        back.alpha = 0.25
-        back.enabled = false
+        
+        if i == 0 {
+            back.alpha = 0.25
+            back.enabled = false
+            next.enabled = true
+        }
+        else{
+            if i == listGraphcs.count - 1{
+                next.alpha = 0.25
+                next.enabled = false
+                back.enabled = true
+            }
+            else{
+                next.alpha = 1
+                back.alpha = 1
+                next.enabled = true
+                back.enabled = true
+            }
+            
+        }
+        
+        
+        print("TO NA VIEWWILLAPPEAR")
         
         // Descrição do gráfico que aparece no canto inferir direito da interface
         chartView.descriptionText = ""
@@ -161,16 +182,27 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             qtdPacientes = calculaNumeroPacientesxPlano(vLabelEixoX[i], listaDeTodosOsPacientes: pacientes )
             qtdPacientesXExames = calculaNumerodePacientesXExames(vLabelEixoX[i], listaDeTodosOsExames: exames )
             var vetorValue = [contDias, qtdPacientes, qtdPacientesXExames]
-            next.hidden = false
+            
             setChart(vLabelEixoX[i], values: vetorValue[i])
             
-            if back.alpha == 0.25 {
-                back.alpha = 1
-                back.enabled = true
+            if i == 0 {
+                back.alpha = 0.25
+                back.enabled = false
+                next.enabled = true
             }
-            if i == listGraphcs.count - 1 {
-                next.alpha = 0.25
-                next.enabled = false
+            else{
+                if i == listGraphcs.count - 1{
+                    next.alpha = 0.25
+                    next.enabled = false
+                    back.enabled = true
+                }
+                else{
+                    next.alpha = 1
+                    back.alpha = 1
+                    next.enabled = true
+                    back.enabled = true
+                }
+                
             }
 
         }
@@ -191,13 +223,25 @@ class EstatisticasViewController: UIViewController, ChartViewDelegate {
             var vetorValue = [contDias, qtdPacientes, qtdPacientesXExames]
 //            back.hidden = false
             setChart(vLabelEixoX[i], values: vetorValue[i])
-            if next.alpha == 0.25 {
-                next.alpha = 1
-                next.enabled = true
-            }
+
             if i == 0 {
                 back.alpha = 0.25
                 back.enabled = false
+                next.enabled = true
+            }
+            else{
+                if i == listGraphcs.count - 1{
+                    next.alpha = 0.25
+                    next.enabled = false
+                    back.enabled = true
+                }
+                else{
+                    next.alpha = 1
+                    back.alpha = 1
+                    next.enabled = true
+                    back.enabled = true
+                }
+                
             }
         }
     }
