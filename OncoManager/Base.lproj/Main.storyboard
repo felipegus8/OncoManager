@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1729,7 +1729,7 @@
         <!--Médicos-->
         <scene sceneID="T15-Zr-yke">
             <objects>
-                <viewController id="fHF-Uj-RNF" customClass="MedicosViewController" customModule="OncoManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fHF-Uj-RNF" customClass="MedicosViewController" customModule="OncoManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GUR-Ed-U5t"/>
                         <viewControllerLayoutGuide type="bottom" id="BNo-Ro-sCz"/>
@@ -1741,6 +1741,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDz-nh-af5">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="medCell" rowHeight="80" id="gNI-4Z-hkS" customClass="MedicoCell" customModule="OncoManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1851,53 +1852,36 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="s3F-MJ-zSx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s3F-MJ-zSx" secondAttribute="trailing" id="6CS-7a-nbm"/>
-                            <constraint firstItem="s3F-MJ-zSx" firstAttribute="leading" secondItem="O9f-i2-2Xq" secondAttribute="leading" id="9qO-fG-0GD"/>
                             <constraint firstItem="IDz-nh-af5" firstAttribute="leading" secondItem="O9f-i2-2Xq" secondAttribute="leading" id="AG3-0f-xEt"/>
-                            <constraint firstItem="IDz-nh-af5" firstAttribute="top" secondItem="s3F-MJ-zSx" secondAttribute="bottom" id="Gzo-4v-7Qb"/>
-                            <constraint firstItem="s3F-MJ-zSx" firstAttribute="top" secondItem="GUR-Ed-U5t" secondAttribute="bottom" id="IKp-xH-0NK"/>
+                            <constraint firstItem="IDz-nh-af5" firstAttribute="top" secondItem="GUR-Ed-U5t" secondAttribute="bottom" constant="8" id="QZB-dy-D5s"/>
                             <constraint firstAttribute="trailing" secondItem="IDz-nh-af5" secondAttribute="trailing" id="h2b-sf-bms"/>
                             <constraint firstItem="BNo-Ro-sCz" firstAttribute="top" secondItem="IDz-nh-af5" secondAttribute="bottom" id="jQg-Y3-khD"/>
-                            <constraint firstItem="IDz-nh-af5" firstAttribute="top" secondItem="s3F-MJ-zSx" secondAttribute="bottom" id="t9F-0r-thg"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="IDz-nh-af5"/>
-                                <exclude reference="s3F-MJ-zSx"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="jQg-Y3-khD"/>
-                                <exclude reference="6CS-7a-nbm"/>
-                                <exclude reference="9qO-fG-0GD"/>
-                                <exclude reference="IKp-xH-0NK"/>
                                 <exclude reference="AG3-0f-xEt"/>
-                                <exclude reference="Gzo-4v-7Qb"/>
+                                <exclude reference="QZB-dy-D5s"/>
                                 <exclude reference="h2b-sf-bms"/>
-                                <exclude reference="t9F-0r-thg"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="IDz-nh-af5"/>
-                                <include reference="s3F-MJ-zSx"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="jQg-Y3-khD"/>
-                                <include reference="6CS-7a-nbm"/>
-                                <include reference="9qO-fG-0GD"/>
-                                <include reference="IKp-xH-0NK"/>
                                 <include reference="AG3-0f-xEt"/>
-                                <include reference="Gzo-4v-7Qb"/>
+                                <include reference="QZB-dy-D5s"/>
                                 <include reference="h2b-sf-bms"/>
-                                <include reference="t9F-0r-thg"/>
                             </mask>
                         </variation>
                     </view>
@@ -1911,7 +1895,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="medTableView" destination="IDz-nh-af5" id="oAm-5C-vD2"/>
-                        <outlet property="searchBar" destination="s3F-MJ-zSx" id="ccR-7X-i93"/>
                         <segue destination="LEE-2s-zEZ" kind="presentation" identifier="goToAddMedico" id="WsX-Pe-274"/>
                     </connections>
                 </viewController>

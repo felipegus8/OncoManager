@@ -12,7 +12,6 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
     var edit = false
     var i = -1
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var medTableView: UITableView!
   //  var searchActive : Bool = false
     //var filtered:[String]?
@@ -20,8 +19,7 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
    // var medicosFiltrados:[Medico] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.hidden = true
-     //   searchBar.delegate = self
+    //   searchBar.delegate = self
         medTableView.delegate = self
         medTableView.dataSource = self
         medTableView.allowsSelection = false
@@ -149,7 +147,6 @@ class MedicosViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        searchBar.hidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("Entrou na appear")
         dispatch_async(dispatch_get_main_queue(),{

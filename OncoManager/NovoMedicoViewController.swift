@@ -41,8 +41,8 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationErrorAddMedico), name: "notificationErrorCadastroMedico", object: nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoMedicoViewController.actOnNotificationSuccessEditMedico), name: "notificationSuccessEditMedico", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
+      //  NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+      //  NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NovoPacienteViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
  
         // Do any additional setup after loading the view.
     }
