@@ -90,13 +90,18 @@ class NovoMedicoViewController: UIViewController, UITextFieldDelegate {
             nome.text = medicos[i].nome
             email.text = medicos[i].email
             especialidade.text = medicos[i].especialidade
-            crm.text = String(Int(medicos[i].crm))
-            if let tel = medicos[i].telefone {
-            telefone.text = String(Int(tel))
+            crm.text = convertDoubleToString(medicos[i].crm)
+            if let tele = medicos[i].telefone {
+                telefone.text = convertDoubleToString(tele)
             } else {
-            telefone.text = ""
+                telefone.text = ""
             }
         }
+    }
+    
+    func convertDoubleToString(n: Double) -> String{
+        let str = String(n).characters.dropLast(2)
+        return String(str)
     }
     
     func linkDelegate(){
